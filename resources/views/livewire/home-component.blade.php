@@ -29,7 +29,7 @@ Vân Long Plastic
                                             <span class="arrow-two"><i class="fas fa-caret-right"></i></span>
                                         </div>
                                     </a>
-                                    <a href="" data-lity="" class="play-video">
+                                    <a href="https://www.youtube.com/embed/5ZHDN6MIxGc" data-lity="" class="play-video">
                                         <div class="play"><i class="fas fa-play"></i></div> <span>Giới thiệu</span>
                                     </a>
                                 </div>

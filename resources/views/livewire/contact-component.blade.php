@@ -66,7 +66,7 @@
                                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                             </div>
                         </div>
-                        <div class="col-lg-6 mb-50">
+                        <div class="col-lg-6 mb-50" id="buy">
                             <div class="section-title-left">
                                 <h4 class="title-inner-page">Hỗ trợ mua hàng </h4>
                             </div>

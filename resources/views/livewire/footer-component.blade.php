@@ -6,9 +6,8 @@
                     <div class="footer-logo">
                         <img src="{{ asset('assets/images/logo/logo.png') }}" alt="logo">
                     </div>
-                    <p class="mb-30">Our Strategies At Work Are The Means By Which To Achieve The Desired Goals, And
-                        Achieve Your Goals And Dreams Here.</p>
-                    <a href="about-us.html" class="main-btn-three">
+                    <p class="mb-30">{{ $setting->description }}</p>
+                    <a href="" class="main-btn-three">
                         <div class="text-btn">
                             <span class="text-btn-one">Chi tiết</span>
                             <span class="text-btn-two">Chi tiết</span>
@@ -28,27 +27,27 @@
                         <div class="col-6">
                             <ul class="mb-0 footer-link">
                                 <li>
-                                    <a href="about-us.html">
+                                    <a href="/">
                                         <span><i class="fas fa-angle-right"></i></span> Trang chủ
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="why-choose-us.html">
+                                    <a href="/shop">
                                         <span><i class="fas fa-angle-right"></i></span> Sản phẩm
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="our-team.html">
+                                    <a href="/careers">
                                         <span><i class="fas fa-angle-right"></i></span> Tuyển dụng
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="case-study-one.html">
+                                    <a href="/news">
                                         <span><i class="fas fa-angle-right"></i></span> Tin tức
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="contact-us.html">
+                                    <a href="/contact">
                                         <span><i class="fas fa-angle-right"></i></span> Liên hệ
                                     </a>
                                 </li>
@@ -57,17 +56,17 @@
                         <div class="col-6">
                             <ul class="mb-0 footer-link">
                                 <li>
-                                    <a href="about-us.html">
+                                    <a href="/gallery">
                                         <span><i class="fas fa-angle-right"></i></span> Gallery
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="why-choose-us.html">
+                                    <a href="/#faq">
                                         <span><i class="fas fa-angle-right"></i></span> FAQ
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="our-team.html">
+                                    <a href="/contact#buy">
                                         <span><i class="fas fa-angle-right"></i></span> Mua hàng
                                     </a>
                                 </li>
@@ -86,13 +85,18 @@
                     <h4>Tin tức mới nhất</h4>
                     <div class="line-footer"></div>
                     <p class="mb-15">Đăng ký để nhận tin tức mới nhất</p>
-                    <div class="newsletter-item">
-                        <input type="email" name="email" placeholder="Email của bạn">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </div>
+                    @if (session('message'))
+                        <p class="text-success">{{ Session::get('message') }}</p>
+                    @endif
+                    <form wire:submit.prevent="storeNewsLetter">
+                        <div class="newsletter-item">
+                            <input type="email" name="email" wire:model="email" placeholder="Email của bạn">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
                     <ul class="social-media">
-                        <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" class="youtube"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://www.facebook.com/TUY%E1%BB%82N-D%E1%BB%A4NG-V%C3%82N-LONG-111007523649398/" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCrYT1V4gFMkZs0f1sJcejCg" class="youtube"><i class="fab fa-youtube"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -101,24 +105,20 @@
             <div class="col-lg-4 col-sm-6 no-padding">
                 <div class="single-item">
                     <span class="flaticon-call"></span>
-
-                    <p> +(02) 0114-9912-318</p>
-                    <p> +(02) 0111-7457-354</p>
+                    <p>{{ $setting->phone }}</p>
+                    <p>{{ $setting->fax }}</p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 no-padding">
                 <div class="single-item">
                     <span class="flaticon-email"></span>
-
-                    <p> Hello@example.com</p>
-                    <p> support@yourwebsite.com</p>
+                    <p>{{ $setting->email }}</p>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12 no-padding">
                 <div class="single-item">
                     <span class="flaticon-location"></span>
-                    <p>US - Los Angeles 5135 - 4234 </p>
-                    <p>In The Center Street Name Here </p>
+                    <p>{{ $setting->address }}</p>
                 </div>
             </div>
         </div>

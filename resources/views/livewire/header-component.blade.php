@@ -22,8 +22,8 @@
             </div>
             <div class="col-md-3 d-n-mobile d-n-tab">
                 <ul class="social-media-bar">
-                    <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#" class="youtube"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://www.facebook.com/TUY%E1%BB%82N-D%E1%BB%A4NG-V%C3%82N-LONG-111007523649398/" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCrYT1V4gFMkZs0f1sJcejCg" class="youtube"><i class="fab fa-youtube"></i></a></li>
                     <li><a href="#" class="user"><i class="fa fa-user"></i></a></li>
                 </ul>
             </div>
@@ -37,7 +37,7 @@
                 <!-- Row -->
                 <div class="row">
                     <div class="col-lg-3 col-12">
-                        <a href="index.html" class="my-logo">
+                        <a href="/" class="my-logo">
                             <img class="logo-two" src="{{ asset('assets/images/logo/logo.png') }}" width="80" alt="logo">
                         </a>
                         <a href="#" class="navbar-toggle">
@@ -111,8 +111,7 @@
     <div class="inner-side">
         <div class="about-side">
             <img src="{{ asset('assets/images/logo/logo.png') }}" alt="logo">
-            <p>Our Strategies At Work Are The Means By Which To Achieve The Desired Goals, And Achieve Your Goals And
-                Dreams Here.</p>
+            <p>{{ $setting->description }}</p>
             <a href="#" class="main-btn-two mt-30">
                 <div class="text-btn">
                     <span class="text-btn-one">Thông tin</span>
@@ -125,36 +124,34 @@
             </a>
         </div>
         <div class="contact-side">
-            <h6>Contact Info</h6>
+            <h6>Thông tin</h6>
             <div class="line-side"></div>
             <div class="contact-info">
 
                 <div class="single-contact">
                     <span class="flaticon-call"></span>
                     <div class="info-cont">
-                        <p>+(02) 0114-9912-318</p>
-                        <p>+(02) 0111-7457-354</p>
+                        <p>{{ $setting->phone }}</p>
+                        <p>{{ $setting->fax }}</p>
                     </div>
                 </div>
                 <div class="single-contact">
                     <span class="flaticon-email"></span>
                     <div class="info-cont">
-                        <p>Hello@example.com</p>
-                        <p>support@yourwebsite.com</p>
+                        <p>{{ $setting->email }}</p>
                     </div>
                 </div>
                 <div class="single-contact">
                     <span class="flaticon-location"></span>
                     <div class="info-cont">
-                        <p>US - Los Angeles 5135 - 4234 </p>
-                        <p>In The Center Street Name Here</p>
+                        <p>{{ $setting->address }}</p>
                     </div>
                 </div>
                 <div class="single-contact">
                     <span class="flaticon-time"></span>
                     <div class="info-cont">
-                        <p>Monday - Fraiday, 9am - 5pm,</p>
-                        <p>Saturday & Sunday - CLOSED</p>
+                        <p>Mở cửa: {{ $setting->open_description }}</p>
+                        <p>Thời gian: {{ $setting->open_time }}</p>
                     </div>
                 </div>
             </div>
@@ -163,8 +160,8 @@
             <h6>Follow Us</h6>
             <div class="line-side"></div>
             <ul class="social-media">
-                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#" class="youtube"><i class="fab fa-youtube"></i></a></li>
+                <li><a href="https://www.facebook.com/TUY%E1%BB%82N-D%E1%BB%A4NG-V%C3%82N-LONG-111007523649398/" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.youtube.com/channel/UCrYT1V4gFMkZs0f1sJcejCg" class="youtube"><i class="fab fa-youtube"></i></a></li>
             </ul>
         </div>
     </div>
