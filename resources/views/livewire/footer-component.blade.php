@@ -72,7 +72,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="case-study-one.html">
+                                    <a href="https://www.google.com/maps/place/C%C3%B4ng+Ty+TNHH+V%C3%A2n+Long/@20.870844,106.6438158,17z/data=!3m1!4b1!4m5!3m4!1s0x314a7a3cbeac5cb7:0xa7a7c67131d12793!8m2!3d20.870844!4d106.6460045">
                                         <span><i class="fas fa-angle-right"></i></span> Bản đồ
                                     </a>
                                 </li>
