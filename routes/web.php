@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Admin\DashboardComponent;
 use App\Http\Livewire\CareersComponent;
 use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\GalleryComponent;
@@ -36,5 +37,5 @@ Route::get('/page-not-found', function () {
 })->name('errors');
 //ADMIM
 Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
-
+    Route::get('/dashboard',DashboardComponent::class)->name('dashboard');
 });

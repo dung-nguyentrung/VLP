@@ -32,7 +32,7 @@
                                     @csrf
                                 </form>
                             @else
-                                <li><a href="" class="user"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                                <li><a href="{{ route('dashboard=') }}" class="user"><i class="fa fa-home" aria-hidden="true"></i></a></li>
                             @endif
                         @else
                         <li><a href="{{ route('login') }}" class="user"><i class="fa fa-user"></i></a></li>
