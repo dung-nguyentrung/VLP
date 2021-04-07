@@ -24,7 +24,20 @@
                 <ul class="social-media-bar">
                     <li><a href="https://www.facebook.com/TUY%E1%BB%82N-D%E1%BB%A4NG-V%C3%82N-LONG-111007523649398/" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="https://www.youtube.com/channel/UCrYT1V4gFMkZs0f1sJcejCg" class="youtube"><i class="fab fa-youtube"></i></a></li>
-                    <li><a href="#" class="user"><i class="fa fa-user"></i></a></li>
+                    @if (Route::has('login'))
+                        @auth
+                            @if (Auth::user()->utype == "USR")
+                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="user"><i class="fas fa-sign-out-alt"></i></a></li>
+                                <form action="{{ route('logout') }}" id="logout-form" method="post">
+                                    @csrf
+                                </form>
+                            @else
+                                <li><a href="" class="user"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                            @endif
+                        @else
+                        <li><a href="{{ route('login') }}" class="user"><i class="fa fa-user"></i></a></li>
+                        @endif
+                    @endif
                 </ul>
             </div>
         </div>

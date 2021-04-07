@@ -31,6 +31,10 @@ Route::get('/gallery',GalleryComponent::class);
 
 Route::get('/contact',ContactComponent::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/page-not-found', function () {
+    return view('errors.404');
+})->name('errors');
+//ADMIM
+Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
+
+});

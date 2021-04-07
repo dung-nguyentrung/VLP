@@ -324,7 +324,7 @@ Vân Long Plastic
         <div class="row section-title">
             <div class="col-md-5">
                 <h2>Tin tức</h2>
-                <h3>Bài viết mới nhát</h3>
+                <h3>Bài viết mới nhất</h3>
             </div>
         </div>
         <div class="row">
