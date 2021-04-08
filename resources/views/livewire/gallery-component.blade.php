@@ -13,28 +13,29 @@
 <div id="portfolio" class="portfolio portfolio-two pt-120 pb-90">
     <div class="container">
         <div class="row">
+            @foreach ($galleries as $gallery)
             <div class="col-md-6 col-lg-4">
                 <div class="case-item">
                     <div class="img-case">
-                        <!-- Image OF Case -->
-                        <img src="assets/images/portfolio/portfolio-2/1.jpg" alt="case">
+                        <img src="{{ asset('assets/images/galleries') }}/{{ $gallery->image }}" alt="{{ $gallery->title }}">
                         <div class="overlay-case">
                             <div class="inner-overlay">
                                 <!-- Text OF Case -->
                                 <div class="case-study-text">
                                     <div class="links-case">
                                         <div class="zoom-case">
-                                            <a href="assets/images/portfolio/portfolio-2/1.jpg"><i
+                                            <a href="{{ asset('assets/images/galleries') }}/{{ $gallery->image }}" alt="{{ $gallery->title }}"><i
                                                     class="fas fa-search-plus"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center"><h5>Hình ảnh công ty</h5></div>
+                        <div class="text-center"><h5>{{ $gallery->title }}</h5></div>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </div>

@@ -14,40 +14,33 @@
 <div id="careers" class="careers careers-page pt-120 pb-90">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 mb-30">
-                <div class="career-item">
-                    <div class="title-item">
-                        <h3>Financial & Administrative Accountant - 05 </h3>
-                        <div class="history">
-                            <span>Full Time </span>
-                            <span>new york </span>
+            @foreach ($collection as $item)
+                <div class="col-lg-6 mb-30">
+                    <div class="career-item">
+                        <div class="title-item">
+                            <h3>{{ $career->position }} - {{ $career->quantity }} </h3>
+                            <div class="history">
+                                <span>Full Time </span>
+                                <span>{{ $career->user()->name }}</span>
+                            </div>
                         </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm tempor incididunt ut
-                        labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    <ul>
-                        <li>
-                            <span class="fa fa-check"></span> Carries a lot of passion to reach the top
-                        </li>
-                        <li>
-                            <span class="fa fa-check"></span> Continuous development in work and productivity
-                        </li>
-                        <li>
-                            <span class="fa fa-check"></span> Previous experience in business and management
-                        </li>
-                    </ul>
+                        <p>{{ $career->content }}</p>
+                        <ul>
+                            <li>{{ $career->required }}</li>
+                        </ul>
 
-                    <a href="#apply" class="btn-read-more down">
-                        <div class="text-btn">Apply Now</div>
-                        <i class="fas fa-long-arrow-alt-right"></i>
-                    </a>
+                        <a href="#apply" class="btn-read-more down">
+                            <div class="text-btn">Ứng tuyển ngay</div>
+                            <i class="fas fa-long-arrow-alt-right"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
         <div id="apply" class="row apply-team">
             <div class="col-md-12">
                 <div class="section-title-left">
-                    <h4 class="title-inner-page">Apply for Position </h4>
+                    <h4 class="title-inner-page">Ứng tuyển cho vị trí</h4>
                 </div>
             </div>
             <div class="col-md-12">

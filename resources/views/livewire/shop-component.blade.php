@@ -28,7 +28,9 @@
                                 <h3>Danh mục sản phẩm</h3>
                             </div>
                             <ul class="tags-list">
-                                <li><a href="#">Nhựa công nghiệp - dân dụng</a></li>
+                                @foreach ($categories as $category)
+                                    <li><a href="#">{{ $category->slug }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -37,15 +39,17 @@
                             <div class="title-widget">
                                 <h3>Sản phẩm phổ biến</h3>
                             </div>
-                            <div class="lastet-posts">
-                                <a href="#">
-                                    <img src="assets/images/shop/1.jpg" alt="news">
-                                    <div class="inner-text">
-                                        <h6>Circular Cutshow</h6>
-                                        <div class="meta">$49.00</div>
-                                    </div>
-                                </a>
-                            </div>
+                            @foreach ($populars as $popular)
+                                <div class="lastet-posts">
+                                    <a href="#">
+                                        <img src="{{ asset('assets/images/shop') }}/{{ $popular->image }}" alt="{{ $popular->name }}">
+                                        <div class="inner-text">
+                                            <h6>{{ $popular->name }}</h6>
+                                            <div class="meta">number_format({{ $popular->price }})</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -53,33 +57,28 @@
             <div class="col-9">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
-                        <div class="single-product-item">
-                            <div class="img-product">
-                                <a href="shop-single.html">
-                                    <img src="assets/images/shop/1.jpg" alt="product">
-                                </a>
-                                <div class="btn-product">
+                        @foreach ($products as $product)
+                            <div class="single-product-item">
+                                <div class="img-product">
                                     <a href="shop-single.html">
-                                        <i class="fa fa-info-circle"></i>
-                                        Chi tiết
+                                        <img src="{{ asset('assets/images/shop') }}/{{ $product->image }}" alt="{{ $product->name }}">
                                     </a>
+                                    <div class="btn-product">
+                                        <a href="">
+                                            <i class="fa fa-info-circle"></i>
+                                            Chi tiết
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="content-product">
+                                    <div class="price-product">
+                                        <span class="old-price">number_format({{ $product->price }})</span>
+                                        <span class="new-price">number_format({{ $product->price }})</span>
+                                    </div>
+                                    <h4><a href="">{{ $product->naem }}</a></h4>
                                 </div>
                             </div>
-                            <div class="content-product">
-                                <div class="price-product">
-                                    <span class="old-price">$49.00</span>
-                                    <span class="new-price">$39.00</span>
-                                </div>
-                                <ul class="evaluation-product">
-                                    <li><i class="fas fa-star fa-2x"></i></li>
-                                    <li><i class="fas fa-star fa-2x"></i></li>
-                                    <li><i class="fas fa-star fa-2x"></i></li>
-                                    <li><i class="fas fa-star fa-2x"></i></li>
-                                    <li><i class="fas fa-star fa-2x"></i></li>
-                                </ul>
-                                <h4><a href="shop-single.html">Circular Cutshow</a></h4>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
