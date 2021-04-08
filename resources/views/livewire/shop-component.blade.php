@@ -73,7 +73,6 @@
                                 <div class="content-product">
                                     <div class="price-product">
                                         <span class="old-price">number_format({{ $product->price }})</span>
-                                        <span class="new-price">number_format({{ $product->price }})</span>
                                     </div>
                                     <h4><a href="">{{ $product->naem }}</a></h4>
                                 </div>

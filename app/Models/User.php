@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\News;
 use App\Models\Career;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -63,5 +64,10 @@ class User extends Authenticatable
     public function career()
     {
         return $this->hasMany(Career::class);
+    }
+
+    public function new()
+    {
+        return $this->hasMany(News::class);
     }
 }

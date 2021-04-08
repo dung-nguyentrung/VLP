@@ -277,42 +277,42 @@ Vân Long Plastic
             <div class="col-12 owl-carousel sponsor owl-loaded">
                 <div class="owl-item">
                     <div class="sponsor-item">
-                        <img src="assets/images/sponsor-2/1.png" alt="sponsor">
+                        <img src="{{ asset('assets/images/sponsor-2/1.png') }}" alt="sponsor">
                     </div>
                 </div>
                 <div class="owl-item">
                     <div class="sponsor-item">
-                        <img src="assets/images/sponsor-2/2.png" alt="sponsor">
+                        <img src="{{ asset('assets/images/sponsor-2/2.png') }}" alt="sponsor">
                     </div>
                 </div>
                 <div class="owl-item">
                     <div class="sponsor-item">
-                        <img src="assets/images/sponsor-2/3.png" alt="sponsor">
+                        <img src="{{ asset('assets/images/sponsor-2/3.png') }}" alt="sponsor">
                     </div>
                 </div>
                 <div class="owl-item">
                     <div class="sponsor-item">
-                        <img src="assets/images/sponsor-2/4.png" alt="sponsor">
+                        <img src="{{ asset('assets/images/sponsor-2/4.png') }}" alt="sponsor">
                     </div>
                 </div>
                 <div class="owl-item">
                     <div class="sponsor-item">
-                        <img src="assets/images/sponsor-2/5.png" alt="sponsor">
+                        <img src="{{ asset('assets/images/sponsor-2/5.png') }}" alt="sponsor">
                     </div>
                 </div>
                 <div class="owl-item">
                     <div class="sponsor-item">
-                        <img src="assets/images/sponsor-2/6.png" alt="sponsor">
+                        <img src="{{ asset('assets/images/sponsor-2/6.png') }}" alt="sponsor">
                     </div>
                 </div>
                 <div class="owl-item">
                     <div class="sponsor-item">
-                        <img src="assets/images/sponsor-2/7.png" alt="sponsor">
+                        <img src="{{ asset('assets/images/sponsor-2/7.png') }}" alt="sponsor">
                     </div>
                 </div>
                 <div class="owl-item">
                     <div class="sponsor-item">
-                        <img src="assets/images/sponsor-2/8.png" alt="sponsor">
+                        <img src="{{ asset('assets/images/sponsor-2/8.png') }}" alt="sponsor">
                     </div>
                 </div>
             </div>
@@ -328,26 +328,26 @@ Vân Long Plastic
             </div>
         </div>
         <div class="row">
+            @foreach ($news as $new)
             <div class="col-lg-4 col-sm-6">
                 <div class="blog-item">
                     <!-- Blog Image -->
                     <div class="blog-img">
-                        <a href="blog.html"><img src="assets/images/blog/blog-1.jpg" alt="blog"></a>
+                    <a href="blog.html"><img src="{{ asset('assets/images/blog') }}/{{ $new->image }}" alt="blog"></a>
                     </div>
                     <!-- Blog info -->
                     <div class="blog-info">
                         <ul class="date">
-                            <li>25 NOV 19 </li>
-                            <li><a href="#">Factory</a></li>
+                            <li>{{ $new->created_at }}</li>
+                            <li><a href="">{{ $new->post_category->name }}</a></li>
                         </ul>
                         <div class="title-post">
                             <a href="blog.html">
-                                <h5>The future of factories in the coming years</h5>
+                                <h5>{{ $new->title }}</h5>
                             </a>
                         </div>
                         <div class="post-text">
-                            <p>Lorem ipsum dolor consectetur adipisicing elit do eiusm incididunt a labore et dolore
-                                magna consectetur adipisicing elit...</p>
+                            <p>{{ $new->limit() }}</p>
                         </div>
                         <a href="blog.html" class="btn-read-more">
                             <div class="text-btn">Read More</div>
@@ -356,6 +356,7 @@ Vân Long Plastic
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </section>
