@@ -5,14 +5,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h1 class="page-title-heading">our News & Stories about us & many other things.
+                <h1 class="page-title-heading">Tin tức sự kiện
                 </h1>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="/">Trang chủ</a>
                     </li>
-                    <li><i class="fas fa-angle-right"></i></li>
-                    <li>News List</li>
                 </ul>
             </div>
         </div>
@@ -115,96 +113,6 @@
                                 <div class="title-post">
                                     <a href="blog-single.html">
                                         <h5>The future of factories in the coming years</h5>
-                                    </a>
-                                </div>
-                                <div class="post-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim Magna, sed diam
-                                        nonumy eirmod tempor invidunt ut lab ore et dolore magna aliquyam erat....</p>
-                                </div>
-                                <a href="blog.html" class="btn-read-more">
-                                    <div class="text-btn">Read More</div>
-                                    <i class="fas fa-long-arrow-alt-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- New Item -->
-                    <div class="col-lg-12">
-                        <div class="blog-item">
-                            <!-- Blog Image -->
-                            <div class="blog-img">
-                                <a href="blog.html"><img src="assets/images/blog/blog-2.jpg" alt="blog"></a>
-                            </div>
-                            <!-- Blog info -->
-                            <div class="blog-info">
-                                <ul class="date">
-                                    <li>25 NOV 20 </li>
-                                    <li><a href="#">Energy</a></li>
-                                </ul>
-                                <div class="title-post">
-                                    <a href="blog.html">
-                                        <h5>The factors that countries create are energy</h5>
-                                    </a>
-                                </div>
-                                <div class="post-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim Magna, sed diam
-                                        nonumy eirmod tempor invidunt ut lab ore et dolore magna aliquyam erat....</p>
-                                </div>
-                                <a href="blog.html" class="btn-read-more">
-                                    <div class="text-btn">Read More</div>
-                                    <i class="fas fa-long-arrow-alt-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- New Item -->
-                    <div class="col-lg-12">
-                        <div class="blog-item">
-                            <!-- Blog Image -->
-                            <div class="blog-img">
-                                <a href="blog.html"><img src="assets/images/blog/blog-3.jpg" alt="blog"></a>
-                            </div>
-                            <!-- Blog info -->
-                            <div class="blog-info">
-                                <ul class="date">
-                                    <li>25 NOV 20 </li>
-                                    <li><a href="#">Industry</a></li>
-                                </ul>
-                                <div class="title-post">
-                                    <a href="blog.html">
-                                        <h5>Industry is a job opportunity for everyone</h5>
-                                    </a>
-                                </div>
-                                <div class="post-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim Magna, sed diam
-                                        nonumy eirmod tempor invidunt ut lab ore et dolore magna aliquyam erat....</p>
-                                </div>
-                                <a href="blog.html" class="btn-read-more">
-                                    <div class="text-btn">Read More</div>
-                                    <i class="fas fa-long-arrow-alt-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- New Item -->
-                    <div class="col-lg-12">
-                        <div class="blog-item">
-                            <!-- Blog Image -->
-                            <div class="blog-img">
-                                <a href="blog.html"><img src="assets/images/blog/blog-4.jpg" alt="blog"></a>
-                            </div>
-                            <!-- Blog info -->
-                            <div class="blog-info">
-                                <ul class="date">
-                                    <li>25 NOV 20 </li>
-                                    <li><a href="#">Industry</a></li>
-                                </ul>
-                                <div class="title-post">
-                                    <a href="blog.html">
-                                        <h5>Industry is a job opportunity for everyone</h5>
                                     </a>
                                 </div>
                                 <div class="post-text">

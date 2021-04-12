@@ -4822,6 +4822,7 @@ text-right {
     margin-right: auto !important;
     margin-left: auto !important;
     width: 1000px !important;
+    height: 300px !important;
     -webkit-transition: all 2s;
     -moz-transition: all 2s;
     -ms-transition: all 2s;
@@ -7841,3 +7842,4 @@ footer .copyright a {
 .two{
     height: 190px !important;
 }
+

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    @livewireStyles
 </head>
 <body>
     @livewire('header-component')

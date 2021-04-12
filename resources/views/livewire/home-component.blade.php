@@ -60,7 +60,7 @@ Vân Long Plastic
                                 <img src="{{ asset('assets/images/services/01.jpg') }}" alt="services">
                             </div>
                             <div class="content-box">
-                                <span class="flaticon-conveyor-1"></span>
+                                <span class="fas fa-industry"></span>
                                 <h4>NHỰA CÔNG NGHIỆP-DÂN DỤNG</h4>
                                 <p>Công nghệ ép phun nhựa, gia công - sản xuất các sản phẩm chi tiết nhựa cho ngành điện tử...</p>
                                 <a href="services-single.html" class="btn-read-more">
@@ -76,11 +76,11 @@ Vân Long Plastic
                                 <img src="{{ asset('assets/images/services/02.jpg') }}" class="two" alt="services">
                             </div>
                             <div class="content-box">
-                                <span class="flaticon-oil-1"></span>
+                                <span class="fas fa-industry"></span>
                                 <h4>CAN - CHAI NHỰA <br> PE </h4>
                                 <p>Sản xuất các sản phẩm phôi PET, Can - Chai PET phục vụ ngành nước giải khát,...</p>
                                 <a href="services-single.html" class="btn-read-more">
-                                    <div class="text-btn">Chi tiể</div>
+                                    <div class="text-btn">Chi tiểt</div>
                                     <i class="fas fa-long-arrow-alt-right"></i>
                                 </a>
                             </div>
@@ -92,11 +92,11 @@ Vân Long Plastic
                                 <img src="{{ asset('assets/images/services/03.jpg') }}" alt="services">
                             </div>
                             <div class="content-box">
-                                <span class="flaticon-oil-1"></span>
+                                <span class="fas fa-industry"></span>
                                 <h4>CAN - CHAI NHỰA PET</h4>
                                 <p>Sản xuất các sản phẩm phôi PET, Can - Chai PET phục vụ ngành nước giải khát,...</p>
                                 <a href="services-single.html" class="btn-read-more">
-                                    <div class="text-btn">Chi tiể</div>
+                                    <div class="text-btn">Chi tiểt</div>
                                     <i class="fas fa-long-arrow-alt-right"></i>
                                 </a>
                             </div>
@@ -109,11 +109,11 @@ Vân Long Plastic
                                 <img src="{{ asset('assets/images/services/04.jpg') }}" alt="services">
                             </div>
                             <div class="content-box">
-                                <span class="flaticon-robot-arm-1"></span>
+                                <span class="fas fa-industry"></span>
                                 <h4>LẮP RÁP CHI TIẾT NHỰA</h4>
                                 <p>Gia công - Lắp ráp các sản phẩm máy giặt - máy điều hòa - máy hút bụi, và nhiều linh kiện khác...</p>
                                 <a href="services-single.html" class="btn-read-more">
-                                    <div class="text-btn">Read More</div>
+                                    <div class="text-btn">Chi tiết</div>
                                     <i class="fas fa-long-arrow-alt-right"></i>
                                 </a>
                             </div>
@@ -137,132 +137,23 @@ Vân Long Plastic
             <div class="row">
                 <div class="col-md-12">
                     <div id="accordion" class="acco">
-                        <div class="card active">
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-                                        aria-expanded="true" aria-controls="collapseOne">
-                                        Why We Are Best Company ?
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                data-parent="#accordion">
-                                <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusm tmpor incididunt
-                                    ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip.
+                        @foreach ($faqs as $faq)
+                            <div class="card">
+                                <div class="card-header" id="heading-7">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapse-7" aria-expanded="false" aria-controls="collapse-7">
+                                            {{ $faq->question }}
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse-7" class="collapse" aria-labelledby="heading-7" data-parent="#accordion">
+                                    <div class="card-body">
+                                        {{ $faq->content }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
-                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        How we work with internation case?
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                data-parent="#accordion">
-                                <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusm tmpor incididunt
-                                    ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
-                                        data-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
-                                        Process of our business law?
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                data-parent="#accordion">
-                                <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusm tmpor incididunt
-                                    ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingFour">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
-                                        data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        Do you know what to do in order to succeed?
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                                data-parent="#accordion">
-                                <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusm tmpor incididunt
-                                    ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingFive">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
-                                        data-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
-                                        Why all this hustle in the middle of the city?
-
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapse-5" class="collapse" aria-labelledby="headingFive"
-                                data-parent="#accordion">
-                                <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusm tmpor incididunt
-                                    ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="heading-6">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
-                                        data-target="#collapse-6" aria-expanded="false" aria-controls="collapse-6">
-                                        Are you together to watch the investment banking?
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapse-6" class="collapse" aria-labelledby="heading-6" data-parent="#accordion">
-                                <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusm tmpor incididunt
-                                    ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="heading-7">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" data-toggle="collapse"
-                                        data-target="#collapse-7" aria-expanded="false" aria-controls="collapse-7">
-                                        Why is the income of the Suez Canal the first income of the Egyptians?
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapse-7" class="collapse" aria-labelledby="heading-7" data-parent="#accordion">
-                                <div class="card-body">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusm tmpor incididunt
-                                    ut labore et dolore magna aliqua. enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip.
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

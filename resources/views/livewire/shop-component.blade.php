@@ -29,7 +29,7 @@
                             </div>
                             <ul class="tags-list">
                                 @foreach ($categories as $category)
-                                    <li><a href="#">{{ $category->slug }}</a></li>
+                                    <li><a href="#">{{ $category->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -45,7 +45,6 @@
                                         <img src="{{ asset('assets/images/shop') }}/{{ $popular->image }}" alt="{{ $popular->name }}">
                                         <div class="inner-text">
                                             <h6>{{ $popular->name }}</h6>
-                                            <div class="meta">number_format({{ $popular->price }})</div>
                                         </div>
                                     </a>
                                 </div>
@@ -71,10 +70,7 @@
                                     </div>
                                 </div>
                                 <div class="content-product">
-                                    <div class="price-product">
-                                        <span class="old-price">number_format({{ $product->price }})</span>
-                                    </div>
-                                    <h4><a href="">{{ $product->naem }}</a></h4>
+                                    <h4><a href="">{{ $product->name }}</a></h4>
                                 </div>
                             </div>
                         @endforeach

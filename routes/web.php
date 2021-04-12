@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CareerController;
 use App\Http\Livewire\Admin\DashboardComponent;
 use App\Http\Livewire\CareersComponent;
 use App\Http\Livewire\ContactComponent;
@@ -28,7 +29,9 @@ Route::get('/shop',ShopComponent::class);
 
 Route::get('product/{slug}',DetailsComponent::class)->name('product.details');
 
-Route::get('/careers',CareersComponent::class);
+Route::get('/careers',CareersComponent::class)->name('careers');
+
+// Route::post('/recruitment/add',[CareerController::class,'store'])->name('recruitment');
 
 Route::get('/news',NewsComponent::class);
 

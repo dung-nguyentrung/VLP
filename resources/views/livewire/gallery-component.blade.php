@@ -17,25 +17,20 @@
             <div class="col-md-6 col-lg-4">
                 <div class="case-item">
                     <div class="img-case">
-                        <img src="{{ asset('assets/images/galleries') }}/{{ $gallery->image }}" alt="{{ $gallery->title }}">
-                        <div class="overlay-case">
-                            <div class="inner-overlay">
-                                <!-- Text OF Case -->
-                                <div class="case-study-text">
-                                    <div class="links-case">
-                                        <div class="zoom-case">
-                                            <a href="{{ asset('assets/images/galleries') }}/{{ $gallery->image }}" alt="{{ $gallery->title }}"><i
-                                                    class="fas fa-search-plus"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <img src="{{ asset('assets/images/galleries') }}/{{ $gallery->image }}" width="350" height="300" alt="{{ $gallery->title }}">
                         <div class="text-center"><h5>{{ $gallery->title }}</h5></div>
                     </div>
                 </div>
             </div>
             @endforeach
+            <div class="col-12">
+                <div class="blog-pagination">
+                    <ul class="pagination">
+                        <li><a href="{{ $galleries->previousPageUrl() }}"><i class="fas fa-angle-left"></i></a></li>
+                        <li><a href="{{ $galleries->nextPageUrl() }}"><i class="fas fa-angle-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
