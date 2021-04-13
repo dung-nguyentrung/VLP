@@ -66,11 +66,6 @@
                             </a>
                             <a href="shop-cart.html" class="cart-link">
                                 <i class="fa fa-shopping-cart"></i>
-                                <div class="widget-shopping-cart">
-                                    <ul>
-                                        <li class="empty-cart">Chưa có sản phẩm trong giỏ hàng.</li>
-                                    </ul>
-                                </div>
                             </a>
                             <a href="#" class="side-menu-btn">
                                 <!-- <i class="fas fa-ellipsis-v"></i> -->

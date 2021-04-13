@@ -31,7 +31,7 @@ Route::get('product/{slug}',DetailsComponent::class)->name('product.details');
 
 Route::get('/careers',CareersComponent::class)->name('careers');
 
-// Route::post('/recruitment/add',[CareerController::class,'store'])->name('recruitment');
+Route::post('/career/apply',[CareerController::class,'store'])->name('recruitment');
 
 Route::get('/news',NewsComponent::class);
 

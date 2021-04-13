@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRecruitmentsTable extends Migration
+class CreateCommentPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,8 @@ class CreateRecruitmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('recruitments', function (Blueprint $table) {
+        Schema::create('comment_posts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('phone');
-            $table->string('address');
-            $table->string('position');
-            $table->string('message');
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ class CreateRecruitmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recruitments');
+        Schema::dropIfExists('comment_posts');
     }
 }

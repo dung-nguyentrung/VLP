@@ -41,7 +41,7 @@
                             </div>
                             @foreach ($populars as $popular)
                                 <div class="lastet-posts">
-                                    <a href="#">
+                                    <a href="{{ route('product.details',['slug' => $popular->slug]) }}">
                                         <img src="{{ asset('assets/images/shop') }}/{{ $popular->image }}" alt="{{ $popular->name }}">
                                         <div class="inner-text">
                                             <h6>{{ $popular->name }}</h6>
@@ -59,18 +59,18 @@
                         @foreach ($products as $product)
                             <div class="single-product-item">
                                 <div class="img-product">
-                                    <a href="shop-single.html">
+                                    <a href="{{ route('product.details',['slug' => $product->slug]) }}">
                                         <img src="{{ asset('assets/images/shop') }}/{{ $product->image }}" alt="{{ $product->name }}">
                                     </a>
                                     <div class="btn-product">
-                                        <a href="">
+                                        <a href="{{ route('product.details',['slug' => $product->slug]) }}">
                                             <i class="fa fa-info-circle"></i>
                                             Chi tiết
                                         </a>
                                     </div>
                                 </div>
                                 <div class="content-product">
-                                    <h4><a href="">{{ $product->name }}</a></h4>
+                                    <h4><a href="{{ route('product.details',['slug' => $product->slug]) }}">{{ $product->name }}</a></h4>
                                 </div>
                             </div>
                         @endforeach

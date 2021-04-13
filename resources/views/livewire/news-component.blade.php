@@ -19,20 +19,18 @@
 <section class="blog blog-page pt-120 pb-90">
     <div class="container">
         <div class="row">
-
             <div class="col-lg-4">
                 <div class="left-side-bar">
                     <div class="widget mb-30">
                         <div class="img-widget">
-                            <img src="assets/images/blog/peofile-blog.jpg" alt="img">
+                            <img src="{{ asset('assets/images/blog') }}/{{ $new->image }}" alt="{{ $new->title }}">
                         </div>
                         <div class="text-left widget-profile">
-                            <h3>Facnex </h3>
-                            <span>Heavy & light industries factory</span>
-                            <p>Our Strategies At Work Are The Means By Which To Achieve The Desired Goals, And Achieve
-                                Your Goals And Dreams Here</p>
-                            <a href="about-us.html" class="btn-read-more">
-                                <div class="text-btn">Read More</div>
+                            <h3>{{ $new->post_category->name }} </h3>
+                            <span>{{ $new->title }}</span>
+                            <p>{{ $new->limit() }}</p>
+                            <a href="{{ route('new.details',['new_slug' => $new->slug]) }}" class="btn-read-more">
+                                <div class="text-btn">Chi tiết</div>
                                 <i class="fas fa-long-arrow-alt-right"></i>
                             </a>
                         </div>
@@ -40,9 +38,9 @@
                     <div class="widget mb-30">
                         <div class="body-widget">
                             <div class="title-widget">
-                                <h3>Search</h3>
+                                <h3>Tìm kiếm</h3>
                             </div>
-                            <input type="text" class="mb-0" placeholder="Search Here..">
+                            <input type="text" class="mb-0" placeholder="Tìm kiếm..">
                             <button type="submit" class="btn-search" value="search">
                                 <i class="fas fa-search"></i>
                             </button>
@@ -53,43 +51,31 @@
                         <div class="widget-posts body-widget">
 
                             <div class="title-widget">
-                                <h3>Latest Posts</h3>
+                                <h3>Bài viêt phổ biến</h3>
                             </div>
-                            <!-- New Item -->
-                            <div class="lastet-posts">
-                                <a href="#">
-                                    <img src="assets/images/clients/person-1.jpg" alt="news">
-
-                                    <div class="inner-text">
-                                        <h6>The future of factories in the coming years.</h6>
-                                        <div class="meta">25 NOV 20</div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="lastet-posts">
-                                <a href="#">
-                                    <img src="assets/images/clients/person-2.jpg" alt="news">
-                                    <div class="inner-text">
-                                        <h6>The factors that countries create are energy</h6>
-                                        <div class="meta">25 NOV 20</div>
-                                    </div>
-                                </a>
-                            </div>
+                            @foreach ($populars as $new)
+                                <div class="lastet-posts">
+                                    <a href="{{ route('new.details',['new_slug' => $new->slug]) }}">
+                                        <img src="{{ asset('assets/images/blog') }}/{{ $new->image }}" alt="{{ $new->title }}">
+                                        <div class="inner-text">
+                                            <h6>{{ $new->title }}</h6>
+                                            <div class="meta">{{ $new->created_at }}</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="widget mb-30">
 
                         <div class="body-widget tags">
                             <div class="title-widget">
-                                <h3>Tags</h3>
+                                <h3>Chủ đề</h3>
                             </div>
                             <ul class="tags-list">
-                                <li><a href="#">Factory</a></li>
-                                <li><a href="#">Industries</a></li>
-                                <li><a href="#">Facnex</a></li>
-                                <li><a href="#">Energy</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Industry</a></li>
+                                @foreach ($post_categories as $post_category)
+                                    <li><a href="">{{ $post_category->name }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -97,36 +83,36 @@
             </div>
             <div class="order-first col-lg-8 order-lg-last">
                 <div class="row">
-                    <!-- New Item -->
+                    @foreach ($news as $new)
                     <div class="col-lg-12">
                         <div class="blog-item">
-                            <!-- Blog Image -->
                             <div class="blog-img">
-                                <a href="blog.html"><img src="assets/images/blog/blog-1.jpg" alt="blog"></a>
+                                <a href="{{ route('new.details',['new_slug' => $new->slug]) }}"><img src="{{ asset('assets/images/blog') }}/{{ $new->image }}" alt="{{ $new->title }}"></a>
                             </div>
                             <!-- Blog info -->
                             <div class="blog-info">
                                 <ul class="date">
-                                    <li>25 NOV 20</li>
-                                    <li><a href="#">Factory</a></li>
+                                    <li>{{ $new->created_at }}</li>
+                                    <li><a href="">{{ $new->post_category->name }}</a></li>
+                                    <li><i class="fa fa-user" aria-hidden="true"></i>{{ $new->user->name }}</li>
+                                    <li><i class="fa fa-eye" aria-hidden="true"></i> {{ $new->view_count }} lượt xem</li>
                                 </ul>
                                 <div class="title-post">
-                                    <a href="blog-single.html">
-                                        <h5>The future of factories in the coming years</h5>
+                                    <a href="{{ route('new.details',['new_slug' => $new->slug]) }}">
+                                        <h5>{{ $new->title }}</h5>
                                     </a>
                                 </div>
                                 <div class="post-text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim Magna, sed diam
-                                        nonumy eirmod tempor invidunt ut lab ore et dolore magna aliquyam erat....</p>
+                                    <p>{{ $new->limit() }}</p>
                                 </div>
-                                <a href="blog.html" class="btn-read-more">
-                                    <div class="text-btn">Read More</div>
+                                <a href="{{ route('new.details',['new_slug' => $new->slug]) }}" class="btn-read-more">
+                                    <div class="text-btn">Chi tiết</div>
                                     <i class="fas fa-long-arrow-alt-right"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                     <div class="col-12">
                         <div class="blog-pagination">
                             <ul class="pagination">

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Career;
 use Throwable;
 use App\Models\Recruitment;
 use Illuminate\Http\Request;
+use Livewire\WithPagination;
 
 class CareerController extends Controller
 {
@@ -34,6 +36,7 @@ class CareerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    use WithPagination;
     public function store(Request $req)
     {
         try {
@@ -45,7 +48,7 @@ class CareerController extends Controller
                 'position' => $req->position,
                 'message' => $req->message
                 ]);
-            $req->session()->flash('message','Successfully');
+            $req->session()->flash('message','Chũng tôi sẽ liên lạc với bạn sớm nhất có thể !');
             return redirect()->route('careers');
         } catch (Throwable $e) {
             report($e);

@@ -14,7 +14,7 @@
 <div id="careers" class="careers careers-page pt-120 pb-90">
     <div class="container">
         <div class="row">
-            {{--  @foreach ($careers as $career)
+             @foreach ($careers as $career)
                 <div class="col-lg-6 mb-30">
                     <div class="career-item gallery">
                         <div class="title-item">
@@ -35,7 +35,12 @@
                         </a>
                     </div>
                 </div>
-            @endforeach  --}}
+            @endforeach
+        </div>
+        <div class="col-md-12">
+            @if (session('message'))
+                <h6 class="text-success">{{ Session::get('message') }}</h6>
+            @endif
         </div>
         <div id="apply" class="row apply-team">
             <div class="col-md-12">
@@ -43,34 +48,28 @@
                     <h4 class="title-inner-page">Ứng tuyển cho vị trí</h4>
                 </div>
             </div>
+
             <div class="col-md-12">
-                @if (session('message'))
-                    {{ Session::get('message') }}
-                @endif
-            </div>
-            <div class="col-md-12">
-                {{-- <form action="{{ route('recruitment') }}" method="POST"> --}}
-                <form wire:submit.prevent="storeRecruitment">
-                    {{-- @csrf --}}
+                <form action="{{ route('recruitment') }}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-4">
-                            <input type="text" class="form-control" wire:model="name" placeholder="Họ và tên">
+                            <input type="text" class="form-control" name="name" placeholder="Họ và tên">
                         </div>
                         <div class="col-lg-4">
-                            <input type="email" wire:model=="email" placeholder="Email của bạn">
+                            <input type="email" name="email" placeholder="Email của bạn">
                         </div>
                         <div class="col-lg-4">
-                            <input type="text" wire:model=="phone" placeholder="Số điện thoại của bạn">
-                        </div>
-
-                        <div class="col-lg-4">
-                            <input type="text" wire:model=="address" placeholder="Địa chỉ hiện tại">
+                            <input type="text" name="phone" placeholder="Số điện thoại của bạn">
                         </div>
                         <div class="col-lg-4">
-                            <input type="text" wire:model=="position" placeholder="Vị trí ứng tuyển">
+                            <input type="text" name="address" placeholder="Địa chỉ hiện tại">
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="text" name="position" placeholder="Vị trí ứng tuyển">
                         </div>
                         <div class="col-lg-12">
-                            <textarea id="Message" wire:model=="message" placeholder="Tại sao bạn ứng tuyển vị trí này"></textarea>
+                            <textarea id="Message" name="message" placeholder="Tại sao bạn ứng tuyển vị trí này"></textarea>
                         </div>
                         <div class="col-lg-6">
                             <button type="submit" class="btn main-btn-two">

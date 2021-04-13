@@ -15,7 +15,7 @@ class News extends Model
     protected $table = "news";
 
     public function limit(){
-        Str::limit($this->content, $limit = 150, '...');
+        return Str::limit($this->content, $limit = 300, '...');
     }
 
     public function post_category()
