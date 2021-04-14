@@ -37,7 +37,7 @@
                                 <thead>
                                     <tr>
                                         <th>Câu hỏi</th>
-                                        <th>Nội dung</th>
+                                        <th>Câu trả lời</th>
                                         <th>Cập nhật</th>
                                         <th>Xóa</th>
                                     </tr>
