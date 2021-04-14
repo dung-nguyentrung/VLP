@@ -1,5 +1,7 @@
 <?php
 
+use Maatwebsite\Excel\Excel;
+use App\Exports\CatergoryExport;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\NewsComponent;
 use App\Http\Livewire\ShopComponent;
@@ -11,9 +13,10 @@ use App\Http\Livewire\GalleryComponent;
 use App\Http\Controllers\CareerController;
 use App\Http\Livewire\NewDetailsComponent;
 use App\Http\Controllers\CommentController;
-use App\Http\Livewire\Admin\AddCategoryComponent;
+use App\Http\Controllers\ExportController;
 use App\Http\Livewire\Admin\CategoryComponent;
 use App\Http\Livewire\Admin\DashboardComponent;
+use App\Http\Livewire\Admin\AddCategoryComponent;
 use App\Http\Livewire\Admin\UpdateCategoryComponent;
 
 /*

@@ -16,7 +16,7 @@ Danh mục sản phẩm
                         </div>
                         <!--end col-->
                         <div class="col-auto align-self-center">
-                            <a href="#" class="btn btn-sm btn-outline-primary">
+                            <a href="#" wire:click.prevent="exportCategory" class="btn btn-sm btn-outline-primary">
                                 <i data-feather="download" class="align-self-center icon-xs"></i>
                             </a>
                         </div>

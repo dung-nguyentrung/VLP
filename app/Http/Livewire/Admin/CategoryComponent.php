@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\Category;
 use Livewire\Component;
+use App\Models\Category;
 use Livewire\WithPagination;
+use App\Exports\CatergoryExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryComponent extends Component
 {
@@ -14,6 +16,10 @@ class CategoryComponent extends Component
         $category = Category::find($id);
         $category->delete();
         session()->flash('message','Xóa danh mục sản phẩm thành công !');
+    }
+
+    public function exportCategory(){
+        return Excel::download(new CatergoryExport, 'categories.xlsx');
     }
 
     public function render()
