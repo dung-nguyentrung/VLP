@@ -10,7 +10,7 @@
                         <a href="/">Trang chủ</a>
                     </li>
                     <li><i class="fas fa-angle-right"></i></li>
-                    <li> <a href="/shop">Sản phảm</a></li>
+                    <li> <a href="/shop">Sản phẩm</a></li>
                     <li><i class="fas fa-angle-right"></i></li>
                     <li>{{ $product->name }}</li>
                 </ul>
@@ -55,13 +55,9 @@
 
                             <div class="mt-50">
                                 <div class="share-product">
-                                    <span>Chia sẻ </span>
                                     <div class="share">
-                                        <ul class="share-social">
-                                            <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#" class="google"><i class="fab fa-google-plus"></i></a></li>
-                                        </ul>
+                                        <div class="fb-share-button" data-href="http://127.0.0.1:8000/product/{{ Request::url() }}" data-layout="button_count"
+                                        data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?{{ Request::url() }}" class="fb-xfbml-parse-ignore">Share</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -71,45 +67,62 @@
                 <div class="mb-50">
                     <div class="revision">
                         <ul class="nav-tabs">
-                            <li class="active" data-class="discription-one">
-                                <h5>Mô tả sản phẩm</h5>
-                            </li>
-
                             <li data-class="reviews">
-                                <h5>Đánh giá (0)</h5>
+                                <h5>Đánh giá ({{ $comments->count() }})</h5>
                             </li>
                         </ul>
                         <div class="content-revision">
-                            <div class="discription-one">
-                                <p class="mb-10">{{ $product->description }}</p>
-                            </div>
                             <div class="reviews">
                                 <div class="post-comment">
                                     <div class="title-add">
-                                        <h4>Đánh giá</h4>
-                                        <span>Chưa có đánh giá về sản phẩm này !</span>
+                                        <h4>Đánh giá về sản phẩm</h4>
+                                        @if ($comments->count() > 0)
+                                            <div class="col-12">
+                                                <div class="comments mb-30">
+                                                    <div class="inner-comments" id="comment">
+                                                        @foreach($comments as $comment)
+                                                        <div class="comment-author">
+                                                            <img src="{{ asset('assets/images/clients/user.png') }}" alt="author">
+                                                            <div class="person">
+                                                                <h5>{{ $comment->name }}</h5>
+                                                                <div class="time">{{ $comment->created_at }}</div>
+                                                                <p>{{ $comment->comment }}</p>
+                                                            </div>
+                                                        </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <span>Chưa có đánh giá về sản phẩm này !</span>
+                                        @endif
                                     </div>
                                     <div class="comment-form">
-                                        <form class="form">
+                                        <form class="form" action="{{ route('comment') }}" method="POST">
+                                            @csrf
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <input type="text" placeholder="Name">
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="Email" placeholder="Email">
+                                                        <input type="text" name="name" id="name" placeholder="Họ tên của bạn">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <textarea placeholder="your review"></textarea>
+                                                        <input type="hidden" name="product_id" id="product_id" value="{{ $product->id }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="slug" value="{{ $product->slug }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <textarea name="comment" id="comment" placeholder="Đánh giá về sản phẩm"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a href="#" class="btn-one">Submit Comment</a>
+                                            <button type="submit" class="btn-one">Đánh giá</button>
                                         </form>
                                     </div>
                                 </div>
@@ -150,3 +163,5 @@
         </div>
     </div>
 </section>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=2886881688214518&autoLogAppEvents=1" nonce="QEjeiBn7"></script>

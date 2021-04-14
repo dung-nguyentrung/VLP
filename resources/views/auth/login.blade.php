@@ -1,3 +1,6 @@
+@section('title')
+    Đăng nhập tài khoản
+@endsection
 <x-guest-layout>
  <div class="header-breadcrumb-two">
         <div class="container">

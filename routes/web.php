@@ -1,16 +1,18 @@
 <?php
 
-use App\Http\Controllers\CareerController;
-use App\Http\Livewire\Admin\DashboardComponent;
+use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\NewsComponent;
+use App\Http\Livewire\ShopComponent;
+use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\CareersComponent;
 use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\GalleryComponent;
-use App\Http\Livewire\HomeComponent;
+use App\Http\Controllers\CareerController;
 use App\Http\Livewire\NewDetailsComponent;
-use App\Http\Livewire\NewsComponent;
-use App\Http\Livewire\ShopComponent;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommentController;
+use App\Http\Livewire\Admin\CategoryComponent;
+use App\Http\Livewire\Admin\DashboardComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,8 @@ Route::get('/',HomeComponent::class)->name('home');
 Route::get('/shop',ShopComponent::class);
 
 Route::get('product/{slug}',DetailsComponent::class)->name('product.details');
+
+Route::post('/comment',[CommentController::class,'addProductComment'])->name('comment');
 
 Route::get('/careers',CareersComponent::class)->name('careers');
 
@@ -47,4 +51,6 @@ Route::get('/page-not-found', function () {
 //ADMIM
 Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     Route::get('/dashboard',DashboardComponent::class)->name('dashboard');
+    //Category
+    Route::get('/categories',CategoryComponent::class)->name('categories');
 });
