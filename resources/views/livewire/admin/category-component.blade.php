@@ -52,8 +52,12 @@ Danh mục sản phẩm
                                         <td>{{ $category->slug }}</td>
                                         <td>{{ $category->created_at }}</td>
                                         <td class="text-right">
-                                            <a href="#"><i class="las la-pen text-info font-18"></i></a>
-                                            <a href="#"><i class="las la-trash-alt text-danger font-18"></i></a>
+                                            <form action="" method="post">
+                                            <a href="{{ route('category.update',['category_slug' => $category->slug]) }}"><i class="las la-pen text-info font-18"></i></a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <a href=""><i class="las la-trash-alt text-danger font-18"></i></a>
+                                        </form>
                                         </td>
                                     </tr>
                                     @endforeach

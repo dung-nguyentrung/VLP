@@ -14,6 +14,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Livewire\Admin\AddCategoryComponent;
 use App\Http\Livewire\Admin\CategoryComponent;
 use App\Http\Livewire\Admin\DashboardComponent;
+use App\Http\Livewire\Admin\UpdateCategoryComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,4 +56,5 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     //Category
     Route::get('/categories',CategoryComponent::class)->name('categories');
     Route::get('/add-category',AddCategoryComponent::class)->name('category.add');
+    Route::get('/update-category/{category_slug}',UpdateCategoryComponent::class)->name('category.update');
 });
