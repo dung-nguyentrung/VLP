@@ -20,9 +20,10 @@
     @livewire('header-component')
     {{ $slot }}
     @livewire('footer-component')
-    @livewireScripts
+
     <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    @livewireScripts
 </body>
 </html>

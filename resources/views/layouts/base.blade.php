@@ -40,10 +40,38 @@
                                 <a href="#"><i class="dripicons-align-justify"></i>Danh mục sản phẩm <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="{{ route('categories') }}">Danh sách</a></li>
-                                    <li><a href="">Thêm danh mục</a></li>
+                                    <li><a href="{{ route('category.add') }}">Thêm danh mục</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-product-hunt"></i>Sản phẩm<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{ route('products') }}">Danh sách</a></li>
+                                    <li><a href="{{ route('product.add') }}">Thêm sản phẩm</a></li>
                                 </ul>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href=""><i class="fas fa-newspaper"></i><span>Tin tức</span><span class="menu-arrow"></span></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fas fa-user-friends"></i><span>Tuyển dụng</span><span class="menu-arrow"></span></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="far fa-images"></i><span>Hình ảnh</span><span class="menu-arrow"></span></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fas fa-hands-helping"></i><span>Đối tác</span><span class="menu-arrow"></span></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fab fa-buffer"></i><span>Slide</span><span class="menu-arrow"></span></a>
+                    </li>
+                    <li>
+                        <a href="{{ route('faqs') }}"><i class="far fa-question-circle"></i><span>Câu hỏi thường gặp</span><span class="menu-arrow"></span></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fas fa-info-circle"></i><span>Thông tin công ty</span><span class="menu-arrow"></span></a>
                     </li>
                 </ul>
             </div>
@@ -119,7 +147,6 @@
             </div>
         {{ $slot }}
 
-        @livewireScripts
         <script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>
         <script src="{{ asset('backend/assets/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ asset('backend/assets/js/metismenu.min.js') }}"></script>
@@ -131,7 +158,10 @@
         <script src="{{ asset('backend/plugins/apex-charts/apexcharts.min.js') }}"></script>
         <script src="{{ asset('backend/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
         <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+        <script src="https://cdn.tiny.cloud/1/wl0hy3kumawhadevkqc4e81r6m900s5jbcbx30qu575s6ptk/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        @livewireScripts
 
+        @stack('scripts')
     </body>
 
 </html>

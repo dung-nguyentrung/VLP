@@ -21,8 +21,8 @@ Vân Long Plastic
                                     <!-- Button One -->
                                     <a href="#" class="main-btn-one">
                                         <div class="text-btn">
-                                            <span class="text-btn-one">Chi tiết</span>
-                                            <span class="text-btn-two">Chi tiết</span>
+                                            <span class="text-btn-one">Thông tin</span>
+                                            <span class="text-btn-two">Thông tin</span>
                                         </div>
                                         <div class="arrow-btn">
                                             <span class="arrow-one"><i class="fas fa-caret-right"></i></span>
@@ -149,7 +149,7 @@ Vân Long Plastic
                                 </div>
                                 <div id="collapse-7" class="collapse" aria-labelledby="heading-7" data-parent="#accordion">
                                     <div class="card-body">
-                                        {{ $faq->content }}
+                                        {!! $faq->content !!}
                                     </div>
                                 </div>
                             </div>

@@ -122,8 +122,8 @@
             <p>{{ $setting->description }}</p>
             <a href="#" class="main-btn-two mt-30">
                 <div class="text-btn">
-                    <span class="text-btn-one">Thông tin</span>
-                    <span class="text-btn-two">Thông tin</span>
+                    <span class="text-btn-one">Thông tin công ty</span>
+                    <span class="text-btn-two">Thông tin công ty</span>
                 </div>
                 <div class="arrow-btn">
                     <span class="arrow-one"><i class="fas fa-caret-right"></i></span>
