@@ -39,7 +39,7 @@
                             <li>
                                 <a href="#"><i class="dripicons-align-justify"></i>Danh mục sản phẩm <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="">Danh sách</a></li>
+                                    <li><a href="{{ route('categories') }}">Danh sách</a></li>
                                     <li><a href="">Thêm danh mục</a></li>
                                 </ul>
                             </li>
@@ -82,7 +82,7 @@
                                 </div>
                                 <!-- All-->
                                 <a href="javascript:void(0);" class="text-center dropdown-item text-primary">
-                                    View all <i class="fi-arrow-right"></i>
+                                    Xem tát cả <i class="fi-arrow-right"></i>
                                 </a>
                             </div>
                         </li>

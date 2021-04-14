@@ -11,6 +11,7 @@ use App\Http\Livewire\GalleryComponent;
 use App\Http\Controllers\CareerController;
 use App\Http\Livewire\NewDetailsComponent;
 use App\Http\Controllers\CommentController;
+use App\Http\Livewire\Admin\AddCategoryComponent;
 use App\Http\Livewire\Admin\CategoryComponent;
 use App\Http\Livewire\Admin\DashboardComponent;
 
@@ -53,4 +54,5 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     Route::get('/dashboard',DashboardComponent::class)->name('dashboard');
     //Category
     Route::get('/categories',CategoryComponent::class)->name('categories');
+    Route::get('/add-category',AddCategoryComponent::class)->name('category.add');
 });
