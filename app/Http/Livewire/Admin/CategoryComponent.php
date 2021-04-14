@@ -9,6 +9,13 @@ use Livewire\WithPagination;
 class CategoryComponent extends Component
 {
     use WithPagination;
+
+    public function deleteCategory($id){
+        $category = Category::find($id);
+        $category->delete();
+        session()->flash('message','Xóa danh mục sản phẩm thành công !');
+    }
+
     public function render()
     {
         $categories = Category::paginate(6);

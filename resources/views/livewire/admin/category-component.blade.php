@@ -20,13 +20,16 @@ Danh mục sản phẩm
                                 <i data-feather="download" class="align-self-center icon-xs"></i>
                             </a>
                         </div>
-                        <!--end col-->
                     </div>
-                    <!--end row-->
                 </div>
-                <!--end page-title-box-->
             </div>
-            <!--end col-->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @if (session('message'))
+                    <p class="text-success">{{ Session::get('message') }}</p>
+                @endif
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
@@ -40,9 +43,10 @@ Danh mục sản phẩm
                                 <thead>
                                     <tr>
                                         <th>Tên danh mục</th>
-                                        <th>Dường dẫn</th>
+                                        <th>Đường dẫn</th>
                                         <th>Ngày tạo</th>
-                                        <th class="text-right">Hành động</th>
+                                        <th>Cập nhật</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,13 +55,16 @@ Danh mục sản phẩm
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
                                         <td>{{ $category->created_at }}</td>
-                                        <td class="text-right">
-                                            <form action="" method="post">
-                                            <a href="{{ route('category.update',['category_slug' => $category->slug]) }}"><i class="las la-pen text-info font-18"></i></a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <a href=""><i class="las la-trash-alt text-danger font-18"></i></a>
-                                        </form>
+                                            <td>
+                                                <a href="{{ route('category.update',['category_slug' => $category->slug]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
+                                            </td>
+                                            <td>
+                                                <form wire:submit.prevent="deleteCategory({{ $category->id }})">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Xóa danh mục này đồng nghĩa với việc các sản phẩm liên quan cũng sẽ bị xóa?');">Xóa</button>
+                                                </form>
+                                            </td>
                                         </td>
                                     </tr>
                                     @endforeach
