@@ -56,7 +56,7 @@
                         <a href=""><i class="fas fa-newspaper"></i><span>Tin tức</span><span class="menu-arrow"></span></a>
                     </li>
                     <li>
-                        <a href=""><i class="fas fa-user-friends"></i><span>Tuyển dụng</span><span class="menu-arrow"></span></a>
+                        <a href="{{ route('recruitments') }}"><i class="fas fa-user-friends"></i><span>Tuyển dụng</span><span class="menu-arrow"></span></a>
                     </li>
                     <li>
                         <a href=""><i class="far fa-images"></i><span>Hình ảnh</span><span class="menu-arrow"></span></a>

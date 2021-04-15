@@ -18,7 +18,7 @@ class CreateCareersTable extends Migration
             $table->string('position');
             $table->integer('quantity')->default(5);
             $table->text('content');
-            $table->string('required');
+            $table->text('required');
             $table->integer('view_count')->default(0);
             $table->date('expiry_date');
             $table->bigInteger('user_id')->unsigned()->nullable();

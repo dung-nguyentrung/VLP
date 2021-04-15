@@ -22,8 +22,11 @@ use App\Http\Livewire\Admin\DashboardComponent;
 use App\Http\Livewire\Admin\UpdateFaqComponent;
 use App\Http\Livewire\Admin\AddProductComponent;
 use App\Http\Livewire\Admin\AddCategoryComponent;
+use App\Http\Livewire\Admin\RecruitmentComponent;
 use App\Http\Livewire\Admin\UpdateProductComponent;
+use App\Http\Livewire\Admin\AddRecruitmentComponent;
 use App\Http\Livewire\Admin\UpdateCategoryComponent;
+use App\Http\Livewire\Admin\EditRecruitmentComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,4 +78,8 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     Route::get('/faqs',FaqComponent::class)->name('faqs');
     Route::get('/add-faq',AddFaqComponent::class)->name('faq.add');
     Route::get('/update-faq/{faq_id}',UpdateFaqComponent::class)->name('faq.update');
+    //Recruitment
+    Route::get('/recruitments',RecruitmentComponent::class)->name('recruitments');
+    Route::get('/add-recruitment',AddRecruitmentComponent::class)->name('recruitment.add');
+    Route::get('/update-recruitment/{recruitment_id}',EditRecruitmentComponent::class)->name('recruitment.update');
 });

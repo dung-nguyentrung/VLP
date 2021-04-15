@@ -17,7 +17,6 @@ class CreateFaqsTable extends Migration
             $table->id();
             $table->string('question');
             $table->text('content');
-            $table->enum('status',[0,1]);
             $table->timestamps();
         });
     }

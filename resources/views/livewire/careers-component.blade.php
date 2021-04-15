@@ -24,9 +24,9 @@
                                 <span><i class="fa fa-user-circle" aria-hidden="true"></i> {{ $career->user->name }}</span>
                             </div>
                         </div>
-                        <p>{{ $career->content }}</p>
+                        <p>{!! $career->content !!}</p>
                         <ul>
-                            <li>{{ $career->required }}</li>
+                            <li>{!! $career->required !!}</li>
                         </ul>
 
                         <a href="#apply" class="btn-read-more down">
