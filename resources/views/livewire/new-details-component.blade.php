@@ -105,7 +105,7 @@
                             <!-- Blog info -->
                             <div class="blog-info">
                                 <ul class="date">
-                                    <li>{{ $new->created_at }}/li>
+                                    <li>{{ $new->created_at }}</li>
                                     <li> Comments 2 </li>
                                     <li><a href="#">{{ $new->post_category->name }}</a></li>
                                 </ul>

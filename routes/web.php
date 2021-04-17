@@ -27,6 +27,7 @@ use App\Http\Livewire\Admin\UpdateProductComponent;
 use App\Http\Livewire\Admin\AddRecruitmentComponent;
 use App\Http\Livewire\Admin\UpdateCategoryComponent;
 use App\Http\Livewire\Admin\EditRecruitmentComponent;
+use App\Http\Livewire\ProductCategory;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,8 @@ use App\Http\Livewire\Admin\EditRecruitmentComponent;
 Route::get('/',HomeComponent::class)->name('home');
 
 Route::get('/shop',ShopComponent::class);
+
+Route::get('/product-category/{slug}',ProductCategory::class)->name('product-category');
 
 Route::get('product/{slug}',DetailsComponent::class)->name('product.details');
 
@@ -62,24 +65,37 @@ Route::get('/contact',ContactComponent::class);
 Route::get('/page-not-found', function () {
     return view('errors.404');
 })->name('errors');
+
 //ADMIM
 Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     //Dashboard
     Route::get('/dashboard',DashboardComponent::class)->name('dashboard');
+
     //Category
     Route::get('/categories',CategoryComponent::class)->name('categories');
+
     Route::get('/add-category',AddCategoryComponent::class)->name('category.add');
+
     Route::get('/update-category/{category_slug}',UpdateCategoryComponent::class)->name('category.update');
+
     //Product
     Route::get('/products',ProductComponent::class)->name('products');
+
     Route::get('/add-product',AddProductComponent::class)->name('product.add');
+
     Route::get('/update-product/{product_slug}',UpdateProductComponent::class)->name('product.update');
+
     //FAQ
     Route::get('/faqs',FaqComponent::class)->name('faqs');
+
     Route::get('/add-faq',AddFaqComponent::class)->name('faq.add');
+
     Route::get('/update-faq/{faq_id}',UpdateFaqComponent::class)->name('faq.update');
+
     //Recruitment
     Route::get('/recruitments',RecruitmentComponent::class)->name('recruitments');
+
     Route::get('/add-recruitment',AddRecruitmentComponent::class)->name('recruitment.add');
+
     Route::get('/update-recruitment/{recruitment_id}',EditRecruitmentComponent::class)->name('recruitment.update');
 });

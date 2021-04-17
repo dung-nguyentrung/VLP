@@ -1,5 +1,5 @@
 @section('title')
-    Sản phẩm
+    {{ $category->name }}
 @endsection
 <section id="page" class="header-breadcrumb">
     <div class="container">
