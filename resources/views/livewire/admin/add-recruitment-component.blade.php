@@ -12,7 +12,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Tổng quan</a></li>
                                 <li class="breadcrumb-item active"><a href="{{ route('recruitments') }}">Danh sách tin tuyển dụng</a></li>
-                                <li class="breadcrumb-item active">Cập nhật tin tuyển dụng</li>
+                                <li class="breadcrumb-item active">Thêm tin tuyển dụng</li>
                             </ol>
                         </div>
                     </div>

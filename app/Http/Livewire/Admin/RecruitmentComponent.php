@@ -9,6 +9,11 @@ use Livewire\WithPagination;
 
 class RecruitmentComponent extends Component
 {
+    public function deleteRecruitment($id){
+        $career = Career::find($id);
+        $career->delete();
+        session()->flash('message','Xoá tin tuyển dụng thành công !');
+    }
     use WithPagination;
     public function render()
     {

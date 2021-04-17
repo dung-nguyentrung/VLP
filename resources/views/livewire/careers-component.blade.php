@@ -24,10 +24,10 @@
                                 <span><i class="fa fa-user-circle" aria-hidden="true"></i> {{ $career->user->name }}</span>
                             </div>
                         </div>
+                        <h3>Mô tả công việc:</h3>
                         <p>{!! $career->content !!}</p>
-                        <ul>
-                            <li>{!! $career->required !!}</li>
-                        </ul>
+                        <h3>Kinh nghiệm / Kỹ năng chi tiết:</h3>
+                        <p>{!! $career->required !!}</p>
 
                         <a href="#apply" class="btn-read-more down">
                             <div class="text-btn">Ứng tuyển ngay</div>
