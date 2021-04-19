@@ -50,13 +50,13 @@
                                 <div class="form-group row" wire:ignore>
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Mô tả công việc</label>
                                     <div class="col-sm-8">
-                                        <textarea class="form-control" id="content" wire:model="content"></textarea>
+                                        <textarea class="form-control" rows="20" id="content" wire:model="content"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row" wire:ignore>
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Yêu cầu</label>
                                     <div class="col-sm-8">
-                                        <textarea class="form-control" id="required" wire:model="required"></textarea>
+                                        <textarea class="form-control" rows="20" id="required" wire:model="required"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">

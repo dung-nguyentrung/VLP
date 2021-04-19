@@ -27,8 +27,8 @@ use App\Http\Livewire\Admin\UpdateProductComponent;
 use App\Http\Livewire\Admin\AddRecruitmentComponent;
 use App\Http\Livewire\Admin\UpdateCategoryComponent;
 use App\Http\Livewire\Admin\EditRecruitmentComponent;
+use App\Http\Livewire\Admin\SettingComponent;
 use App\Http\Livewire\ProductCategory;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -98,4 +98,7 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     Route::get('/add-recruitment',AddRecruitmentComponent::class)->name('recruitment.add');
 
     Route::get('/update-recruitment/{recruitment_id}',EditRecruitmentComponent::class)->name('recruitment.update');
+
+    //Setting site
+    Route::get('/setting-site',SettingComponent::class)->name('setting.site');
 });

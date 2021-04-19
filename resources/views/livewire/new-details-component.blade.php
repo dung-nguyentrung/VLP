@@ -139,7 +139,7 @@
                             </div>
                             <div class="inner-comments">
                                 <div class="comment-author">
-                                    <img src="assets/images/clients/person-1.jpg" alt="author">
+                                    <img src="{{ asset('assets/images/clients/user.png') }}" alt="author">
                                     <div class="person">
                                         <h5>Nour Eldin </h5>
                                         <div class="time">25 NOV 20 5:33 AM</div>

@@ -120,7 +120,7 @@
         <div class="about-side">
             <img src="{{ asset('assets/images/logo/logo.png') }}" alt="logo">
             <p>{{ $setting->description }}</p>
-            <a href="#" class="main-btn-two mt-30">
+            <a href="/contact" class="main-btn-two mt-30">
                 <div class="text-btn">
                     <span class="text-btn-one">Thông tin công ty</span>
                     <span class="text-btn-two">Thông tin công ty</span>

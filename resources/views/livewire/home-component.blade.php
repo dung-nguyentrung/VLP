@@ -19,10 +19,10 @@ Vân Long Plastic
                                     chuyên gia công và sản xuất các sản phẩm từ nhựa</div>
                                 <div class="banner-btn">
                                     <!-- Button One -->
-                                    <a href="#" class="main-btn-one">
+                                    <a href="{{ route('new.details',['new_slug' => 'gioi-thieu-cong-ty']) }}" class="main-btn-one">
                                         <div class="text-btn">
-                                            <span class="text-btn-one">Thông tin</span>
-                                            <span class="text-btn-two">Thông tin</span>
+                                            <span class="text-btn-one">Chi tiết</span>
+                                            <span class="text-btn-two">Chi tiết</span>
                                         </div>
                                         <div class="arrow-btn">
                                             <span class="arrow-one"><i class="fas fa-caret-right"></i></span>

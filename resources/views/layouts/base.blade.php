@@ -71,7 +71,7 @@
                         <a href="{{ route('faqs') }}"><i class="far fa-question-circle"></i><span>Câu hỏi thường gặp</span><span class="menu-arrow"></span></a>
                     </li>
                     <li>
-                        <a href=""><i class="fas fa-info-circle"></i><span>Thông tin công ty</span><span class="menu-arrow"></span></a>
+                        <a href="{{ route('setting.site') }}"><i class="fas fa-info-circle"></i><span>Thông tin công ty</span><span class="menu-arrow"></span></a>
                     </li>
                 </ul>
             </div>
