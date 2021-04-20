@@ -11,7 +11,7 @@
                         <div class="col">
                             <h4 class="page-title">Hồ sơ</h4>
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }};">Tổng quan</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Tổng quan</a></li>
                                 <li class="breadcrumb-item active">Cài đặt</li>
                             </ol>
                         </div>

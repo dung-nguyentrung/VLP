@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                @if (session('message'))
+                @if (Session::has('message'))
                     <p class="text-success">{{ Session::get('message') }}</p>
                 @endif
             </div>
@@ -38,14 +38,14 @@
                                 <div class="form-group row">
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Tên danh mục</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" wire:model="name" wire:keyup="generateslug" placeholder="Nhập tên danh mục sản phẩm">
+                                        <input type="text" class="form-control" wire:model="name" wire:keyup="generateslug" placeholder="Nhập tên danh mục sản phẩm" />
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Đường dẫn</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" wire:model="slug"  placeholder="Đường dẫn tự sinh ra nhưng bạn có thể chỉnh sửa tùy ý !">
+                                        <input type="text" class="form-control" wire:model="slug"  placeholder="Đường dẫn tự sinh ra nhưng bạn có thể chỉnh sửa tùy ý !"/>
                                     </div>
                                 </div>
                                 <div class="row">

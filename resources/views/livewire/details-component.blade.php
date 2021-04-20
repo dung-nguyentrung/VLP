@@ -40,7 +40,7 @@
                             <span class="evaluation-product">
                                 Tình trạng: <span class="text-danger font-weight-bold font-italic">{{ $product->stock_status }}</span>
                             </span>
-                            <p>{{ $product->short_description }}</p>
+                            <span>{!! $product->short_description !!}</span>
                             <div class="btns">
                                 <div class="quantity">
                                     <a href="#" class="minus"><i class="fa fa-minus"></i></a>

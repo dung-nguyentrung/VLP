@@ -37,7 +37,7 @@
                         <div class="widget-posts body-widget">
 
                             <div class="title-widget">
-                                <h3>Bài viêt phổ biến</h3>
+                                <h3>Bài viết phổ biến</h3>
                             </div>
                             @foreach ($populars as $new)
                                 <div class="lastet-posts">
