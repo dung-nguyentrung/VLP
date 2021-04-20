@@ -25,31 +25,14 @@ Hồ sơ người dùng
                                                 <div class="mb-3 col-lg-4 align-self-center mb-lg-0">
                                                     <div class="dastone-profile-main">
                                                         <div class="dastone-profile-main-pic">
-                                                            <img src="{{ asset('backend/assets/images/users/') }}/{{ Auth::user()->profile_photo_path }}"
-                                                                alt="profile" height="110" class="rounded-circle">
+                                                            <img src="{{ asset('assets/images/users') }}/{{ Auth::user()->profile_photo_path }}"
+                                                            alt="profile" height="110" class="rounded-circle">
                                                         </div>
                                                         <div class="dastone-profile_user-detail">
                                                             <h5 class="dastone-user-name">{{ Auth::user()->name }}</h5>
                                                         </div>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Cập nhật hình ảnh</button>
                                                     </div>
                                                 </div>
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                      <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <form>
-                                                                <lable>Hình ảnh: </lable>
-                                                                <input type="file">
-                                                            </form>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-                                                          <button type="button" class="btn btn-primary">Lưu thay đổi</button>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
                                                 <div class="ml-auto col-lg-6 align-self-center">
                                                     <ul class="mb-0 list-unstyled personal-detail">
                                                         <li class=""><i
@@ -92,10 +75,40 @@ Hồ sơ người dùng
                                                     <div class="card-body">
                                                         <div class="form-group row">
                                                             <label
+                                                                class="text-right col-xl-3 col-lg-3 mb-lg-0 align-self-center">Ảnh đại diện</label>
+                                                            <div class="col-lg-9 col-xl-8">
+                                                                <input type="file" class="form-control" wire:model="new_image"></input>
+                                                                @error('profile_photo_path')
+                                                                <p class="text-danger">{{ 'Vui lòng nhập chính xác loại hình ảnh !' }}</p>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        @if ($new_image)
+                                                        <div class="form-group row">
+                                                            <label
+                                                                class="text-right col-xl-3 col-lg-3 mb-lg-0 align-self-center">Ảnh đại diện mới</label>
+                                                            <div class="col-lg-9 col-xl-8">
+                                                                <img src="{{ $new_image->temporaryUrl() }}" width="120">
+                                                            </div>
+                                                        </div>
+                                                        @else
+                                                        <div class="form-group row">
+                                                            <label
+                                                                class="text-right col-xl-3 col-lg-3 mb-lg-0 align-self-center">Ảnh đại diện hiện tại</label>
+                                                            <div class="col-lg-9 col-xl-8">
+                                                                <img src="{{ asset('assets/images/users') }}/{{ $profile_photo_path }}" width="120">
+                                                            </div>
+                                                        </div>
+                                                        @endif
+                                                        <div class="form-group row">
+                                                            <label
                                                                 class="text-right col-xl-3 col-lg-3 mb-lg-0 align-self-center">Tên
                                                                 người dùng</label>
                                                             <div class="col-lg-9 col-xl-8">
                                                                 <input class="form-control" wire:model="name" type="text">
+                                                                @error('name')
+                                                                    <p class="text-danger">{{ 'Tên người dùng không được để trống !' }}</p>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -104,9 +117,11 @@ Hồ sơ người dùng
                                                                 chỉ</label>
                                                             <div class="col-lg-9 col-xl-8">
                                                                 <textarea class="form-control" wire:model="address"></textarea>
+                                                                @error('address')
+                                                                    <p class="text-danger">{{ 'Địa chỉ người dùng không được để trống !' }}</p>
+                                                                @enderror
                                                             </div>
                                                         </div>
-
                                                         <div class="form-group row">
                                                             <label
                                                                 class="text-right col-xl-3 col-lg-3 mb-lg-0 align-self-center">Điện
@@ -119,6 +134,9 @@ Hồ sơ người dùng
                                                                     <input type="text" wire:model="phone" class="form-control"
                                                                         aria-describedby="basic-addon1">
                                                                 </div>
+                                                                @error('phone')
+                                                                    <p class="text-danger">{{ 'Số điện thoại người dùng không được để trống !' }}</p>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -131,6 +149,9 @@ Hồ sơ người dùng
                                                                     <input type="text" wire:model="email" class="form-control"
                                                                         aria-describedby="basic-addon1">
                                                                 </div>
+                                                                @error('email')
+                                                                    <p class="text-danger">{{ 'Email người dùng không được để trống và chứa ký tự @ !' }}</p>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">

@@ -120,7 +120,7 @@
                                     <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                                         aria-haspopup="false" aria-expanded="false">
                                         <span class="ml-1 nav-user-name hidden-sm">{{ Auth::user()->name }}</span>
-                                        <img src="{{ asset('backend/assets/images/users/') }}/{{ Auth::user()->profile_photo_path }}" alt="profile-user" class="rounded-circle thumb-xs" />
+                                        <img src="{{ asset('assets/images/users') }}/{{ Auth::user()->profile_photo_path }}" alt="profile-user" class="rounded-circle thumb-xs" />
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="{{ route('profile') }}"><i data-feather="user" class="mr-1 align-self-center icon-xs icon-dual"></i> Hồ sơ</a>
