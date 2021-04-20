@@ -53,7 +53,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href=""><i class="fas fa-newspaper"></i><span>Tin tức</span><span class="menu-arrow"></span></a>
+                        <a href="{{ route('posts') }}"><i class="fas fa-newspaper"></i><span>Tin tức</span><span class="menu-arrow"></span></a>
                     </li>
                     <li>
                         <a href="{{ route('recruitments') }}"><i class="fas fa-user-friends"></i><span>Tuyển dụng</span><span class="menu-arrow"></span></a>
@@ -120,11 +120,11 @@
                                     <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
                                         aria-haspopup="false" aria-expanded="false">
                                         <span class="ml-1 nav-user-name hidden-sm">{{ Auth::user()->name }}</span>
-                                        <img src="{{ asset('backend/assets/images/users/user-5.jpg') }}" alt="profile-user" class="rounded-circle thumb-xs" />
+                                        <img src="{{ asset('backend/assets/images/users/') }}/{{ Auth::user()->profile_photo_path }}" alt="profile-user" class="rounded-circle thumb-xs" />
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#"><i data-feather="user" class="mr-1 align-self-center icon-xs icon-dual"></i> Hồ sơ</a>
-                                        <a class="dropdown-item" href="#"><i data-feather="settings" class="mr-1 align-self-center icon-xs icon-dual"></i> Cài đặt</a>
+                                        <a class="dropdown-item" href="{{ route('profile') }}"><i data-feather="user" class="mr-1 align-self-center icon-xs icon-dual"></i> Hồ sơ</a>
+                                        <a class="dropdown-item" href="{{ route('changePassword') }}"><i data-feather="settings" class="mr-1 align-self-center icon-xs icon-dual"></i> Cài đặt</a>
                                         <div class="mb-0 dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i data-feather="power" class="mr-1 align-self-center icon-xs icon-dual"></i> Đăng xuất</a>

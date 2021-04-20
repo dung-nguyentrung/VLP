@@ -22,12 +22,17 @@ use App\Http\Livewire\Admin\DashboardComponent;
 use App\Http\Livewire\Admin\UpdateFaqComponent;
 use App\Http\Livewire\Admin\AddProductComponent;
 use App\Http\Livewire\Admin\AddCategoryComponent;
+use App\Http\Livewire\Admin\AddPostComponent;
 use App\Http\Livewire\Admin\RecruitmentComponent;
 use App\Http\Livewire\Admin\UpdateProductComponent;
 use App\Http\Livewire\Admin\AddRecruitmentComponent;
+use App\Http\Livewire\Admin\ChangePasswordComponent;
 use App\Http\Livewire\Admin\UpdateCategoryComponent;
 use App\Http\Livewire\Admin\EditRecruitmentComponent;
+use App\Http\Livewire\Admin\PostComponent;
 use App\Http\Livewire\Admin\SettingComponent;
+use App\Http\Livewire\Admin\UpdatePostComponent;
+use App\Http\Livewire\Admin\UserProfileComponent;
 use App\Http\Livewire\ProductCategory;
 /*
 |--------------------------------------------------------------------------
@@ -101,4 +106,15 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
 
     //Setting site
     Route::get('/setting-site',SettingComponent::class)->name('setting.site');
+
+    //Post
+    Route::get('/posts',PostComponent::class)->name('posts');
+
+    Route::get('/add-post',AddPostComponent::class)->name('post.add');
+
+    Route::get('/update-post',UpdatePostComponent::class)->name('post.update');
+
+    //Profile
+    Route::get('/user/profile',UserProfileComponent::class)->name('profile');
+    Route::get('/user/change-password',ChangePasswordComponent::class)->name('changePassword');
 });

@@ -22,20 +22,6 @@
             <div class="col-lg-4">
                 <div class="left-side-bar">
                     <div class="widget mb-30">
-                        <div class="img-widget">
-                            <img src="{{ asset('assets/images/blog') }}/{{ $new->image }}" alt="{{ $new->title }}">
-                        </div>
-                        <div class="text-left widget-profile">
-                            <h3>{{ $new->post_category->name }} </h3>
-                            <span>{{ $new->title }}</span>
-                            <p>{{ $new->limit() }}</p>
-                            <a href="{{ route('new.details',['new_slug' => $new->slug]) }}" class="btn-read-more">
-                                <div class="text-btn">Chi tiết</div>
-                                <i class="fas fa-long-arrow-alt-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="widget mb-30">
                         <div class="body-widget">
                             <div class="title-widget">
                                 <h3>Tìm kiếm</h3>
