@@ -12,7 +12,7 @@
                             <h4 class="page-title">Hồ sơ</h4>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }};">Tổng quan</a></li>
-                                <li class="breadcrumb-item active">Hồ sơ người dùng</li>
+                                <li class="breadcrumb-item active">Cài đặt</li>
                             </ol>
                         </div>
                         < </div> </div> </div> </div> <div class="row">
@@ -76,6 +76,9 @@
                                                                 khẩu hiện tại</label>
                                                             <div class="col-lg-9 col-xl-8">
                                                                 <input class="form-control" type="password" wire:model="password">
+                                                                @error('password')
+                                                                    <label class="text-danger">{{ 'Vui lòng nhập chính xác mật khẩu hiện tại của bạn !' }}</label>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -84,6 +87,9 @@
                                                                 khẩu mới</label>
                                                             <div class="col-lg-9 col-xl-8">
                                                                 <input class="form-control" type="password" wire:model="new_password">
+                                                                @error('new_password')
+                                                                    <label class="text-danger">{{ 'Mật khẩu không được trống hoặc có ít nhất 8 ký tự !' }}</label>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -92,10 +98,18 @@
                                                                 nhận mật khẩu</label>
                                                             <div class="col-lg-9 col-xl-8">
                                                                 <input class="form-control" type="password" wire:model="confirm_password">
-                                                                <span class="form-text text-muted font-12">Không chia sẻ mật khẩu của bạn</span>
+                                                                <span class="form-text text-muted font-18s">Không chia sẻ mật khẩu của bạn. Sau khi đổi mật khẩu bạn sẽ phải đăng nhập lại !</span>
+                                                                @error('confirm_password')
+                                                                    <label class="text-danger">{{ 'Hai mật khẩu phải trùng khớp!' }}</label>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
+                                                            <div class="col-lg-9 col-xl-8 offset-lg-3">
+                                                                @if (session('message'))
+                                                                    <lable class="text-success">{{ Session::get('message') }}</lable>
+                                                                @endif
+                                                            </div>
                                                             <div class="col-lg-9 col-xl-8 offset-lg-3">
                                                                 <button type="submit" class="btn btn-primary btn-sm">Đổi mật
                                                                     khẩu</button>
