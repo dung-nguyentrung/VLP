@@ -23,6 +23,7 @@ class AddProductComponent extends Component
     public $category_id;
 
     public function mount(){
+        $this->category_id = Category::first()->id;
         $this->stock_status = "Còn hàng";
     }
 

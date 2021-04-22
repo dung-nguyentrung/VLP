@@ -55,12 +55,12 @@
             </div>
             <div class="col-9">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
-                        @foreach ($products as $product)
+                    @foreach ($products as $product)
+                        <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
                             <div class="single-product-item">
                                 <div class="img-product">
                                     <a href="{{ route('product.details',['slug' => $product->slug]) }}">
-                                        <img src="{{ asset('assets/images/shop') }}/{{ $product->image }}" alt="{{ $product->name }}">
+                                        <img src="{{ asset('assets/images/shop') }}/{{ $product->image }}" class="product-image" alt="{{ $product->name }}">
                                     </a>
                                     <div class="btn-product">
                                         <a href="{{ route('product.details',['slug' => $product->slug]) }}">
@@ -73,8 +73,8 @@
                                     <h4><a href="{{ route('product.details',['slug' => $product->slug]) }}">{{ $product->name }}</a></h4>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
