@@ -55,16 +55,16 @@ Danh mục sản phẩm
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
                                         <td>{{ $category->created_at }}</td>
-                                            <td>
-                                                <a href="{{ route('category.update',['category_slug' => $category->slug]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
-                                            </td>
-                                            <td>
-                                                <form wire:submit.prevent="deleteCategory({{ $category->id }})">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Xóa danh mục này đồng nghĩa với việc các sản phẩm liên quan cũng sẽ bị xóa?');">Xóa</button>
-                                                </form>
-                                            </td>
+                                        <td>
+                                            <a href="{{ route('category.update',['category_slug' => $category->slug]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
+                                        </td>
+                                        <td>
+                                            <form wire:submit.prevent="deleteCategory({{ $category->id }})">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Xóa danh mục này đồng nghĩa với việc các sản phẩm liên quan cũng sẽ bị xóa?');">Xóa</button>
+                                            </form>
+                                        </td>
                                         </td>
                                     </tr>
                                     @endforeach
