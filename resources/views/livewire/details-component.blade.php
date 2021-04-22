@@ -34,8 +34,7 @@
                         <div class="product-info mb-50">
                             <h3>{{ $product->name }}</h3>
                             <div class="price-product">
-                                <span class="new-price">$39.00</span>
-                                <span class="old-price">$49.00</span>
+                                <span class="new-price">{{ number_format($product->price) }} đồng</span>
                             </div>
                             <span class="evaluation-product">
                                 Tình trạng: <span class="text-danger font-weight-bold font-italic">{{ $product->stock_status }}</span>
