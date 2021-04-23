@@ -35,7 +35,8 @@ Sản phẩm
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Danh sách sản phẩm</h4>
+                        <span class="card-title">Danh sách sản phẩm</span>
+                        <a href="{{ route('product.add') }}"><button class="float-right btn btn-primary">Thêm sản phẩm</button></a>
                     </div>
                     <!--end card-header-->
                     <div class="card-body">
@@ -63,7 +64,7 @@ Sản phẩm
                                     <td>{!! $product->short_description !!}</td>
                                     <td>{{ number_format($product->price) }} đồng</td>
                                     <td>
-                                        <a href="{{ route('category.update',['category_slug' => $product->slug]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
+                                        <a href="{{ route('product.update',['product_slug' => $product->slug]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
                                     </td>
                                     <td>
                                         <form wire:submit.prevent="deleteProduct({{ $product->id }})">
