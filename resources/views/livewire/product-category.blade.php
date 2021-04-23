@@ -28,6 +28,7 @@
                                 <h3>Danh mục sản phẩm</h3>
                             </div>
                             <ul class="tags-list">
+                                <li><a href="/shop">Tất cả</a></li>
                                 @foreach ($categories as $category)
                                     <li><a href="{{ route('product-category',['slug' => $category->slug]) }}">{{ $category->name }}</a></li>
                                 @endforeach

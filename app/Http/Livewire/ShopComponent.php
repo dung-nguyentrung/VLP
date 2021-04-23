@@ -12,7 +12,7 @@ class ShopComponent extends Component
     use WithPagination;
     public function render()
     {
-        $products = Product::paginate(6);
+        $products = Product::paginate(9);
         $categories = Category::all();
         $populars = Product::inRandomOrder()->limit(3)->get();
         return view('livewire.shop-component',[

@@ -28,6 +28,7 @@
                                 <h3>Danh mục sản phẩm</h3>
                             </div>
                             <ul class="tags-list">
+                                <li><a href="/shop">Tất cả</a></li>
                                 @foreach ($categories as $category)
                                     <li><a href="{{ route('product-category',['slug' => $category->slug]) }}">{{ $category->name }}</a></li>
                                 @endforeach
@@ -75,6 +76,16 @@
                             </div>
                         </div>
                     @endforeach
+                    @if ($products->count() > 9)
+                        <div class="col-12">
+                            <div class="blog-pagination">
+                                <ul class="pagination">
+                                    <li><a href="{{ $products->previousPageUrl() }}"><i class="fas fa-angle-left"></i></a></li>
+                                    <li><a href="{{ $products->nextPageUrl() }}"><i class="fas fa-angle-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
