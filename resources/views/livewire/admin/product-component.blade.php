@@ -24,6 +24,13 @@ Sản phẩm
                 </div>
             </div>
         </div>
+        @if (Session::has('message'))
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="text-success">{{ session::get('message') }}</p>
+                </div>
+            </div>
+        @endif
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -59,7 +66,7 @@ Sản phẩm
                                         <a href="{{ route('category.update',['category_slug' => $product->slug]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
                                     </td>
                                     <td>
-                                        <form wire:submit.prevent="">
+                                        <form wire:submit.prevent="deleteProduct({{ $product->id }})">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không ?');">Xóa</button>
