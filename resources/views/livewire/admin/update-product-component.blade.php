@@ -71,6 +71,9 @@
                                         @if ($new_image)
                                             <p>Hình ảnh sản phẩm:</p>
                                             <img src="{{ $new_image->temporaryUrl() }}" width="240">
+                                        @else
+                                            <p>Hình ảnh sản phẩm:</p>
+                                            <img src="{{ asset('assets/images/shop') }}/{{ $image }}" width="240">
                                         @endif
                                     </div>
                                 </div>
@@ -98,7 +101,7 @@
                                         @if (Session::has('message'))
                                             <p class="text-success">{{ Session::get('message') }}</p>
                                         @endif
-                                        <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+                                        <button type="submit" class="btn btn-primary">Cập nhật sản phẩm</button>
                                     </div>
                                 </div>
                             </form>

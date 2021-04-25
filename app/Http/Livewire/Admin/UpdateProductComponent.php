@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use Carbon\Carbon;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
@@ -26,6 +27,7 @@ class UpdateProductComponent extends Component
     public function mount($product_slug){
         $this->slug = $product_slug;
         $product = Product::where('slug',$this->slug)->first();
+        $this->product_id = $product->id;
         $this->name = $product->name;
         $this->slug = $product->slug;
         $this->short_description = $product->short_description;
@@ -38,7 +40,22 @@ class UpdateProductComponent extends Component
     }
 
     public function updateProduct(){
-
+        $product = Product::find($this->product_id);
+        $product->name = $this->name;
+        $product->slug = $this->slug;
+        $product->short_description = $this->short_description;
+        $product->price = $this->price;
+        $product->quantity = $this->quantity;
+        $product->SKU = $this->SKU;
+        if($this->new_image){
+            $imageName = Carbon::now()->timestamp. '.' .$this->new_image->extension();
+            $this->new_image->storeAs('shop',$imageName);
+            $product->image = $imageName;
+        }
+        $product->stock_status = $this->stock_status;
+        $product->category_id = $this->category_id;
+        $product->save();
+        session()->flash('message','Cập nhật sản phẩm thành công !');
     }
 
     public function render()

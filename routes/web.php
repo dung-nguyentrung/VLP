@@ -22,10 +22,12 @@ use App\Http\Livewire\Admin\DashboardComponent;
 use App\Http\Livewire\Admin\UpdateFaqComponent;
 use App\Http\Livewire\Admin\AddProductComponent;
 use App\Http\Livewire\Admin\AddCategoryComponent;
+use App\Http\Livewire\Admin\AddGalleryComponent;
 use App\Http\Livewire\Admin\AddPostComponent;
 use App\Http\Livewire\Admin\RecruitmentComponent;
 use App\Http\Livewire\Admin\UpdateProductComponent;
 use App\Http\Livewire\Admin\AddRecruitmentComponent;
+use App\Http\Livewire\Admin\AdminGalleryComponent;
 use App\Http\Livewire\Admin\ChangePasswordComponent;
 use App\Http\Livewire\Admin\UpdateCategoryComponent;
 use App\Http\Livewire\Admin\EditRecruitmentComponent;
@@ -117,4 +119,8 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     //Profile
     Route::get('/user/profile',UserProfileComponent::class)->name('profile');
     Route::get('/user/change-password',ChangePasswordComponent::class)->name('changePassword');
+
+    //Gallery
+    Route::get('/admin/galleries',AdminGalleryComponent::class)->name('admin.galleries');
+    Route::get('/add-gallery',AddGalleryComponent::class)->name('gallery.add');
 });

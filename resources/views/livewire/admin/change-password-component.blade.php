@@ -25,7 +25,7 @@
                                                 <div class="mb-3 col-lg-4 align-self-center mb-lg-0">
                                                     <div class="dastone-profile-main">
                                                         <div class="dastone-profile-main-pic">
-                                                            <img src="{{ asset('backend/assets/images/users/') }}/{{ Auth::user()->profile_photo_path }}"
+                                                            <img src="{{ asset('assets/images/users/') }}/{{ Auth::user()->profile_photo_path }}"
                                                                 alt="profile" height="110" class="rounded-circle">
                                                         </div>
                                                         <div class="dastone-profile_user-detail">

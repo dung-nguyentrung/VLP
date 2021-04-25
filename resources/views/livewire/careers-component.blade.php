@@ -20,7 +20,7 @@
                         <div class="title-item">
                             <h3>{{ $career->position }} - Số lượng: {{ $career->quantity }} </h3>
                             <div class="history">
-                                <span><i class="fa fa-calendar" aria-hidden="true"></i> {{ $career->expiry_date }}</span>
+                                <span><i class="fas fa-hourglass-start" aria-hidden="true"></i> {{ date("d-m-Y",strtotime($career->expiry_date)) }}</span>
                                 <span><i class="fa fa-user-circle" aria-hidden="true"></i> {{ $career->user->name }}</span>
                             </div>
                         </div>
