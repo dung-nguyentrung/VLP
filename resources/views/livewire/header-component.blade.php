@@ -64,7 +64,7 @@
                             <a href="#" class="search-btn">
                                 <i class="fas fa-search"></i>
                             </a>
-                            <a href="shop-cart.html" class="cart-link">
+                            <a href="/cart" class="cart-link">
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
                             <a href="#" class="side-menu-btn">

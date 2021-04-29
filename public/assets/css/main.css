@@ -7843,3 +7843,12 @@ footer .copyright a {
 .two{
     height: 190px !important;
 }
+
+.custom-input {
+    padding: 10px 10px !important;
+    height: 30px !important;
+}
+
+.minus-input {
+    margin-left: 39px !important;
+}

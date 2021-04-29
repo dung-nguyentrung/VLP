@@ -41,15 +41,13 @@
                             </span>
                             <span>{!! $product->short_description !!}</span>
                             <div class="btns">
-                                <div class="quantity">
-                                    <a href="#" class="minus"><i class="fa fa-minus"></i></a>
-
-                                    <input type="text" value="1" title="Qty" size="1">
-
-                                    <a href="#" class="plus"><i class="fa fa-plus"></i></a>
-                                </div>
-
-                                <a href="#" class="btn-one">Thêm giỏ hàng</a>
+                                <form action="{{ route('cart.add') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                    <input type="hidden" name="name" value="{{ $product->name }}">
+                                    <input type="hidden" name="price" value="{{ $product->price }}">
+                                    <input type="submit" class="btn-one" value="Thêm giỏ hàng">
+                                </form>
                             </div>
 
                             <div class="mt-50">

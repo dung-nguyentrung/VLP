@@ -12,6 +12,7 @@ use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\GalleryComponent;
 use App\Http\Livewire\Admin\FaqComponent;
 use App\Http\Controllers\CareerController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ExportController;
 use App\Http\Livewire\NewDetailsComponent;
 use App\Http\Controllers\CommentController;
@@ -35,6 +36,7 @@ use App\Http\Livewire\Admin\PostComponent;
 use App\Http\Livewire\Admin\SettingComponent;
 use App\Http\Livewire\Admin\UpdatePostComponent;
 use App\Http\Livewire\Admin\UserProfileComponent;
+use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\ProductCategory;
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +52,10 @@ use App\Http\Livewire\ProductCategory;
 Route::get('/',HomeComponent::class)->name('home');
 
 Route::get('/shop',ShopComponent::class);
+
+Route::get('/cart',CartComponent::class)->name('product.cart');
+
+Route::post('/add-to-cart',[CartController::class,'store'])->name('cart.add');
 
 Route::get('/product-category/{slug}',ProductCategory::class)->name('product-category');
 
