@@ -16,6 +16,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ExportController;
 use App\Http\Livewire\NewDetailsComponent;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SearchController;
 use App\Http\Livewire\Admin\AddFaqComponent;
 use App\Http\Livewire\Admin\ProductComponent;
 use App\Http\Livewire\Admin\CategoryComponent;
@@ -38,6 +39,8 @@ use App\Http\Livewire\Admin\UpdatePostComponent;
 use App\Http\Livewire\Admin\UserProfileComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\ProductCategory;
+use App\Http\Livewire\SearchComponent;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,6 +53,8 @@ use App\Http\Livewire\ProductCategory;
 */
 
 Route::get('/',HomeComponent::class)->name('home');
+
+Route::get('/search',SearchComponent::class)->name('search');
 
 Route::get('/shop',ShopComponent::class);
 
@@ -120,7 +125,7 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
 
     Route::get('/add-post',AddPostComponent::class)->name('post.add');
 
-    Route::get('/update-post',UpdatePostComponent::class)->name('post.update');
+    Route::get('/update-post/{post_slug}',UpdatePostComponent::class)->name('post.update');
 
     //Profile
     Route::get('/user/profile',UserProfileComponent::class)->name('profile');

@@ -41,6 +41,43 @@ Vân Long Plastic
                 </div>
             </div>
         </div>
+        <div class="owl-item cover-background"
+            style="background-image: url(assets/images/header/header-43.jpg); height: 700px; min-height: 100%;">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="text-left banner display-table">
+                            <div class="table-cell info-header">
+                                <div class="top-title-header">Welcome To VanLongPlastic</div>
+                                <h1>Chào mừng đến với công ty TNHH Vân Long</h1>
+                                <div class="text-header">Công ty TNHH Vân Long được thành lập năm 1999, là doanh nghiệp
+                                    100% vốn Việt Nam,
+                                    chuyên gia công và sản xuất các sản phẩm từ nhựa</div>
+                                <div class="banner-btn">
+                                    <!-- Button One -->
+                                    <a href="{{ route('new.details',['new_slug' => 'gioi-thieu-cong-ty']) }}" class="main-btn-one">
+                                        <div class="text-btn">
+                                            <span class="text-btn-one">Chi tiết</span>
+                                            <span class="text-btn-two">Chi tiết</span>
+                                        </div>
+                                        <div class="arrow-btn">
+                                            <span class="arrow-one"><i class="fas fa-caret-right"></i></span>
+                                            <span class="arrow-two"><i class="fas fa-caret-right"></i></span>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.youtube.com/embed/5ZHDN6MIxGc" data-lity="" class="play-video">
+                                        <div class="play"><i class="fas fa-play"></i></div> <span>Giới thiệu</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <section id="service" class="services services-one ptb-120">
@@ -224,7 +261,7 @@ Vân Long Plastic
                 <div class="blog-item">
                     <!-- Blog Image -->
                     <div class="blog-img">
-                    <a href="blog.html"><img src="{{ asset('assets/images/blog') }}/{{ $new->image }}" alt="blog"></a>
+                    <a href="{{ route('new.details',['new_slug' => $new->slug]) }}"><img src="{{ asset('assets/images/blog') }}/{{ $new->image }}" alt="blog"></a>
                     </div>
                     <!-- Blog info -->
                     <div class="blog-info">
@@ -233,15 +270,15 @@ Vân Long Plastic
                             <li><a href="">{{ $new->post_category->name }}</a></li>
                         </ul>
                         <div class="title-post">
-                            <a href="blog.html">
+                            <a href="{{ route('new.details',['new_slug' => $new->slug]) }}">
                                 <h5>{{ $new->title }}</h5>
                             </a>
                         </div>
                         <div class="post-text">
-                            <p>{{ $new->limit() }}</p>
+                            <p>{!! $new->limit() !!}</p>
                         </div>
-                        <a href="blog.html" class="btn-read-more">
-                            <div class="text-btn">Read More</div>
+                        <a href="{{ route('new.details',['new_slug' => $new->slug]) }}" class="btn-read-more">
+                            <div class="text-btn">Chi tiết</div>
                             <i class="fas fa-long-arrow-alt-right"></i>
                         </a>
                     </div>

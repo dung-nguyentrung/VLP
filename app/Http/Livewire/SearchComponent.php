@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
+use App\Models\Category;
 use Livewire\WithPagination;
 
-class ShopComponent extends Component
+class SearchComponent extends Component
 {
     public $keyword;
 
@@ -18,10 +18,10 @@ class ShopComponent extends Component
     use WithPagination;
     public function render()
     {
-        $products = Product::paginate(9);
+        $products = Product::where('name','like','%'.$this->keyword .'%')->paginate(9);
         $categories = Category::all();
         $populars = Product::inRandomOrder()->limit(3)->get();
-        return view('livewire.shop-component',[
+        return view('livewire.search-component',[
             'products' => $products,
             'categories' => $categories,
             'populars' => $populars

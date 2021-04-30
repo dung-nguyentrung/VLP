@@ -61,9 +61,6 @@
                     </div>
                     <div class="col-lg-9 col-md-12 position-inherit">
                         <div class="icon-links">
-                            <a href="#" class="search-btn">
-                                <i class="fas fa-search"></i>
-                            </a>
                             <a href="/cart" class="cart-link">
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
@@ -165,7 +162,7 @@
             </div>
         </div>
         <div class="follow-us">
-            <h6>Follow Us</h6>
+            <h6>Theo dõi chúng tôi</h6>
             <div class="line-side"></div>
             <ul class="social-media">
                 <li><a href="https://www.facebook.com/TUY%E1%BB%82N-D%E1%BB%A4NG-V%C3%82N-LONG-111007523649398/" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
@@ -175,12 +172,3 @@
     </div>
 </div>
 <div class="close-menu-sidebar"></div>
-<div class="search-screen">
-    <a href="#" class="close-search"><span class="pe-7s-close"></span></a>
-
-    <form class="input-search">
-        <input type="search" placeholder="Tìm kiếm sản phẩm">
-        <button type="submit" class="search-btn"> <i class="fas fa-search"></i> </button>
-    </form>
-
-</div>

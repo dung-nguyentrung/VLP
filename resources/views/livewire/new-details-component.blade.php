@@ -113,7 +113,7 @@
                                     <h5>{{ $new->title }}</h5>
                                 </div>
                                 <div class="post-text">
-                                    <p class="mb-10">{{ $new->content }}.</p>
+                                    <p class="mb-10">{!! $new->content !!}.</p>
                                 </div>
                                 <div class="author">
                                     <div class="share-product">

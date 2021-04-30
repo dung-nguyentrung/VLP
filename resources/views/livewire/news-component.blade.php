@@ -45,7 +45,7 @@
                                         <img src="{{ asset('assets/images/blog') }}/{{ $new->image }}" alt="{{ $new->title }}">
                                         <div class="inner-text">
                                             <h6>{{ $new->title }}</h6>
-                                            <div class="meta">{{ $new->created_at }}</div>
+                                            <div class="meta">{{ $new->post_category->name }}</div>
                                         </div>
                                     </a>
                                 </div>
@@ -89,7 +89,7 @@
                                     </a>
                                 </div>
                                 <div class="post-text">
-                                    <p>{{ $new->limit() }}</p>
+                                    <p>{!! $new->limit() !!}</p>
                                 </div>
                                 <a href="{{ route('new.details',['new_slug' => $new->slug]) }}" class="btn-read-more">
                                     <div class="text-btn">Chi tiết</div>
