@@ -1,7 +1,5 @@
 <?php
 
-use Maatwebsite\Excel\Excel;
-use App\Exports\CatergoryExport;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\NewsComponent;
@@ -17,8 +15,6 @@ use App\Http\Controllers\CartController;
 use App\Http\Livewire\Admin\FaqComponent;
 use App\Http\Livewire\SearchNewComponent;
 use App\Http\Controllers\CareerController;
-use App\Http\Controllers\ExportController;
-use App\Http\Controllers\SearchController;
 use App\Http\Livewire\Admin\PostComponent;
 use App\Http\Livewire\NewDetailsComponent;
 use App\Http\Controllers\CommentController;
@@ -78,7 +74,7 @@ Route::get('/news',NewsComponent::class);
 
 Route::get('/new/{new_slug}',NewDetailsComponent::class)->name('new.details');
 
-Route::get('/new/search',SearchNewComponent::class)->name('new.search');
+Route::get('/news/search',SearchNewComponent::class)->name('new.search');
 
 Route::get('/gallery',GalleryComponent::class);
 

@@ -9,6 +9,12 @@ use Livewire\WithPagination;
 
 class NewsComponent extends Component
 {
+    public $keyword;
+
+    public function mount(){
+        $this->fill(request()->only('keyword'));
+    }
+
     use WithPagination;
     public function render()
     {

@@ -69,26 +69,26 @@
             </div>
             <div class="col-9">
                 <div class="row">
-                    @foreach ($products as $product)
-                        <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
-                            <div class="single-product-item">
-                                <div class="img-product">
-                                    <a href="{{ route('product.details',['slug' => $product->slug]) }}">
-                                        <img src="{{ asset('assets/images/shop') }}/{{ $product->image }}" class="product-image" alt="{{ $product->name }}">
-                                    </a>
-                                    <div class="btn-product">
+                        @foreach ($products as $product)
+                            <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
+                                <div class="single-product-item">
+                                    <div class="img-product">
                                         <a href="{{ route('product.details',['slug' => $product->slug]) }}">
-                                            <i class="fa fa-info-circle"></i>
-                                            Chi tiết
+                                            <img src="{{ asset('assets/images/shop') }}/{{ $product->image }}" class="product-image" alt="{{ $product->name }}">
                                         </a>
+                                        <div class="btn-product">
+                                            <a href="{{ route('product.details',['slug' => $product->slug]) }}">
+                                                <i class="fa fa-info-circle"></i>
+                                                Chi tiết
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="content-product">
+                                        <h4><a href="{{ route('product.details',['slug' => $product->slug]) }}">{{ $product->name }}</a></h4>
                                     </div>
                                 </div>
-                                <div class="content-product">
-                                    <h4><a href="{{ route('product.details',['slug' => $product->slug]) }}">{{ $product->name }}</a></h4>
-                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
                     @if ($products->count() > 9)
                         <div class="col-12">
                             <div class="blog-pagination">

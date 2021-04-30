@@ -23,13 +23,15 @@
                 <div class="left-side-bar">
                     <div class="widget mb-30">
                         <div class="body-widget">
-                            <div class="title-widget">
-                                <h3>Tìm kiếm</h3>
-                            </div>
-                            <input type="text" class="mb-0" placeholder="Tìm kiếm..">
-                            <button type="submit" class="btn-search" value="search">
-                                <i class="fas fa-search"></i>
-                            </button>
+                            <form action="{{ route('new.search') }}" method="GET">
+                                <div class="title-widget">
+                                    <h3>Tìm kiếm</h3>
+                                </div>
+                                <input type="text" name="keyword" class="mb-0" placeholder="Tìm kiếm..">
+                                <button type="submit" class="btn-search" value="search">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="widget mb-30">
@@ -99,16 +101,16 @@
                         </div>
                     </div>
                     @endforeach
-                    <div class="col-12">
-                        <div class="blog-pagination">
-                            <ul class="pagination">
-                                <li><a href="#" class="page-link active">1</a></li>
-                                <li><a href="#" class="page-link">2</a></li>
-                                <li><a href="#" class="page-link">3</a></li>
-                                <li><a href="#"><i class="fas fa-angle-right"></i></a></li>
-                            </ul>
+                    @if ($news->count() > 9)
+                        <div class="col-12">
+                            <div class="blog-pagination">
+                                <ul class="pagination">
+                                    <li><a href="{{ $news->previousPageUrl() }}"><i class="fas fa-angle-left"></i></a></li>
+                                    <li><a href="{{ $news->nextPageUrl() }}"><i class="fas fa-angle-right"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>

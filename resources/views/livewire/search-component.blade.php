@@ -69,26 +69,46 @@
             </div>
             <div class="col-9">
                 <div class="row">
-                    @foreach ($products as $product)
-                        <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
-                            <div class="single-product-item">
-                                <div class="img-product">
-                                    <a href="{{ route('product.details',['slug' => $product->slug]) }}">
-                                        <img src="{{ asset('assets/images/shop') }}/{{ $product->image }}" class="product-image" alt="{{ $product->name }}">
-                                    </a>
-                                    <div class="btn-product">
+                    @if($products->count() > 0)
+                        @foreach ($products as $product)
+                            <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
+                                <div class="single-product-item">
+                                    <div class="img-product">
                                         <a href="{{ route('product.details',['slug' => $product->slug]) }}">
-                                            <i class="fa fa-info-circle"></i>
-                                            Chi tiết
+                                            <img src="{{ asset('assets/images/shop') }}/{{ $product->image }}" class="product-image" alt="{{ $product->name }}">
                                         </a>
+                                        <div class="btn-product">
+                                            <a href="{{ route('product.details',['slug' => $product->slug]) }}">
+                                                <i class="fa fa-info-circle"></i>
+                                                Chi tiết
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="content-product">
+                                        <h4><a href="{{ route('product.details',['slug' => $product->slug]) }}">{{ $product->name }}</a></h4>
                                     </div>
                                 </div>
-                                <div class="content-product">
-                                    <h4><a href="{{ route('product.details',['slug' => $product->slug]) }}">{{ $product->name }}</a></h4>
-                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="col-12">
+                            <div class="text-center error-item">
+                                <h2>Không tìm thấy sản phẩm</h2>
+                            <p class="mb-20">Xin lỗi, hiện tại chưa có sản phẩm giống từ khóa bạn tìm kiếm.</p>
+                                <a href="/shop" class="main-btn-two">
+                                    <div class="text-btn">
+                                        <span class="text-btn-one">Quay lại cửa hàng</span>
+                                        <span class="text-btn-two">Quay lại cửa hàng</span>
+                                    </div>
+                                    <div class="arrow-btn">
+                                        <span class="arrow-one"><i class="fas fa-caret-right"></i></span>
+                                        <span class="arrow-two"><i class="fas fa-caret-right"></i></span>
+                                    </div>
+                                </a>
+
                             </div>
                         </div>
-                    @endforeach
+                    @endif
                     @if ($products->count() > 9)
                         <div class="col-12">
                             <div class="blog-pagination">
