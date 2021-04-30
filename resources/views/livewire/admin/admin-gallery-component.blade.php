@@ -8,15 +8,15 @@
                 <div class="page-title-box">
                     <div class="row">
                         <div class="col">
-                            <h4 class="page-title">Danh mục</h4>
+                            <h4 class="page-title">Hình ảnh</h4>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Tổng quan</a></li>
-                                <li class="breadcrumb-item active">Danh sách danh mục</li>
+                                <li class="breadcrumb-item active">Danh sách hình ảnhc</li>
                             </ol>
                         </div>
                         <!--end col-->
                         <div class="col-auto align-self-center">
-                            <a href="#" wire:click.prevent="exportCategory" class="btn btn-sm btn-outline-primary">
+                            <a href="#" wire:click.prevent="" class="btn btn-sm btn-outline-primary">
                                 <i data-feather="download" class="align-self-center icon-xs"></i>
                             </a>
                         </div>
@@ -49,23 +49,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($galleries as $gallery)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ $gallery->title }}</td>
                                         <td>
-                                            <a href=""><button class="btn btn-success">Cập nhật</button></td></a>
+                                            <img src="{{ asset('assets/images/galleries') }}/{{ $gallery->image }}" width="120">
                                         </td>
                                         <td>
-                                            <form wire:submit.prevent="">
+                                            <a href="{{ route('gallery.update',['gallery_id' => $gallery->id]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
+                                        </td>
+                                        <td>
+                                            <form wire:submit.prevent="deleteGallery({{ $gallery->id }})">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Xóa danh mục này đồng nghĩa với việc các sản phẩm liên quan cũng sẽ bị xóa?');">Xóa</button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa hình ảnh này không?');">Xóa</button>
                                             </form>
                                         </td>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
+                            {{ $galleries->links() }}
                         </div>
                     </div>
                 </div>

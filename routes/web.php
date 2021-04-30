@@ -2,44 +2,46 @@
 
 use Maatwebsite\Excel\Excel;
 use App\Exports\CatergoryExport;
+use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\NewsComponent;
 use App\Http\Livewire\ShopComponent;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\ProductCategory;
+use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\CareersComponent;
 use App\Http\Livewire\ContactComponent;
 use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\GalleryComponent;
-use App\Http\Livewire\Admin\FaqComponent;
-use App\Http\Controllers\CareerController;
 use App\Http\Controllers\CartController;
+use App\Http\Livewire\Admin\FaqComponent;
+use App\Http\Livewire\SearchNewComponent;
+use App\Http\Controllers\CareerController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\SearchController;
+use App\Http\Livewire\Admin\PostComponent;
 use App\Http\Livewire\NewDetailsComponent;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\SearchController;
 use App\Http\Livewire\Admin\AddFaqComponent;
+use App\Http\Livewire\Admin\AddPostComponent;
 use App\Http\Livewire\Admin\ProductComponent;
+use App\Http\Livewire\Admin\SettingComponent;
 use App\Http\Livewire\Admin\CategoryComponent;
 use App\Http\Livewire\Admin\DashboardComponent;
 use App\Http\Livewire\Admin\UpdateFaqComponent;
-use App\Http\Livewire\Admin\AddProductComponent;
-use App\Http\Livewire\Admin\AddCategoryComponent;
 use App\Http\Livewire\Admin\AddGalleryComponent;
-use App\Http\Livewire\Admin\AddPostComponent;
+use App\Http\Livewire\Admin\AddProductComponent;
+use App\Http\Livewire\Admin\UpdatePostComponent;
+use App\Http\Livewire\Admin\AddCategoryComponent;
 use App\Http\Livewire\Admin\RecruitmentComponent;
+use App\Http\Livewire\Admin\UserProfileComponent;
+use App\Http\Livewire\Admin\AdminGalleryComponent;
 use App\Http\Livewire\Admin\UpdateProductComponent;
 use App\Http\Livewire\Admin\AddRecruitmentComponent;
-use App\Http\Livewire\Admin\AdminGalleryComponent;
 use App\Http\Livewire\Admin\ChangePasswordComponent;
 use App\Http\Livewire\Admin\UpdateCategoryComponent;
 use App\Http\Livewire\Admin\EditRecruitmentComponent;
-use App\Http\Livewire\Admin\PostComponent;
-use App\Http\Livewire\Admin\SettingComponent;
-use App\Http\Livewire\Admin\UpdatePostComponent;
-use App\Http\Livewire\Admin\UserProfileComponent;
-use App\Http\Livewire\CartComponent;
-use App\Http\Livewire\ProductCategory;
-use App\Http\Livewire\SearchComponent;
+use App\Http\Livewire\Admin\UpdateGalleyComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +77,8 @@ Route::post('/career/apply',[CareerController::class,'store'])->name('recruitmen
 Route::get('/news',NewsComponent::class);
 
 Route::get('/new/{new_slug}',NewDetailsComponent::class)->name('new.details');
+
+Route::get('/new/search',SearchNewComponent::class)->name('new.search');
 
 Route::get('/gallery',GalleryComponent::class);
 
@@ -134,4 +138,5 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     //Gallery
     Route::get('/admin/galleries',AdminGalleryComponent::class)->name('admin.galleries');
     Route::get('/add-gallery',AddGalleryComponent::class)->name('gallery.add');
+    Route::get('/update-gallery/{gallery_id}',UpdateGalleyComponent::class)->name('gallery.update');
 });

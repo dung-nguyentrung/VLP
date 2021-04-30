@@ -67,7 +67,7 @@
                                 <div class="form-group row">
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Hình ảnh</label>
                                     <div class="col-sm-8">
-                                        <input type="file" class="form-control" wire:model="image">
+                                        <input type="file" class="form-control" wire:model="new_image">
                                         @if ($new_image)
                                             <p>Hình ảnh sản phẩm:</p>
                                             <img src="{{ $new_image->temporaryUrl() }}" width="240">
