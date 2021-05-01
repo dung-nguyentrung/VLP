@@ -21,13 +21,6 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                @if (session('message'))
-                    <p class="text-success">{{ Session::get('message') }}</p>
-                @endif
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Cập nhật danh mục sản phẩm</h4>
@@ -50,6 +43,9 @@
                                 </div>
                                 <div class="row">
                                     <div class="ml-auto col-sm-10">
+                                        @if (session('message'))
+                                            <p class="alert alert-success">{{ Session::get('message') }}</p>
+                                        @endif
                                         <button type="submit" class="btn btn-primary">Cập nhật danh mục</button>
                                     </div>
                                 </div>

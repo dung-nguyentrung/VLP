@@ -32,12 +32,15 @@ use App\Http\Livewire\Admin\AddCategoryComponent;
 use App\Http\Livewire\Admin\RecruitmentComponent;
 use App\Http\Livewire\Admin\UserProfileComponent;
 use App\Http\Livewire\Admin\AdminGalleryComponent;
+use App\Http\Livewire\Admin\PostCategoryComponent;
+use App\Http\Livewire\Admin\UpdateGalleyComponent;
 use App\Http\Livewire\Admin\UpdateProductComponent;
 use App\Http\Livewire\Admin\AddRecruitmentComponent;
 use App\Http\Livewire\Admin\ChangePasswordComponent;
 use App\Http\Livewire\Admin\UpdateCategoryComponent;
+use App\Http\Livewire\Admin\AddPostCategoryComponent;
 use App\Http\Livewire\Admin\EditRecruitmentComponent;
-use App\Http\Livewire\Admin\UpdateGalleyComponent;
+use App\Http\Livewire\Admin\UpdatePostCategoryComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +78,10 @@ Route::get('/news',NewsComponent::class);
 Route::get('/new/{new_slug}',NewDetailsComponent::class)->name('new.details');
 
 Route::get('/news/search',SearchNewComponent::class)->name('new.search');
+
+Route::get('/new-category/{slug}',CategoryComponent::class)->name('new.category');
+
+Route::post('/new/comment',[CommentController::class,'addPostComment'])->name('new.comment');
 
 Route::get('/gallery',GalleryComponent::class);
 
@@ -135,4 +142,9 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     Route::get('/admin/galleries',AdminGalleryComponent::class)->name('admin.galleries');
     Route::get('/add-gallery',AddGalleryComponent::class)->name('gallery.add');
     Route::get('/update-gallery/{gallery_id}',UpdateGalleyComponent::class)->name('gallery.update');
+
+    //Post Category
+    Route::get('/post/cateogries',PostCategoryComponent::class)->name('post.categories');
+    Route::get('/post/cateogry/add',AddPostCategoryComponent::class)->name('post.category.add');
+    Route::get('/post/cateogry/update/{post_category_slug}',UpdatePostCategoryComponent::class)->name('post.category.update');
 });

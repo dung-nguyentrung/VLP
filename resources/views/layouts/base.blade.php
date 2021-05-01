@@ -53,10 +53,26 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ route('posts') }}"><i class="fas fa-newspaper"></i><span>Tin tức</span><span class="menu-arrow"></span></a>
-                    </li>
-                    <li>
-                        <a href="{{ route('recruitments') }}"><i class="fas fa-user-friends"></i><span>Tin tuyển dụng</span><span class="menu-arrow"></span></a>
+                        <a href="#"><i data-feather="grid" class="align-self-center menu-icon "></i><span>Quản lý tin tức</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li>
+                                <a href="#"><i class="dripicons-align-justify"></i>Danh mục tin tức <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{ route('post.categories') }}">Danh sách</a></li>
+                                    <li><a href="{{ route('post.category.add') }}">Thêm danh mục</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-newspaper"></i>Tin tức<span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="{{ route('posts') }}">Danh sách</a></li>
+                                    <li><a href="{{ route('post.add') }}">Thêm tin tức</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{ route('recruitments') }}"><i class="fas fa-user-friends"></i><span>Tin tuyển dụng</span><span class="menu-arrow"></span></a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="{{ route('admin.galleries') }}"><i class="far fa-images"></i><span>Hình ảnh</span><span class="menu-arrow"></span></a>

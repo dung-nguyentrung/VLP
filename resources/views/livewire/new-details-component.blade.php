@@ -24,71 +24,46 @@
             <div class="col-lg-4">
                 <div class="left-side-bar">
                     <div class="widget mb-30">
-                        <div class="img-widget">
-                            <img src="assets/images/blog/peofile-blog.jpg" alt="img">
-                        </div>
-                        <div class="text-left widget-profile">
-                            <h3>Facnex </h3>
-                            <span>Heavy & light industries factory</span>
-                            <p>Our Strategies At Work Are The Means By Which To Achieve The Desired Goals, And Achieve
-                                Your Goals And Dreams Here</p>
-                            <a href="about-us.html" class="btn-read-more">
-                                <div class="text-btn">Read More</div>
-                                <i class="fas fa-long-arrow-alt-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="widget mb-30">
                         <div class="body-widget">
-                            <div class="title-widget">
-                                <h3>Search</h3>
-                            </div>
-                            <input type="text" class="mb-0" placeholder="Search Here..">
-                            <button type="submit" class="btn-search" value="search">
-                                <i class="fas fa-search"></i>
-                            </button>
+                            <form action="{{ route('new.search') }}" method="GET">
+                                <div class="title-widget">
+                                    <h3>Tìm kiếm</h3>
+                                </div>
+                                <input type="text" name="keyword" class="mb-0" placeholder="Tìm kiếm..">
+                                <button type="submit" class="btn-search" value="search">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="widget mb-30">
                         <div class="widget-posts body-widget">
-                            <div class="title-widget">
-                                <h3>Latest Posts</h3>
-                            </div>
-                            <!-- New Item -->
-                            <div class="lastet-posts">
-                                <a href="#">
-                                    <img src="assets/images/clients/person-1.jpg" alt="news">
 
-                                    <div class="inner-text">
-                                        <h6>The future of factories in the coming years.</h6>
-                                        <div class="meta">25 NOV 20</div>
-                                    </div>
-                                </a>
+                            <div class="title-widget">
+                                <h3>Bài viết phổ biến</h3>
                             </div>
-                            <!-- New Item -->
-                            <div class="lastet-posts">
-                                <a href="#">
-                                    <img src="assets/images/clients/person-2.jpg" alt="news">
-                                    <div class="inner-text">
-                                        <h6>The factors that countries create are energy</h6>
-                                        <div class="meta">25 NOV 20</div>
-                                    </div>
-                                </a>
-                            </div>
+                            @foreach ($populars as $new)
+                                <div class="lastet-posts">
+                                    <a href="{{ route('new.details',['new_slug' => $new->slug]) }}">
+                                        <img src="{{ asset('assets/images/blog') }}/{{ $new->image }}" alt="{{ $new->title }}">
+                                        <div class="inner-text">
+                                            <h6>{{ $new->title }}</h6>
+                                            <div class="meta">{{ $new->post_category->name }}</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="widget mb-30">
                         <div class="body-widget tags">
                             <div class="title-widget">
-                                <h3>Tags</h3>
+                                <h3>Chủ đề</h3>
                             </div>
                             <ul class="tags-list">
-                                <li><a href="#">Factory</a></li>
-                                <li><a href="#">Industries</a></li>
-                                <li><a href="#">Facnex</a></li>
-                                <li><a href="#">Energy</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Industry</a></li>
+                                @foreach ($post_categories as $post_category)
+                                    <li><a href="">{{ $post_category->name }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -106,7 +81,7 @@
                             <div class="blog-info">
                                 <ul class="date">
                                     <li>{{ $new->created_at }}</li>
-                                    <li> Comments 2 </li>
+                                    <li> Bình luận {{ $comments->count() }} </li>
                                     <li><a href="#">{{ $new->post_category->name }}</a></li>
                                 </ul>
                                 <div class="title-post">
@@ -117,75 +92,70 @@
                                 </div>
                                 <div class="author">
                                     <div class="share-product">
-                                        <span>Share </span>
+                                        <span>Chia sẻ </span>
                                         <div class="share">
-                                            <ul class="share-social">
-                                                <li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                                                </li>
-                                                <li><a href="#" class="twitter"><i class="fab fa-twitter"></i></a></li>
-                                                <li><a href="#" class="google"><i class="fab fa-google-plus"></i></a>
-                                                </li>
-                                            </ul>
+                                            <div class="mt-50">
+                                                <div class="share-product">
+                                                    <div class="share">
+                                                        <div class="fb-share-button" data-href="http://127.0.0.1:8000/product/{{ Request::url() }}" data-layout="button_count"
+                                                        data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?{{ Request::url() }}" class="fb-xfbml-parse-ignore">Share</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @if ($comments->count() > 0)
                     <div class="col-12">
                         <div class="comments mb-30">
                             <div class="title-comments">
-                                <h4>2 Comments</h4>
+                                <h4>{{ $comments->count() }} bình luận</h4>
                             </div>
-                            <div class="inner-comments">
+                            @foreach ($comments as $comment)
+                            <div class="inner-comments" id="comment">
                                 <div class="comment-author">
                                     <img src="{{ asset('assets/images/clients/user.png') }}" alt="author">
                                     <div class="person">
-                                        <h5>Nour Eldin </h5>
-                                        <div class="time">25 NOV 20 5:33 AM</div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm tempor
-                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim Magna, sed
-                                            diam nonumy eirmod tempor</p>
-                                        <a href="#">Reply</a>
+                                        <h5>{{ $comment->name }} </h5>
+                                        <div class="time">{{ $comment->created_at }}</div>
+                                        <p>{{ $comment->comment }}</p>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                     </div>
+                    @endif
                     <div class="col-12">
                         <div class="post-comment mb-30">
                             <div class="title-add">
-                                <h4>Leave a Reply</h4>
+                                <h4>Bình luận</h4>
                             </div>
                             <div class="comment-form">
-                                <form class="form">
+                                <form class="form" action="{{ route('new.comment') }}" method="POST">
+                                    @csrf
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="text" placeholder="Name">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="Email" placeholder="Email">
+                                                <input type="text" name="name" placeholder="Họ và tên của bạn">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea placeholder="Your Message Here "></textarea>
+                                                <textarea name="comment" placeholder="Bình luận của bạn"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="hidden" name="new_id" value="{{ $new->id }}">
+                                                <input type="hidden" name="new_slug" value="{{ $new->slug }}">
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#" class="main-btn-two">
-                                        <div class="text-btn">
-                                            <span class="text-btn-one">Post Comment</span>
-                                            <span class="text-btn-two">Post Comment</span>
-                                        </div>
-                                        <div class="arrow-btn">
-                                            <span class="arrow-one"><i class="fas fa-caret-right"></i></span>
-                                            <span class="arrow-two"><i class="fas fa-caret-right"></i></span>
-                                        </div>
-                                    </a>
+                                    <input type="submit" class="btn-one" value="Bình luận">
                                 </form>
                             </div>
                         </div>
@@ -195,3 +165,5 @@
         </div>
     </div>
 </section>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=2886881688214518&autoLogAppEvents=1" nonce="QEjeiBn7"></script>

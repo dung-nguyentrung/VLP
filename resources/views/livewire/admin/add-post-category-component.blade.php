@@ -1,5 +1,5 @@
 @section('title')
-    Thêm danh mục
+    Thêm danh mục tin tức
 @endsection
 <div class="page-content">
     <div class="container-fluid">
@@ -11,7 +11,7 @@
                             <h4 class="page-title">Danh mục</h4>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Tổng quan</a></li>
-                                <li class="breadcrumb-item active"><a href="{{ route('categories') }}">Danh sách danh mục</a></li>
+                                <li class="breadcrumb-item active"><a href="{{ route('post.categories') }}">Danh sách danh mục</a></li>
                                 <li class="breadcrumb-item active">Thêm danh mục</li>
                             </ol>
                         </div>
@@ -23,15 +23,15 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Thêm danh mục sản phẩm</h4>
+                        <h4 class="card-title">Thêm danh mục tin tức</h4>
                     </div>
                     <div class="card-body">
                         <div class="general-label">
-                            <form wire:submit.prevent="storeCategory">
+                            <form wire:submit.prevent="storePostCategory">
                                 <div class="form-group row">
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Tên danh mục</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" wire:model="name" wire:keyup="generateslug" placeholder="Nhập tên danh mục sản phẩm" />
+                                        <input type="text" class="form-control" wire:model="name" wire:keyup="generateslug" placeholder="Nhập tên danh mục tin tức" />
                                     </div>
                                 </div>
 
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="ml-auto col-sm-10">
-                                        @if (session('message'))
+                                        @if (Session::has('message'))
                                             <p class="alert alert-success">{{ Session::get('message') }}</p>
                                         @endif
                                         <button type="submit" class="btn btn-primary">Thêm danh mục</button>

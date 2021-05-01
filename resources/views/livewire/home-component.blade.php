@@ -98,7 +98,7 @@ Vân Long Plastic
                             </div>
                             <div class="content-box">
                                 <span class="fas fa-industry"></span>
-                                <h4>NHỰA CÔNG NGHIỆP-DÂN DỤNG</h4>
+                                <h4>NHỰA CÔNG NGHIỆP - DÂN DỤNG</h4>
                                 <p>Công nghệ ép phun nhựa, gia công - sản xuất các sản phẩm chi tiết nhựa cho ngành điện tử...</p>
                                 <a href="services-single.html" class="btn-read-more">
                                     <div class="text-btn">Chi tiết</div>
