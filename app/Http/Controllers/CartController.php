@@ -15,4 +15,25 @@ class CartController extends Controller
         session()->flash('message','Sản phẩm đã được thêm vào giỏ hàng !');
         return redirect()->route('product.cart');
     }
+
+    public function updateCart(Request $request){
+        $row_id = $request->rowId;
+        $qty = $request->qty;
+        Cart::update($row_id,$qty);
+        session()->flash('message','Cập nhật giỏ hàng thành công !');
+        return redirect()->route('product.cart');
+    }
+
+    public function deleteCart(Request $request){
+        $row_id = $request->rowId;
+        Cart::remove($row_id);
+        session()->flash('message','Xóa sản phẩm giỏ hàng thành công !');
+        return redirect()->route('product.cart');
+    }
+
+    public function destroyCart(){
+        Cart::destroy();
+        session()->flash('message','Xóa toàn bộ sản phẩm giỏ hàng thành công !');
+        return redirect()->route('product.cart');
+    }
 }

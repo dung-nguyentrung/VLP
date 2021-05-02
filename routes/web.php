@@ -19,6 +19,7 @@ use App\Http\Livewire\Admin\PostComponent;
 use App\Http\Livewire\NewDetailsComponent;
 use App\Http\Controllers\CommentController;
 use App\Http\Livewire\Admin\AddFaqComponent;
+use App\Http\Livewire\NewsCategoryComponent;
 use App\Http\Livewire\Admin\AddPostComponent;
 use App\Http\Livewire\Admin\ProductComponent;
 use App\Http\Livewire\Admin\SettingComponent;
@@ -63,6 +64,11 @@ Route::get('/cart',CartComponent::class)->name('product.cart');
 
 Route::post('/add-to-cart',[CartController::class,'store'])->name('cart.add');
 
+Route::post('/update-cart',[CartController::class,'updateCart'])->name('cart.update');
+
+Route::post('/delete-item-cart',[CartController::class,'deleteCart'])->name('cart.delete');
+Route::post('/destroy-item-cart',[CartController::class,'destroyCart'])->name('cart.destroy');
+
 Route::get('/product-category/{slug}',ProductCategory::class)->name('product-category');
 
 Route::get('product/{slug}',DetailsComponent::class)->name('product.details');
@@ -79,7 +85,7 @@ Route::get('/new/{new_slug}',NewDetailsComponent::class)->name('new.details');
 
 Route::get('/news/search',SearchNewComponent::class)->name('new.search');
 
-Route::get('/new-category/{slug}',CategoryComponent::class)->name('new.category');
+Route::get('/news-category/{slug}',NewsCategoryComponent::class)->name('new.category');
 
 Route::post('/new/comment',[CommentController::class,'addPostComment'])->name('new.comment');
 
