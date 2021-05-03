@@ -41,7 +41,7 @@ Giỏ Hàng
                         <div class="col-2">
                             <b class="text-dark">{{ number_format($cart->price) }} đồng</b>
                         </div>
-                        <div class="col-3">
+                        <div class="col-2">
                         <form action="{{ route('cart.update') }}" method="post">
                             @csrf
                             <div class="input-group">
@@ -60,6 +60,9 @@ Giỏ Hàng
                                 <input type="hidden" name="rowId" value="{{ $cart->rowId }}">
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?');"><i class="fas fa-trash-alt"></i></button>
                             </form>
+                        </div>
+                        <div class="col-1">
+                            <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Lưu để xem sau"><i class="fas fa-save"></i></button>
                         </div>
                     </div>
                     @endforeach

@@ -3,9 +3,9 @@ Vân Long Plastic
 @endsection
 <section id="home" class="home main-home">
     <div class="slider-hero owl-carousel">
-        <!-- New Item -->
+        @foreach ($sliders as $slider)
         <div class="owl-item cover-background"
-            style="background-image: url(assets/images/header/header-43.jpg); height: 700px; min-height: 100%;">
+            style="background-image: url(assets/images/sliders/{{ $slider->image }}); height: 700px; min-height: 100%;">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row">
@@ -13,16 +13,14 @@ Vân Long Plastic
                         <div class="text-left banner display-table">
                             <div class="table-cell info-header">
                                 <div class="top-title-header">Welcome To VanLongPlastic</div>
-                                <h1>Chào mừng đến với công ty TNHH Vân Long</h1>
-                                <div class="text-header">Công ty TNHH Vân Long được thành lập năm 1999, là doanh nghiệp
-                                    100% vốn Việt Nam,
-                                    chuyên gia công và sản xuất các sản phẩm từ nhựa</div>
+                                <h1>{{ $slider->title }}</h1>
+                                <div class="text-header">{{ $slider->description }}</div>
                                 <div class="banner-btn">
                                     <!-- Button One -->
                                     <a href="{{ route('new.details',['new_slug' => 'gioi-thieu-cong-ty']) }}" class="main-btn-one">
                                         <div class="text-btn">
-                                            <span class="text-btn-one">Chi tiết</span>
-                                            <span class="text-btn-two">Chi tiết</span>
+                                            <span class="text-btn-one">Giới thiệu công ty</span>
+                                            <span class="text-btn-two">Giới thiệu công ty</span>
                                         </div>
                                         <div class="arrow-btn">
                                             <span class="arrow-one"><i class="fas fa-caret-right"></i></span>
@@ -41,43 +39,7 @@ Vân Long Plastic
                 </div>
             </div>
         </div>
-        <div class="owl-item cover-background"
-            style="background-image: url(assets/images/header/header-43.jpg); height: 700px; min-height: 100%;">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="text-left banner display-table">
-                            <div class="table-cell info-header">
-                                <div class="top-title-header">Welcome To VanLongPlastic</div>
-                                <h1>Chào mừng đến với công ty TNHH Vân Long</h1>
-                                <div class="text-header">Công ty TNHH Vân Long được thành lập năm 1999, là doanh nghiệp
-                                    100% vốn Việt Nam,
-                                    chuyên gia công và sản xuất các sản phẩm từ nhựa</div>
-                                <div class="banner-btn">
-                                    <!-- Button One -->
-                                    <a href="{{ route('new.details',['new_slug' => 'gioi-thieu-cong-ty']) }}" class="main-btn-one">
-                                        <div class="text-btn">
-                                            <span class="text-btn-one">Chi tiết</span>
-                                            <span class="text-btn-two">Chi tiết</span>
-                                        </div>
-                                        <div class="arrow-btn">
-                                            <span class="arrow-one"><i class="fas fa-caret-right"></i></span>
-                                            <span class="arrow-two"><i class="fas fa-caret-right"></i></span>
-                                        </div>
-                                    </a>
-                                    <a href="https://www.youtube.com/embed/5ZHDN6MIxGc" data-lity="" class="play-video">
-                                        <div class="play"><i class="fas fa-play"></i></div> <span>Giới thiệu</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>
 <section id="service" class="services services-one ptb-120">
@@ -203,46 +165,13 @@ Vân Long Plastic
     <div class="container">
         <div class="row">
             <div class="col-12 owl-carousel sponsor owl-loaded">
+                @foreach($partners as $partner)
                 <div class="owl-item">
                     <div class="sponsor-item">
-                        <img src="{{ asset('assets/images/sponsor-2/1.png') }}" alt="sponsor">
+                        <img src="{{ asset('assets/images/sponsor-2') }}/{{ $partner->image }}" alt="{{ $partner->name }}">
                     </div>
                 </div>
-                <div class="owl-item">
-                    <div class="sponsor-item">
-                        <img src="{{ asset('assets/images/sponsor-2/2.png') }}" alt="sponsor">
-                    </div>
-                </div>
-                <div class="owl-item">
-                    <div class="sponsor-item">
-                        <img src="{{ asset('assets/images/sponsor-2/3.png') }}" alt="sponsor">
-                    </div>
-                </div>
-                <div class="owl-item">
-                    <div class="sponsor-item">
-                        <img src="{{ asset('assets/images/sponsor-2/4.png') }}" alt="sponsor">
-                    </div>
-                </div>
-                <div class="owl-item">
-                    <div class="sponsor-item">
-                        <img src="{{ asset('assets/images/sponsor-2/5.png') }}" alt="sponsor">
-                    </div>
-                </div>
-                <div class="owl-item">
-                    <div class="sponsor-item">
-                        <img src="{{ asset('assets/images/sponsor-2/6.png') }}" alt="sponsor">
-                    </div>
-                </div>
-                <div class="owl-item">
-                    <div class="sponsor-item">
-                        <img src="{{ asset('assets/images/sponsor-2/7.png') }}" alt="sponsor">
-                    </div>
-                </div>
-                <div class="owl-item">
-                    <div class="sponsor-item">
-                        <img src="{{ asset('assets/images/sponsor-2/8.png') }}" alt="sponsor">
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
