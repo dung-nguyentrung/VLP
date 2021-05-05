@@ -65,6 +65,9 @@
                                         <div class="mb-0 form-group loss-password">
                                             <a href="{{ route('password.request') }}">Quên mật khẩu</a>
                                         </div>
+                                        <div class="mb-0 form-group loss-password">
+                                            <a href="{{ route('register') }}">Bạn chưa có tài khoản ?</a>
+                                        </div>
                                     </div>
                                 </div>
                             </form>

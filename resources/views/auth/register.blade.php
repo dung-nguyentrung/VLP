@@ -1,60 +1,58 @@
+@section('title')
+    Đăng ký tài khoản
+@endsection
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
-
-        <x-jet-validation-errors class="mb-4" />
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
+    <section class="shop pb-120">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="my-account-page">
+                        <ul class="nav-tabs">
+                            <li data-class="register">
+                                <h5>Đăng ký tài khoản</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="my-account">
+                        <div class="register">
+                            <div class="title-add">
+                                <h4>Đăng ký tài khoản mới</h4>
                             </div>
+                            <form class="form" method="POST" action="{{ route('register') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="name" :value="old('name')" required autofocus
+                                            autocomplete="name" placeholder="Tên tài khoản">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="email" name="email" :value="old('email')" required placeholder="Địa chỉ email của bạn">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="password" name="password" required
+                                            autocomplete="new-password" placeholder="Mật khẩu">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="password" name="password_confirmation"
+                                            required autocomplete="new-password" placeholder="Xác nhận mật khẩu">
+                                        </div>
+                                    </div>
+                                    <div class="mb-0 col-md-12">
+                                        <input type="submit" class="btn-one" name="login" value="Đăng ký tài khoản">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </x-jet-label>
+                    </div>
                 </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
             </div>
-        </form>
-    </x-jet-authentication-card>
+        </div>
+    </section>
 </x-guest-layout>

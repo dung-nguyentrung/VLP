@@ -15,6 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
             $table->decimal('subtotal');
             $table->decimal('tax');
             $table->decimal('total');
@@ -31,6 +32,7 @@ class CreateOrdersTable extends Migration
             $table->enum('status',['Đã đặt hàng','Đã giao hàng','Đã hủy'])->default('Đã đặt hàng');
             $table->boolean('is_shipping_defferenet')->default(false);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

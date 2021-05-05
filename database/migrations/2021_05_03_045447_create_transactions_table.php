@@ -15,11 +15,13 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('order_id')->unsigned();
             $table->enum('mode',['Thanh toán trực tiếp','Thẻ ATM','Paypal']);
             $table->enum('status',['Đang chờ xử lý','Chấp thuận','Từ chối','Hoàn lại'])->default('Đang chờ xử lý');
             $table->timestamps();
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

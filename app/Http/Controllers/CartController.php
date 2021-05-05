@@ -7,6 +7,7 @@ use App\Models\OrderItem;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -44,23 +45,24 @@ class CartController extends Controller
     }
 
     public function checkout(Request $request){
-        if(!Cart::count() > 0){
-            session()->forget('checkout');
-            return;
+        if (Auth::check()){
+            return redirect()->route('login');
+        }else{
+            if(!Cart::count() > 0){
+                session()->forget('checkout');
+                return;
+            }
+            //Set session checkout
+            $subtotal = $request->subtotal;
+            $tax = $request->tax;
+            $total = $request->total;
+            session()->put('checkout',[
+                'subtotal' => $subtotal,
+                'tax' => $tax,
+                'total' => $total,
+            ]);
+            return redirect()->route('checkout');
         }
-
-        //Set session checkout
-        $subtotal = $request->subtotal;
-        $tax = $request->tax;
-        $total = $request->total;
-
-        session()->put('checkout',[
-            'subtotal' => $subtotal,
-            'tax' => $tax,
-            'total' => $total,
-        ]);
-
-        return redirect()->route('checkout');
     }
 
     public function orderCheckout(Request $request){
@@ -78,6 +80,7 @@ class CartController extends Controller
             'paymentmode' => 'required'
         ]);
         $order = new Order();
+        $order->user_id = Auth::user()->id;
         $order->subtotal = session()->get('checkout')['subtotal'];
         $order->tax = session()->get('checkout')['tax'];
         $order->total = session()->get('checkout')['total'];
@@ -106,6 +109,7 @@ class CartController extends Controller
         $paymentmode = $request->paymentmode;
         if($paymentmode == "cod"){
             $transaction = new Transaction();
+            $transaction->user_id = Auth::user()->id;
             $transaction->order_id = $order->id;
             $transaction->mode = "Thanh toán trực tiếp";
             $transaction->status = "Đang chờ xử lý";
