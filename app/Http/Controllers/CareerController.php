@@ -39,6 +39,13 @@ class CareerController extends Controller
     use WithPagination;
     public function store(Request $req)
     {
+        $req->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique',
+            'phone' => 'required|integer',
+            'address' => 'required',
+            'position' => 'required',
+        ]);
         try {
             Recruitment::create([
                 'name' => $req->name,
@@ -48,7 +55,7 @@ class CareerController extends Controller
                 'position' => $req->position,
                 'message' => $req->message
                 ]);
-            $req->session()->flash('message','Chũng tôi sẽ liên lạc với bạn sớm nhất có thể !');
+            $req->session()->flash('message','Chúng tôi sẽ liên lạc với bạn sớm nhất có thể !');
             return redirect()->route('careers');
         } catch (Throwable $e) {
             report($e);

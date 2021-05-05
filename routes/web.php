@@ -30,6 +30,7 @@ use App\Http\Livewire\Admin\AddGalleryComponent;
 use App\Http\Livewire\Admin\AddProductComponent;
 use App\Http\Livewire\Admin\UpdatePostComponent;
 use App\Http\Livewire\Admin\AddCategoryComponent;
+use App\Http\Livewire\Admin\AddPartnerComponent;
 use App\Http\Livewire\Admin\RecruitmentComponent;
 use App\Http\Livewire\Admin\UserProfileComponent;
 use App\Http\Livewire\Admin\AdminGalleryComponent;
@@ -40,8 +41,15 @@ use App\Http\Livewire\Admin\AddRecruitmentComponent;
 use App\Http\Livewire\Admin\ChangePasswordComponent;
 use App\Http\Livewire\Admin\UpdateCategoryComponent;
 use App\Http\Livewire\Admin\AddPostCategoryComponent;
+use App\Http\Livewire\Admin\AddSliderComponent;
 use App\Http\Livewire\Admin\EditRecruitmentComponent;
+use App\Http\Livewire\Admin\PartnerComponent;
+use App\Http\Livewire\Admin\SliderComponent;
+use App\Http\Livewire\Admin\UpdatePartnerComponent;
 use App\Http\Livewire\Admin\UpdatePostCategoryComponent;
+use App\Http\Livewire\Admin\UpdateSliderComponent;
+use App\Http\Livewire\CheckoutComponent;
+use App\Http\Livewire\ThankyouComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,7 +75,14 @@ Route::post('/add-to-cart',[CartController::class,'store'])->name('cart.add');
 Route::post('/update-cart',[CartController::class,'updateCart'])->name('cart.update');
 
 Route::post('/delete-item-cart',[CartController::class,'deleteCart'])->name('cart.delete');
+
 Route::post('/destroy-item-cart',[CartController::class,'destroyCart'])->name('cart.destroy');
+
+Route::post('/cart-checkout',[CartController::class,'checkout'])->name('cart.checkout');
+
+Route::post('/order-checkout',[CartController::class,'orderCheckout'])->name('order.checkout');
+
+Route::get('/checkout',CheckoutComponent::class)->name('checkout');
 
 Route::get('/product-category/{slug}',ProductCategory::class)->name('product-category');
 
@@ -92,6 +107,8 @@ Route::post('/new/comment',[CommentController::class,'addPostComment'])->name('n
 Route::get('/gallery',GalleryComponent::class);
 
 Route::get('/contact',ContactComponent::class);
+
+Route::get('/thankyou',ThankyouComponent::class)->name('thankyou');
 
 Route::get('/page-not-found', function () {
     return view('errors.404');
@@ -142,15 +159,34 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
 
     //Profile
     Route::get('/user/profile',UserProfileComponent::class)->name('profile');
+
     Route::get('/user/change-password',ChangePasswordComponent::class)->name('changePassword');
 
     //Gallery
     Route::get('/admin/galleries',AdminGalleryComponent::class)->name('admin.galleries');
+
     Route::get('/add-gallery',AddGalleryComponent::class)->name('gallery.add');
+
     Route::get('/update-gallery/{gallery_id}',UpdateGalleyComponent::class)->name('gallery.update');
 
     //Post Category
     Route::get('/post/cateogries',PostCategoryComponent::class)->name('post.categories');
+
     Route::get('/post/cateogry/add',AddPostCategoryComponent::class)->name('post.category.add');
+
     Route::get('/post/cateogry/update/{post_category_slug}',UpdatePostCategoryComponent::class)->name('post.category.update');
+
+    //SLider
+    Route::get('/sliders',SliderComponent::class)->name('sliders');
+
+    Route::get('/add-slider',AddSliderComponent::class)->name('slider.add');
+
+    Route::get('/update-slider',UpdateSliderComponent::class)->name('slider.update');
+
+    //Partner
+    Route::get('/partners',PartnerComponent::class)->name('partners');
+
+    Route::get('/add-partner',AddPartnerComponent::class)->name('partner.add');
+
+    Route::get('/update-partner',UpdatePartnerComponent::class)->name('partner.update');
 });

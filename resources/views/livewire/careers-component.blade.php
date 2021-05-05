@@ -55,18 +55,33 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <input type="text" class="form-control" name="name" placeholder="Họ và tên">
+                                @error('name')
+                                    <p class="alert alert-danger">{{ "Bạn phải nhập họ tên" }}</p>
+                                @enderror
                             </div>
                             <div class="col-lg-4">
                                 <input type="email" name="email" placeholder="Email của bạn">
+                                @error('email')
+                                    <p class="alert alert-danger">{{ "Email đã được sử dụng hoặc không được để trống" }}</p>
+                                @enderror
                             </div>
                             <div class="col-lg-4">
                                 <input type="text" name="phone" placeholder="Số điện thoại của bạn">
+                                @error('phone')
+                                    <p class="alert alert-danger">{{ "Bạn phải nhập số điện thoại" }}</p>
+                                @enderror
                             </div>
                             <div class="col-lg-4">
                                 <input type="text" name="address" placeholder="Địa chỉ hiện tại">
+                                @error('address')
+                                    <p class="alert alert-danger">{{ "Bạn phải nhập địa chỉ" }}</p>
+                                @enderror
                             </div>
                             <div class="col-lg-4">
                                 <input type="text" name="position" placeholder="Vị trí ứng tuyển">
+                                @error('position')
+                                    <p class="alert alert-danger">{{ "Bạn phải nhập vị trí ứng tuyển" }}</p>
+                                @enderror
                             </div>
                             <div class="col-lg-12">
                                 <textarea id="Message" name="message" placeholder="Tại sao bạn ứng tuyển vị trí này"></textarea>

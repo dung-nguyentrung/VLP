@@ -33,7 +33,8 @@ Giỏ Hàng
                     @foreach (Cart::content() as $cart)
                     <div class="row">
                         <div class="col-1">
-                            <img src="{{ asset('assets/images/shop')}}/{{ $cart->model->image }}" alt="{{ $cart->name }}">
+                            <img src="{{ asset('assets/images/shop')}}/{{ $cart->model->image }}"
+                                alt="{{ $cart->name }}">
                         </div>
                         <div class="col-3">
                             <p class="text-dark">{{ $cart->name }}</p>
@@ -42,14 +43,20 @@ Giỏ Hàng
                             <b class="text-dark">{{ number_format($cart->price) }} đồng</b>
                         </div>
                         <div class="col-2">
-                        <form action="{{ route('cart.update') }}" method="post">
-                            @csrf
-                            <div class="input-group">
-                                <input type="text" name="qty" size="1" class="text-center custom-input form-control" value="{{ $cart->qty }}">
-                                <input type="hidden" name="rowId" value="{{ $cart->rowId }}">
-                                <button type="submit" value="Cập nhật" class="form-control btn btn-link"><i class="fas fa-arrow-alt-circle-up"></i></button>
-                            </div>
-                        </form>
+                            <form action="{{ route('cart.update') }}" method="post">
+                                @csrf
+                                <div class="input-group">
+                                    <input type="text" name="qty" size="1" class="text-center custom-input form-control"
+                                        value="{{ $cart->qty }}">
+                                    <input type="hidden" name="rowId" value="{{ $cart->rowId }}">
+                                    <button type="submit" value="Cập nhật" class="form-control btn btn-link"><i
+                                            class="fas fa-arrow-alt-circle-up"></i></button>
+                                </div>
+                                @error('qty')
+                                <span class="text-danger"><i class="fas fa-exclamation-triangle"></i> Nhập lại số
+                                    lượng</span>
+                                @enderror
+                            </form>
                         </div>
                         <div class="col-2">
                             <b class="text-dark">{{ number_format($cart->subtotal) }} đồng</b>
@@ -58,11 +65,15 @@ Giỏ Hàng
                             <form action="{{ route('cart.delete') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="rowId" value="{{ $cart->rowId }}">
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?');"><i class="fas fa-trash-alt"></i></button>
+                                <button type="submit" data-toggle="tooltip" data-placement="top" title="Xóa sản phẩm"
+                                    class="btn btn-danger"
+                                    onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?');"><i
+                                        class="fas fa-trash-alt"></i></button>
                             </form>
                         </div>
                         <div class="col-1">
-                            <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Lưu để xem sau"><i class="fas fa-save"></i></button>
+                            <button class="btn btn-success" data-toggle="tooltip" data-placement="top"
+                                title="Lưu để xem sau"><i class="fas fa-save"></i></button>
                         </div>
                     </div>
                     @endforeach
@@ -71,10 +82,13 @@ Giỏ Hàng
             <div class="col-12">
                 <form action="{{ route('cart.destroy') }}" method="post">
                     @csrf
-                    <button type="submit" onclick="return confirm('Bạn có chắc là muốn xóa toàn bộ sản phẩm không?');" class="float-right btn-one">Xoá tât cả</button>
+                    <button type="submit" onclick="return confirm('Bạn có chắc là muốn xóa toàn bộ sản phẩm không?');"
+                        class="float-right btn-one">Xoá tât cả</button>
                 </form>
             </div>
             <div class="col-12">
+                <form action="{{ route('cart.checkout') }}" method="post">
+                    @csrf
                 <div class="cart-empty-item">
                     <p class="cart-empty">Thành tiền</p>
                     <div class="row">
@@ -85,6 +99,7 @@ Giỏ Hàng
                         </div>
                         <div class="col-3">
                             <b class="text-dark">{{ Cart::subtotal() }} đồng</b>
+                            <input type="hidden" name="subtotal" value="{{ Cart::subtotal() }}">
                         </div>
                     </div>
                     <br>
@@ -96,6 +111,7 @@ Giỏ Hàng
                         </div>
                         <div class="col-3">
                             <b class="text-dark">{{ Cart::tax() }} đồng</b>
+                            <input type="hidden" name="tax" value="{{ Cart::tax() }}">
                         </div>
                     </div>
                     <br>
@@ -118,14 +134,16 @@ Giỏ Hàng
                         </div>
                         <div class="col-3">
                             <b class="text-dark">{{ Cart::total() }} đồng</b>
+                            <input type="hidden" name="total" value="{{ Cart::total() }}">
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <input class="float-right btn-one" value="Đặt hàng"/>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="submit" class="float-right btn-one" value="Đặt hàng" />
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
             @else
             <div class="col-12">
@@ -141,11 +159,9 @@ Giỏ Hàng
                             <span class="arrow-two"><i class="fas fa-caret-right"></i></span>
                         </div>
                     </a>
-
                 </div>
             </div>
             @endif
-
         </div>
     </div>
 </div>
