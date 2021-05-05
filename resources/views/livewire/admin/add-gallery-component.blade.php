@@ -51,7 +51,7 @@
                                 <div class="row">
                                     <div class="ml-auto col-sm-10">
                                         @if (Session::has('message'))
-                                            <p class="text-success">{{ Session::get('message') }}</p>
+                                            <p class="alert alert-success">{{ Session::get('message') }}</p>
                                         @endif
                                         <button type="submit" class="btn btn-primary">Thêm hình ảnh</button>
                                     </div>

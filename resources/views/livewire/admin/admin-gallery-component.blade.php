@@ -11,7 +11,7 @@
                             <h4 class="page-title">Hình ảnh</h4>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Tổng quan</a></li>
-                                <li class="breadcrumb-item active">Danh sách hình ảnhc</li>
+                                <li class="breadcrumb-item active">Danh sách hình ảnh</li>
                             </ol>
                         </div>
                         <!--end col-->

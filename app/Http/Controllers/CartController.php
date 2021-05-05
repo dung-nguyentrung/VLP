@@ -46,8 +46,6 @@ class CartController extends Controller
 
     public function checkout(Request $request){
         if (Auth::check()){
-            return redirect()->route('login');
-        }else{
             if(!Cart::count() > 0){
                 session()->forget('checkout');
                 return;
@@ -62,6 +60,8 @@ class CartController extends Controller
                 'total' => $total,
             ]);
             return redirect()->route('checkout');
+        }else{
+            return redirect()->route('login');
         }
     }
 

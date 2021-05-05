@@ -78,10 +78,10 @@
                         <a href="{{ route('admin.galleries') }}"><i class="far fa-images"></i><span>Hình ảnh</span><span class="menu-arrow"></span></a>
                     </li>
                     <li>
-                        <a href=""><i class="fas fa-hands-helping"></i><span>Đối tác</span><span class="menu-arrow"></span></a>
+                        <a href="{{ route('partners') }}"><i class="fas fa-hands-helping"></i><span>Đối tác</span><span class="menu-arrow"></span></a>
                     </li>
                     <li>
-                        <a href=""><i class="fab fa-buffer"></i><span>Slide</span><span class="menu-arrow"></span></a>
+                        <a href="{{ route('sliders') }}"><i class="fab fa-buffer"></i><span>Slider</span><span class="menu-arrow"></span></a>
                     </li>
                     <li>
                         <a href="{{ route('faqs') }}"><i class="far fa-question-circle"></i><span>Câu hỏi thường gặp</span><span class="menu-arrow"></span></a>

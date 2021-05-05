@@ -181,12 +181,12 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
 
     Route::get('/add-slider',AddSliderComponent::class)->name('slider.add');
 
-    Route::get('/update-slider',UpdateSliderComponent::class)->name('slider.update');
+    Route::get('/update-slider/{slider_id}',UpdateSliderComponent::class)->name('slider.update');
 
     //Partner
     Route::get('/partners',PartnerComponent::class)->name('partners');
 
     Route::get('/add-partner',AddPartnerComponent::class)->name('partner.add');
 
-    Route::get('/update-partner',UpdatePartnerComponent::class)->name('partner.update');
+    Route::get('/update-partner/{partner_id}',UpdatePartnerComponent::class)->name('partner.update');
 });
