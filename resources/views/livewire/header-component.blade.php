@@ -22,17 +22,26 @@
             </div>
             <div class="col-md-3 d-n-mobile d-n-tab">
                 <ul class="social-media-bar">
-                    <li><a href="https://www.facebook.com/TUY%E1%BB%82N-D%E1%BB%A4NG-V%C3%82N-LONG-111007523649398/" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCrYT1V4gFMkZs0f1sJcejCg" class="youtube"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="https://www.facebook.com/TUY%E1%BB%82N-D%E1%BB%A4NG-V%C3%82N-LONG-111007523649398/"
+                        data-toggle="tooltip" data-placement="top" title="Facebook công ty" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCrYT1V4gFMkZs0f1sJcejCg"
+                        data-toggle="tooltip" data-placement="top" title="Kênh youtube công ty" class="youtube"><i class="fab fa-youtube"></i></a></li>
                     @if (Route::has('login'))
                         @auth
                             @if (Auth::user()->utype == "USR")
-                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="user"><i class="fas fa-sign-out-alt"></i></a></li>
+                                <li><a href="" class="user" data-toggle="tooltip" data-placement="top" title="Đơn hàng của bạn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a></li>
+                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                    class="user" data-toggle="tooltip" data-placement="top" title="Đăng xuất"><i class="fas fa-sign-out-alt"></i></a></li>
                                 <form action="{{ route('logout') }}" id="logout-form" method="post">
                                     @csrf
                                 </form>
                             @else
                                 <li><a href="{{ route('dashboard') }}" class="user"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                    class="user" data-toggle="tooltip" data-placement="top" title="Đăng xuất"><i class="fas fa-sign-out-alt"></i></a></li>
+                                <form action="{{ route('logout') }}" id="logout-form" method="post">
+                                    @csrf
+                                </form>
                             @endif
                         @else
                         <li><a href="{{ route('login') }}" class="user"><i class="fa fa-user"></i></a></li>
