@@ -14,7 +14,7 @@ class FooterComponent extends Component
         $newsletter = new NewsLetter();
         $newsletter->email = $this->email;
         $newsletter->save();
-        session()->flash('message','Bạn đã đăng ký nhận tin tức từ chúng tôi thành công !');
+        session()->flash('message_email','Bạn đã đăng ký nhận tin tức từ chúng tôi thành công !');
     }
     public function render()
     {

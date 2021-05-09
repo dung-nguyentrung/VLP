@@ -85,8 +85,8 @@
                     <h4>Tin tức mới nhất</h4>
                     <div class="line-footer"></div>
                     <p class="mb-15">Đăng ký để nhận tin tức mới nhất</p>
-                    @if (session('message'))
-                        <p class="text-success">{{ Session::get('message') }}</p>
+                    @if (session('message_email'))
+                        <p class="text-success">{{ Session::get('message_email') }}</p>
                     @endif
                     <form wire:submit.prevent="storeNewsLetter">
                         <div class="newsletter-item">

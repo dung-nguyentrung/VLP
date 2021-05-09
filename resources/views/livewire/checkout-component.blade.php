@@ -113,25 +113,72 @@ Thanh toán
                                     </div>
                                 </div>
                                 <hr>
+                                @if (Session::has('stripe_error'))
+                                    <div class="alert alert-danger" role="alert">{{ Session::get('stripe_error') }}</div>
+                                @endif
+                                <hr>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="section-title-left">
                                             <h4 class="title-inner-page">Phương thức thanh toán</h4>
                                         </div>
                                         <div class="radio">
-                                            <label><input type="radio" name="paymentmode" value-"cod" checked>Thanh toán khi nhận hàng</label>
+                                            <label><input type="radio" name="paymentMode" value="cod">Thanh toán khi nhận hàng</label>
                                           </div>
                                           <div class="radio">
-                                            <label><input type="radio" name="paymentmode" value="card">Thẻ ATM</label>
+                                            <label><input type="radio" id="card" name="paymentMode" value="card">Thẻ ATM</label>
                                           </div>
-                                          <div class="radio disabled">
-                                            <label><input type="radio" name="paymentmode" value="paypal">Paypal</label>
+                                          <div class="radio">
+                                            <label><input type="radio" name="paymentMode" value="paypal">Paypal</label>
                                           </div>
-                                          @error('paymentmode')
+                                          @error('paymentMode')
                                                 <p class="alert alert-danger">{{ "Bạn phải chọn 1 trong 3 phương thức thanh toán" }}</p>
                                             @enderror
                                         <hr>
-                                        @if(Session::has('checkout'))
+                                    </div>
+                                        <div class="col-md-6" id="card-form">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Số tài khoản:</label>
+                                                    <input type="text" name="number_no" placeholder="Số tài khoản">
+                                                    @error('number_no')
+                                                        <p class="alert alert-danger">{{ "Số tài khoản không được trống" }}</p>
+                                                        <p class="alert alert-danger">{{ "Số tài khoản phải đúng định dạng" }}</p>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Tháng tạo thẻ:</label>
+                                                    <input type="text" name="expiry_month" placeholder="Tháng">
+                                                    @error('expiry_month')
+                                                        <p class="alert alert-danger">{{ "Tháng tạo thẻ không được trống" }}</p>
+                                                        <p class="alert alert-danger">{{ "Tháng tạo thẻ phải đúng định dạng" }}</p>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Năm tạo thẻ:</label>
+                                                    <input type="text" name="expriry_year" placeholder="Năm">
+                                                    @error('expriry_year')
+                                                        <p class="alert alert-danger">{{ "Năm tạo thẻ không được trống" }}</p>
+                                                        <p class="alert alert-danger">{{ "Năm tạo thẻ phải đúng định dạng" }}</p>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>CVC:</label>
+                                                    <input type="password" name="CVC" placeholder="Mã xác minh thẻ">
+                                                    @error('CVC')
+                                                        <p class="alert alert-danger">{{ "CVC không được trống" }}</p>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            @if(Session::has('checkout'))
                                         <div class="row">
                                             <div class="section-title-left">
                                                 <h4 class="title-inner-page">Thành tiền: {{ Session::get('checkout')['total'] }} đồng</h4>
@@ -139,7 +186,7 @@ Thanh toán
                                         </div>
                                         @endif
                                         <input type="submit" class="btn-one btn-center" value="Đặt hàng">
-                                    </div>
+                                        </div>
                                 </div>
                             </form>
                         </div>
@@ -149,3 +196,15 @@ Thanh toán
         </div>
     </div>
 </section>
+@push('scripts')
+    <script>
+    $(function(){
+        $("input:radio[id=card]").on('click',function(){
+            if ($("#card").is(":checked")){
+                $("#card-form").css('display','block', 'important');
+                $("#card-form").attr('checked',true);
+            }
+        });
+    });
+    </script>
+@endpush

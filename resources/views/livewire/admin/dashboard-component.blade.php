@@ -9,11 +9,7 @@
                 <div class="page-title-box">
                     <div class="row">
                         <div class="col">
-                            <h4 class="page-title">Sales</h4>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="javascript:void(0);">Dastone</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
+                            <h4 class="page-title">Bán hàng</h4>
                         </div><!--end col-->
                         <div class="col-auto align-self-center">
                             <a href="#" class="btn btn-sm btn-outline-primary" id="Dash_Date">
@@ -37,26 +33,24 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h4 class="card-title">Revenu Status</h4>
+                                <h4 class="card-title text-bold">Doanh thu</h4>
                             </div><!--end col-->
                             <div class="col-auto">
                                 <div class="dropdown">
-                                    <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       This Month<i class="ml-1 las la-angle-down"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">Today</a>
-                                        <a class="dropdown-item" href="#">Last Week</a>
-                                        <a class="dropdown-item" href="#">Last Month</a>
-                                        <a class="dropdown-item" href="#">This Year</a>
-                                    </div>
+                                    <b class="text-dark">Thống kê theo: </b>
+                                    <select class="select-date">
+                                        <option selected>Tháng</option>
+                                        <option value="1">Ngày</option>
+                                        <option value="2">Tuần</option>
+                                        <option value="3">Năm</option>
+                                      </select>
                                 </div>
                             </div><!--end col-->
                         </div>  <!--end row-->
                     </div><!--end card-header-->
                     <div class="card-body">
-                        <div class="">
-                            <div id="Revenu_Status" class="apex-charts"></div>
+                        <div style="width:900px;height: 500px; margin:auto;">
+                            <canvas id="barChart"></canvas>
                         </div>
                     </div><!--end card-body-->
                 </div><!--end card-->
@@ -66,8 +60,8 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="text-center col">
-                                        <span class="h4">$24,500</span>
-                                        <h6 class="m-0 mt-2 text-uppercase text-muted">Weekly Sales</h6>
+                                        <span class="h4">{{ number_format($total_week) }},000 VND</span>
+                                        <h6 class="m-0 mt-2 text-uppercase text-muted">Doanh thu trong tuần</h6>
                                     </div><!--end col-->
                                 </div> <!-- end row -->
                             </div><!--end card-body-->
@@ -78,8 +72,8 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="text-center col">
-                                        <span class="h4">520</span>
-                                        <h6 class="m-0 mt-2 text-uppercase text-muted">Orders Placed</h6>
+                                        <span class="h4">{{ $order }}</span>
+                                        <h6 class="m-0 mt-2 text-uppercase text-muted">Đơn đặt hàng</h6>
                                     </div><!--end col-->
                                 </div> <!-- end row -->
                             </div><!--end card-body-->
@@ -102,8 +96,8 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="text-center col">
-                                        <span class="h4">$80.5</span>
-                                        <h6 class="m-0 mt-2 text-uppercase text-muted">Avg. Value</h6>
+                                        <span class="h4">{{ number_format($avg) }},000 VND</span>
+                                        <h6 class="m-0 mt-2 text-uppercase text-muted">Trung bình mỗi đơn hàng</h6>
                                     </div><!--end col-->
                                 </div> <!-- end row -->
                             </div><!--end card-body-->
@@ -120,13 +114,10 @@
                                 <div class="media">
                                     <img src="assets/images/money-beg.png" alt="" class="align-self-center" height="40">
                                     <div class="ml-3 media-body align-self-center">
-                                        <h6 class="m-0 font-20">$1850.00</h6>
-                                        <p class="mb-0 text-muted">Total Revenue</p>
+                                        <h6 class="m-0 font-20">{{ number_format($total) }},000 VND</h6>
+                                        <p class="mb-0 text-muted">Tổng doanh thu tháng {{ $now->month }}</p>
                                     </div><!--end media body-->
                                 </div><!--end media-->
-                            </div><!--end col-->
-                            <div class="col-auto align-self-center">
-                                <p class="mb-0"><span class="text-success"><i class="mdi mdi-trending-up"></i>4.8%</span> Then Last Month</p>
                             </div><!--end col-->
                         </div><!--end row-->
                     </div><!--end card-body-->
@@ -138,37 +129,6 @@
                         </div><!--end col-->
                     </div>
                 </div> <!--end card-->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h4 class="card-title">Earning Reports</h4>
-                            </div><!--end col-->
-                            <div class="col-auto">
-                                <div class="dropdown">
-                                    <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       This Week<i class="ml-1 las la-angle-down"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">Today</a>
-                                        <a class="dropdown-item" href="#">Last Week</a>
-                                        <a class="dropdown-item" href="#">Last Mont</a>
-                                        <a class="dropdown-item" href="#">This Year</a>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                        </div>  <!--end row-->
-                    </div><!--end card-header-->
-                    <div class="card-body">
-                        <div class="text-center">
-                            <div id="ana_device" class="apex-charts"></div>
-                            <h6 class="px-2 py-3 mb-0 bg-light-alt">
-                                <i data-feather="calendar" class="mr-1 align-self-center icon-xs"></i>
-                                01 January 2020 to 31 December 2020
-                            </h6>
-                        </div>
-                    </div><!--end card-body-->
-                </div><!--end card-->
             </div><!-- end col-->
         </div><!--end row-->
 

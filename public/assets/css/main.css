@@ -7852,3 +7852,15 @@ footer .copyright a {
 .minus-input {
     margin-left: 39px !important;
 }
+
+#card-form {
+    display: none;
+}
+
+.title-order{
+    margin-top: 20px;
+}
+
+.space {
+    min-height: 400px;
+}

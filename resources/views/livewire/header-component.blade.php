@@ -29,7 +29,7 @@
                     @if (Route::has('login'))
                         @auth
                             @if (Auth::user()->utype == "USR")
-                                <li><a href="" class="user" data-toggle="tooltip" data-placement="top" title="Đơn hàng của bạn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a></li>
+                                <li><a href="{{ route('user.order') }}" class="user" data-toggle="tooltip" data-placement="top" title="Đơn hàng của bạn"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a></li>
                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                     class="user" data-toggle="tooltip" data-placement="top" title="Đăng xuất"><i class="fas fa-sign-out-alt"></i></a></li>
                                 <form action="{{ route('logout') }}" id="logout-form" method="post">

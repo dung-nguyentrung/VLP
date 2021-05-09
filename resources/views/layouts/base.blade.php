@@ -75,6 +75,9 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="{{ route('customers') }}"><i class="fas fa-users"></i><span>Khách hàng</span><span class="menu-arrow"></span></a>
+                    </li>
+                    <li>
                         <a href="{{ route('admin.galleries') }}"><i class="far fa-images"></i><span>Hình ảnh</span><span class="menu-arrow"></span></a>
                     </li>
                     <li>
@@ -104,6 +107,7 @@
         <script src="{{ asset('backend/assets/js/moment.js') }}"></script>
         <script src="{{ asset('backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
         <script src="{{ asset('backend/plugins/apex-charts/apexcharts.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
         <script src="{{ asset('backend/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
         <script src="{{ asset('backend/assets/js/app.js') }}"></script>
         <script src="https://cdn.tiny.cloud/1/wl0hy3kumawhadevkqc4e81r6m900s5jbcbx30qu575s6ptk/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

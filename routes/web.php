@@ -42,6 +42,7 @@ use App\Http\Livewire\Admin\ChangePasswordComponent;
 use App\Http\Livewire\Admin\UpdateCategoryComponent;
 use App\Http\Livewire\Admin\AddPostCategoryComponent;
 use App\Http\Livewire\Admin\AddSliderComponent;
+use App\Http\Livewire\Admin\CustomerComponent;
 use App\Http\Livewire\Admin\EditRecruitmentComponent;
 use App\Http\Livewire\Admin\PartnerComponent;
 use App\Http\Livewire\Admin\SliderComponent;
@@ -50,6 +51,7 @@ use App\Http\Livewire\Admin\UpdatePostCategoryComponent;
 use App\Http\Livewire\Admin\UpdateSliderComponent;
 use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\ThankyouComponent;
+use App\Http\Livewire\UserOrderComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +86,12 @@ Route::post('/order-checkout',[CartController::class,'orderCheckout'])->name('or
 
 Route::get('/checkout',CheckoutComponent::class)->name('checkout');
 
+// Route::get('handle-payment', [PayPalPaymentController::class,'handlePayment'])->name('make.payment');
+
+// Route::get('cancel-payment', [PayPalPaymentController::class,'paymentCancel'])->name('cancel.payment');
+
+// Route::get('payment-success',[PayPalPaymentController::class,'paymentSuccess'])->name('success.payment');
+
 Route::get('/product-category/{slug}',ProductCategory::class)->name('product-category');
 
 Route::get('product/{slug}',DetailsComponent::class)->name('product.details');
@@ -107,6 +115,8 @@ Route::post('/new/comment',[CommentController::class,'addPostComment'])->name('n
 Route::get('/gallery',GalleryComponent::class);
 
 Route::get('/contact',ContactComponent::class);
+
+Route::get('/user-order',UserOrderComponent::class)->name('user.order');
 
 Route::get('/thankyou',ThankyouComponent::class)->name('thankyou');
 
@@ -189,4 +199,7 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     Route::get('/add-partner',AddPartnerComponent::class)->name('partner.add');
 
     Route::get('/update-partner/{partner_id}',UpdatePartnerComponent::class)->name('partner.update');
+
+    //Customer
+    Route::get('/customer',CustomerComponent::class)->name('customers');
 });
