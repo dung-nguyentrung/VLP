@@ -78,7 +78,6 @@ aria-hidden="true">
         </div>
         <div class="modal-body">
             <div class="row">
-                @foreach (App\Models\User::where('id',$user->id)->get() as $item)
                     <div class="col-lg-12">
                         <b>Thông tin khách hàng</b>
                         <p>Tên khách hàng: {{ $user->name }}</p>
@@ -86,8 +85,9 @@ aria-hidden="true">
                         <p>Email: {{ $user->email }}</p>
                         <p>Địa chỉ: {{ $user->address }}</p>
                     </div>
+                @if (App\Models\Debt::where('user_id',$user->id)->count() > 0)
                     <div class="col-lg-12">
-                        <label class="text-dark">Nợ cần thu từ khách hàng</label>
+                        <b>Nợ cần thu từ khách hàng</b>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -98,16 +98,18 @@ aria-hidden="true">
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach(App\Models\Debt::where('user_id',$user->id)->get() as $debt)
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
+                                    <th>{{ $debt->order->id }}</th>
+                                    <td>$debt->total</td>
+                                    <td>{{ $debt->paid }}</td>
+                                    <td>{{ $debt->owe }}</td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
-                @endforeach
+                    @endif
             </div>
         </div>
         <div class="modal-footer">

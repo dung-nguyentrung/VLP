@@ -83,7 +83,7 @@
                                     <ul class="date">
                                         <li>{{ $new->created_at }}</li>
                                         <li><a href="">{{ $new->post_category->name }}</a></li>
-                                        <li><i class="fa fa-user" aria-hidden="true"></i>{{ $new->user->name }}</li>
+                                        <li><i class="fa fa-user" aria-hidden="true"></i> {{ $new->user->name }}</li>
                                         <li><i class="fa fa-eye" aria-hidden="true"></i> {{ $new->view_count }} lượt xem</li>
                                     </ul>
                                     <div class="title-post">

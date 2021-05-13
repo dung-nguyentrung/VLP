@@ -202,4 +202,16 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
 
     //Customer
     Route::get('/customer',CustomerComponent::class)->name('customers');
+
+    //Order
+    Route::get('/orders',\App\Http\Livewire\Admin\OrderComponent::class)->name('orders');
+
+    //News letter
+    Route::get('/newsletters',\App\Http\Livewire\Admin\NewsletterComponent::class)->name('newsletters');
+
+    //Application
+    Route::get('/apply',\App\Http\Livewire\Admin\ApplyComponent::class)->name('apply');
+
+    //Staff
+    Route::get('/staffs',\App\Http\Livewire\Admin\StaffComponent::class)->name('staffs');
 });

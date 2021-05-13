@@ -20,6 +20,9 @@ Thanh toán
                         <div class="col-lg-12 mb-50">
                             <div class="section-title-left">
                                 <h4 class="title-inner-page">Thanh toán</h4>
+                                @if (Session::has('error'))
+                                    <p>{{ Session::get('error') }}</p>
+                                @endif
                             </div>
                             <form class="form" action="{{ route('order.checkout') }}" method="POST">
                                 @csrf
@@ -47,7 +50,7 @@ Thanh toán
                                             <label>Số điện thoại:</label>
                                             <input type="text" name="phone" placeholder="Số điện thoại">
                                             @error('phone')
-                                                <p class="alert alert-danger">{{ "Số điện thoại không được trống" }}</p>
+                                                <p class="alert alert-danger">{{ "Số điện thoại không được trống hoặc đã được sử dụng" }}</p>
                                             @enderror
                                         </div>
                                     </div>
@@ -98,8 +101,8 @@ Thanh toán
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Line 1:</label>
-                                            <input type="text" name="line1" placeholder="Line 1">
+                                            <label>Yêu cầu:</label>
+                                            <input type="text" name="line1" placeholder="Yêu cầu đối với đơn hàng">
                                             @error('line1')
                                                 <p class="alert alert-danger">{{ "Dòng này không được trống" }}</p>
                                             @enderror
@@ -107,76 +110,12 @@ Thanh toán
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Line 2:</label>
-                                            <input type="text" name="line2" placeholder="Line 2">
+                                            <label>Ghi chú:</label>
+                                            <input type="text" name="line2" placeholder="Ghi chú thêm">
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
-                                @if (Session::has('stripe_error'))
-                                    <div class="alert alert-danger" role="alert">{{ Session::get('stripe_error') }}</div>
-                                @endif
-                                <hr>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="section-title-left">
-                                            <h4 class="title-inner-page">Phương thức thanh toán</h4>
-                                        </div>
-                                        <div class="radio">
-                                            <label><input type="radio" name="paymentMode" value="cod">Thanh toán khi nhận hàng</label>
-                                          </div>
-                                          <div class="radio">
-                                            <label><input type="radio" id="card" name="paymentMode" value="card">Thẻ ATM</label>
-                                          </div>
-                                          <div class="radio">
-                                            <label><input type="radio" name="paymentMode" value="paypal">Paypal</label>
-                                          </div>
-                                          @error('paymentMode')
-                                                <p class="alert alert-danger">{{ "Bạn phải chọn 1 trong 3 phương thức thanh toán" }}</p>
-                                            @enderror
-                                        <hr>
-                                    </div>
-                                        <div class="col-md-6" id="card-form">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Số tài khoản:</label>
-                                                    <input type="text" name="number_no" placeholder="Số tài khoản">
-                                                    @error('number_no')
-                                                        <p class="alert alert-danger">{{ "Số tài khoản không được trống" }}</p>
-                                                        <p class="alert alert-danger">{{ "Số tài khoản phải đúng định dạng" }}</p>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Tháng tạo thẻ:</label>
-                                                    <input type="text" name="expiry_month" placeholder="Tháng">
-                                                    @error('expiry_month')
-                                                        <p class="alert alert-danger">{{ "Tháng tạo thẻ không được trống" }}</p>
-                                                        <p class="alert alert-danger">{{ "Tháng tạo thẻ phải đúng định dạng" }}</p>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Năm tạo thẻ:</label>
-                                                    <input type="text" name="expriry_year" placeholder="Năm">
-                                                    @error('expriry_year')
-                                                        <p class="alert alert-danger">{{ "Năm tạo thẻ không được trống" }}</p>
-                                                        <p class="alert alert-danger">{{ "Năm tạo thẻ phải đúng định dạng" }}</p>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>CVC:</label>
-                                                    <input type="password" name="CVC" placeholder="Mã xác minh thẻ">
-                                                    @error('CVC')
-                                                        <p class="alert alert-danger">{{ "CVC không được trống" }}</p>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="col-md-12">
                                             @if(Session::has('checkout'))
                                         <div class="row">

@@ -31,6 +31,7 @@ class CreateOrdersTable extends Migration
             $table->string('zipcode');
             $table->enum('status',['Đã đặt hàng','Đã giao hàng','Đã hủy'])->default('Đã đặt hàng');
             $table->boolean('is_shipping_defferenet')->default(false);
+            $table->enum('notify',[1,0])->default(1);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

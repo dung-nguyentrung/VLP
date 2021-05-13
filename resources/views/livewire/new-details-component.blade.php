@@ -108,6 +108,12 @@
                             </div>
                         </div>
                     </div>
+                    <h5 class="text-center notify-login font-weight-bold" style="color:#02185a;">
+                        @if(!Auth::check())
+                            Đăng nhập để đánh giá sản phẩm
+                        @endif
+                    </h5>
+                    @if(Auth::check())
                     @if ($comments->count() > 0)
                     <div class="col-12">
                         <div class="comments mb-30">
@@ -140,12 +146,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="text" name="name" placeholder="Họ và tên của bạn">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <textarea name="comment" placeholder="Bình luận của bạn"></textarea>
+                                                <input type="text" name="comment" placeholder="Bình luận của bạn">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -160,6 +161,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

@@ -21,6 +21,7 @@ class CreateRecruitmentsTable extends Migration
             $table->string('address');
             $table->string('position');
             $table->string('message');
+            $table->enum('notify',[1,0])->default(1);
             $table->timestamps();
         });
     }

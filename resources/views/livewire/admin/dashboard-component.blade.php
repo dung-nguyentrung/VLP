@@ -11,16 +11,6 @@
                         <div class="col">
                             <h4 class="page-title">Bán hàng</h4>
                         </div><!--end col-->
-                        <div class="col-auto align-self-center">
-                            <a href="#" class="btn btn-sm btn-outline-primary" id="Dash_Date">
-                                <span class="day-name" id="Day_Name">Today:</span>&nbsp;
-                                <span class="" id="Select_date">Jan 11</span>
-                                <i data-feather="calendar" class="ml-1 align-self-center icon-xs"></i>
-                            </a>
-                            <a href="#" class="btn btn-sm btn-outline-primary">
-                                <i data-feather="download" class="align-self-center icon-xs"></i>
-                            </a>
-                        </div><!--end col-->
                     </div><!--end row-->
                 </div><!--end page-title-box-->
             </div><!--end col-->
@@ -33,18 +23,7 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h4 class="card-title text-bold">Doanh thu</h4>
-                            </div><!--end col-->
-                            <div class="col-auto">
-                                <div class="dropdown">
-                                    <b class="text-dark">Thống kê theo: </b>
-                                    <select class="select-date">
-                                        <option selected>Tháng</option>
-                                        <option value="1">Ngày</option>
-                                        <option value="2">Tuần</option>
-                                        <option value="3">Năm</option>
-                                      </select>
-                                </div>
+                                <h4 class="card-title text-bold">Thống kê đơn đặt hàng</h4>
                             </div><!--end col-->
                         </div>  <!--end row-->
                     </div><!--end card-header-->
@@ -132,11 +111,7 @@
             </div><!-- end col-->
         </div><!--end row-->
 
-    </div><!-- container -->
-
-    <footer class="text-center footer text-sm-left">
-        &copy; 2020 Dastone <span class="float-right d-none d-sm-inline-block">Crafted with <i class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
-    </footer><!--end footer-->
+    </div>
 </div>
 <!-- end page content -->
 </div>

@@ -15,8 +15,14 @@ class NewDetailsComponent extends Component
         $this->new_slug = $new_slug;
     }
 
+    public function increaseView(){
+        $new = News::where('slug',$this->new_slug)->first();
+        News::find($new->id)->increment('view_count');
+    }
+
     public function render()
     {
+        $this->increaseView();
         $new = News::where('slug',$this->new_slug)->first();
         $populars = News::inRandomOrder()->limit(3)->get();
         $post_categories = PostCategory::all();

@@ -61,6 +61,11 @@
                         </div>
                     </div>
                 </div>
+                <h3 class="text-center font-weight-bold" style="color:#02185a;">
+                    @if(!Auth::check())
+                        Đăng nhập để đánh giá sản phẩm
+                    @endif
+                </h3>
                 <div class="mb-50">
                     <div class="revision">
                         <ul class="nav-tabs">
@@ -68,6 +73,7 @@
                                 <h5>Đánh giá ({{ $comments->count() }})</h5>
                             </li>
                         </ul>
+                        @if(Auth::check())
                         <div class="content-revision">
                             <div class="reviews">
                                 <div class="post-comment">
@@ -100,11 +106,6 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <input type="text" name="name" id="name" placeholder="Họ tên của bạn">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
                                                         <input type="hidden" name="product_id" id="product_id" value="{{ $product->id }}">
                                                     </div>
                                                 </div>
@@ -115,7 +116,7 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <textarea name="comment" id="comment" placeholder="Đánh giá về sản phẩm"></textarea>
+                                                        <input type="text" name="comment" id="comment" placeholder="Đánh giá về sản phẩm">
                                                     </div>
                                                 </div>
                                             </div>
@@ -123,8 +124,10 @@
                                         </form>
                                     </div>
                                 </div>
+                                </div>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
                 <div class="mb-20 col-12 pt-70">

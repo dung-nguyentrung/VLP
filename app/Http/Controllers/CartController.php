@@ -8,10 +8,12 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Transaction;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Validator;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Srmklive\PayPal\Services\ExpressCheckout;
 
@@ -104,8 +106,7 @@ class CartController extends Controller
     }
 
     public function orderCheckout(Request $request){
-        //validate data
-        $request->validate([
+        $vaidator = $this->validate($request,[
             'name' => 'required',
             'company' => 'required',
             'phone' => 'required',
@@ -114,12 +115,10 @@ class CartController extends Controller
             'city' => 'required',
             'province' => 'required',
             'zipcode' => 'required',
-            'line1' => 'required',
-            'paymentMode' => 'required'
+            'line1' => 'required'
         ]);
 
         $order = new Order();
-        $order->user_id = Auth::user()->id;
         $order->subtotal = session()->get('checkout')['subtotal'];
         $order->tax = session()->get('checkout')['tax'];
         $order->total = session()->get('checkout')['total'];
@@ -127,98 +126,32 @@ class CartController extends Controller
         $order->company = $request->company;
         $order->phone = $request->phone;
         $order->email = $request->email;
-        $order->line1 = $request->line1;
-        $order->line2 = $request->line2;
         $order->address = $request->address;
         $order->city = $request->city;
         $order->province = $request->province;
         $order->zipcode = $request->zipcode;
-        $order->status = "Đã đặt hàng";
+        $order->line1 = $request->line1;
+        $order->line2 = $request->line2;
+        $order->user_id = Auth::user()->id;
         $order->save();
 
         $this->updateUser($request);
 
-        //detail order
-        foreach(Cart::content() as $item){
+        foreach (Cart::content() as $item){
             $orderItem = new OrderItem();
             $orderItem->product_id = $item->id;
             $orderItem->order_id = $order->id;
             $orderItem->price = $item->price;
             $orderItem->quantity = $item->qty;
             $orderItem->save();
+            $product = Product::find($item->id);
+            $product->quantity = $product->quantity - $item->qty;
+            $product->save();
         }
-        //shipping on delivery
-        $paymentMode = $request->paymentMode;
-        if($paymentMode == "cod"){
-            $this->makeTransaction($order->id,"Đang chờ xử lý");
-            $this->makeDebt($order->id,0,0,"Còn nợ");
-            $this->resetCart();
-            return redirect()->route('thankyou');
-        }else if ($paymentMode == "card"){
-            $request->validate([
-                'number_no' => 'required|integer',
-                'expiry_month' => 'required|integer',
-                'expiry_year' => 'required|integer',
-                'CVC' => 'required'
-            ]);
 
-            $stripe = Stripe::make(env('STRIPE_KEY'));
-
-            try{
-                $token = $stripe->tokens()->create([
-                    'card' => [
-                        'number_no' => $request->number_no,
-                        'expiry_month' => $request->expiry_month,
-                        'expiry_year' => $request->expiry_year,
-                        'cvc' => $request->CVC,
-                    ]
-                ]);
-
-                if(!isset($token['id'])){
-                    session()->flash('stripe_error','Mã stripe không được tạo ra một cách chính xác');
-                }
-
-                $customer = $stripe->customers()->create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'phone' => $request->phone,
-                    'address' => [
-                        'address' => $request->address,
-                        'line1' => $request->line1,
-                        'postal_code' => $request->zipcode,
-                        'city' => $request->city,
-                        'province' => $request->province,
-                    ],
-                    'shipping' => [
-                        'name' => $request->name,
-                        'address' => [
-                            'address' => $request->address,
-                            'line1' => $request->line1,
-                            'postal_code' => $request->zipcode,
-                            'city' => $request->city,
-                            'province' => $request->province,
-                        ],
-                    ],
-                    'source' => $token['id'],
-                ]);
-
-                $charge = $stripe->charges()->create([
-                    'customer' => $customer['id'],
-                    'currency' => "VND",
-                    'amount' => session()->get('checkout')['total'],
-                    'description' => 'Thanh toán cho đơn hàng '.$order->id,
-                ]);
-
-                if ($charge['status'] == "succeeded"){
-                    $this->makeTransaction($order->id,'Đã thanh toán');
-                    $this->resetCart();
-                    return redirect()->route('thankyou');
-                }else{
-                    session()->flash('stripe_error','Lỗi khi thanh toán');
-                }
-            }catch(Exception $e){
-                session()->flash('stripe_error', $e->getMessage());
-            }
-        }
+        $this->makeTransaction($order->id,"Đang chờ xử lý");
+        $this->makeDebt($order->id,0,0,"Còn nợ");
+        $this->resetCart();
+        return redirect()->route('thankyou');
     }
 }

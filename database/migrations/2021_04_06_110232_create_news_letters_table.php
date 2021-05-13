@@ -16,6 +16,7 @@ class CreateNewsLettersTable extends Migration
         Schema::create('news_letters', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
+            $table->enum('notify',[1,0])->default(1);
             $table->timestamps();
         });
     }
