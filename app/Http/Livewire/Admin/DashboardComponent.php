@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use Carbon\Carbon;
 use App\Models\Order;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 
 class DashboardComponent extends Component
 {
@@ -26,6 +27,7 @@ class DashboardComponent extends Component
             'now' => $now,
             'avg' => $avg,
             'total_week' => $total_week,
+//            'datas' => $datas
         ])->layout('layouts.base');
     }
 }

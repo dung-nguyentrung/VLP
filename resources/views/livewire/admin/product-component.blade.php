@@ -16,9 +16,16 @@ Sản phẩm
                         </div>
                         <!--end col-->
                         <div class="col-auto align-self-center">
-                            <a href="#" wire:click.prevent="" class="btn btn-sm btn-outline-primary">
-                                <i data-feather="download" class="align-self-center icon-xs"></i>
-                            </a>
+                            <div class="input-group">
+                                <div class="form-inline">
+                                    <select class="form-control" wire:model="category" style="width: 230px !important;">
+                                        <option value="All">Tất cả</option>
+                                        @foreach($categories  as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
