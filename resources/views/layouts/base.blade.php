@@ -4,7 +4,6 @@
         <meta charset="utf-8" />
         <title>@yield('title')</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <link rel="shortcut icon" href="{{ asset('assets/images/icons/favicon.ico') }}">
@@ -53,6 +52,9 @@
                             <li>
                                 <a href="{{ route('orders') }}"><i class="far fa-file-alt"></i>Đơn hàng</a>
                             </li>
+                            <li>
+                                <a href="{{ route('customers') }}"><i class="fas fa-users"></i><span>Khách hàng</span><span class="menu-arrow"></span></a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -79,12 +81,6 @@
                     </li>
                     <li>
                         <a href="{{ route('staffs') }}"><i class="fas fa-clipboard-list"></i><span>Nhân viên</span><span class="menu-arrow"></span></a>
-                    </li>
-                    <li>
-                        <a href="{{ route('customers') }}"><i class="fas fa-users"></i><span>Khách hàng</span><span class="menu-arrow"></span></a>
-                    </li>
-                    <li>
-                        <a href="{{ route('newsletters') }}"><i class="fas fa-envelope"></i><span>Đăng ký nhận tin</span><span class="menu-arrow"></span></a>
                     </li>
                     <li>
                         <a href="{{ route('apply') }}"><i class="fas fa-user-friends"></i><span>Đơn ứng tuyển</span><span class="menu-arrow"></span></a>
@@ -119,10 +115,8 @@
         <script src="{{ asset('backend/assets/js/moment.js') }}"></script>
         <script src="{{ asset('backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
         <script src="{{ asset('backend/plugins/apex-charts/apexcharts.min.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
         <script src="{{ asset('backend/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
         <script src="{{ asset('backend/assets/js/app.js') }}"></script>
-        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
         <script src="https://cdn.tiny.cloud/1/wl0hy3kumawhadevkqc4e81r6m900s5jbcbx30qu575s6ptk/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         @livewireScripts
 

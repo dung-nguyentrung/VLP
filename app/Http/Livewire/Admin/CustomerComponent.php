@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Debt;
 use App\Models\User;
+use http\Env\Request;
 use Livewire\Component;
 use Livewire\WithPagination;
 

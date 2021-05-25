@@ -12,7 +12,7 @@ class Debt extends Model
     protected $table = "debts";
 
     public function user(){
-        return $this->belongsTo(User::class,'product_id');
+        return $this->belongsTo(User::class,'user_id');
     }
     public function order(){
         return $this->belongsTo(Order::class,'order_id');

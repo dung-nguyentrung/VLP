@@ -63,9 +63,9 @@ class CartController extends Controller
             $tax = $request->tax;
             $total = $request->total;
             session()->put('checkout',[
-                'subtotal' => $subtotal,
-                'tax' => $tax,
-                'total' => $total,
+                'subtotal' => (float)str_replace(',','',$subtotal),
+                'tax' => (float)str_replace(',','',$tax),
+                'total' => (float)str_replace(',','',$total),
             ]);
             return redirect()->route('checkout');
         }else{
@@ -87,14 +87,15 @@ class CartController extends Controller
         session()->forget('checkout'); //Huy session checkout
     }
 
-    public function makeDebt($order_id,$paid,$owe,$status){
+    public function makeDebt($order_id,$paid,$status){
         $debt = new Debt();
         $debt->user_id = Auth::user()->id;
         $debt->order_id = $order_id;
         $debt->total = session()->get('checkout')['total'];
         $debt->paid = $paid;
-        $debt->owe = $owe;
+        $debt->owe = session()->get('checkout')['total'];
         $debt->status = $status;
+        $debt->save();
     }
 
     public function updateUser(Request $request){
@@ -117,7 +118,6 @@ class CartController extends Controller
             'zipcode' => 'required',
             'line1' => 'required'
         ]);
-
         $order = new Order();
         $order->subtotal = session()->get('checkout')['subtotal'];
         $order->tax = session()->get('checkout')['tax'];
@@ -150,7 +150,9 @@ class CartController extends Controller
         }
 
         $this->makeTransaction($order->id,"Đang chờ xử lý");
-        $this->makeDebt($order->id,0,0,"Còn nợ");
+
+        $this->makeDebt($order->id,0,"Còn nợ");
+
         $this->resetCart();
         return redirect()->route('thankyou');
     }

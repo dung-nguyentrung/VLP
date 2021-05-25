@@ -70,5 +70,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(News::class);
     }
-
+    public function debt(){
+        return $this->hasMany(Debt::class);
+    }
 }

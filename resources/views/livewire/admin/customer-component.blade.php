@@ -14,12 +14,6 @@ Khách hàng
                                 <li class="breadcrumb-item active">Danh sách khách hàng</li>
                             </ol>
                         </div>
-                        <!--end col-->
-                        <div class="col-auto align-self-center">
-                            <a href="#" wire:click.prevent="" class="btn btn-sm btn-outline-primary">
-                                <i data-feather="download" class="align-self-center icon-xs"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -91,30 +85,28 @@ aria-hidden="true">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Mã đơn hàng</th>
+                                    <th scope="col">Đơn hàng</th>
                                     <th scope="col">Tổng tiền</th>
                                     <th scope="col">Đã trả</th>
                                     <th scope="col">Phải thu</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach(App\Models\Debt::where('user_id',$user->id)->get() as $debt)
-                                <tr>
-                                    <th>{{ $debt->order->id }}</th>
-                                    <td>$debt->total</td>
-                                    <td>{{ $debt->paid }}</td>
-                                    <td>{{ $debt->owe }}</td>
-                                </tr>
+                                    <tr>
+                                        <th>{{ $debt->order_id }}</th>
+                                        <td>{{ number_format($debt->total) }} đ</td>
+                                        <td>{{ number_format($debt->paid) }} đ</td>
+                                        <td>{{ number_format($debt->owe) }} đ</td>
+                                        <td><a href="{{ route('debt',['debt_id' => $debt->id]) }}"><button class="btn btn-primary">Điều chỉnh</button></a></td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
                     @endif
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Điều chỉnh</button>
-            <button type="button" class="btn btn-primary">Thanh toán</button>
         </div>
     </div>
 </div>
