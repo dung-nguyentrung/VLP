@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Order;
+use App\Models\Transaction;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,6 +16,15 @@ class OrderComponent extends Component
             $order->save();
         }
     }
+
+    public function confirmOrder($id){
+        $transaction = Transaction::where('order_id',$id)->first();
+        $transaction->status = 'Đã xử lý';
+        $transaction->save();
+        session()->flash('message','Xác nhận đơn hàng thành công!');
+        return redirect()->to('orders');
+    }
+
     use WithPagination;
     public function render()
     {

@@ -14,7 +14,7 @@ class UserOrderComponent extends Component
     use WithPagination;
     public function render()
     {
-        $orders = Order::where('user_id',Auth::user()->id)->paginate(5);
+        $orders = Order::where('user_id',Auth::user()->id)->whereNotIn('status',['Đã hủy'])->paginate(5);
         $populars = Product::InRandomOrder()->limit(6)->get();
         return view('livewire.user-order-component',[
             'orders' => $orders,

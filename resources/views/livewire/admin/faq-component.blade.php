@@ -48,7 +48,7 @@
                                         <td>{{ $faq->question }}</td>
                                         <td>{!! $faq->content !!}</td>
                                         <td>
-                                            <a href="{{ route('faq.update',['faq_id' => $faq->id]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
+                                            <a href="{{ route('faq.update',['faq_id' => $faq->id]) }}"><button class="btn btn-success"><i class="fas fa-edit"></i></button></td></a>
                                         </td>
                                         <td>
                                             <form wire:submit.prevent="deleteFaq({{ $faq->id }})">

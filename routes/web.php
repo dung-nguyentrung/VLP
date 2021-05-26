@@ -84,6 +84,8 @@ Route::post('/cart-checkout',[CartController::class,'checkout'])->name('cart.che
 
 Route::post('/order-checkout',[CartController::class,'orderCheckout'])->name('order.checkout');
 
+Route::post('/cancel-order',[CartController::class,'cancelOrder'])->name('order.cancel');
+
 Route::get('/checkout',CheckoutComponent::class)->name('checkout');
 
 // Route::get('handle-payment', [PayPalPaymentController::class,'handlePayment'])->name('make.payment');
@@ -212,6 +214,14 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     //Staff
     Route::get('/staffs',\App\Http\Livewire\Admin\StaffComponent::class)->name('staffs');
 
-    //Debt
-    Route::get('/debt/{debt_id}',\App\Http\Livewire\Admin\DebtComponent::class)->name('debt');
+    //Invoice
+    Route::get('/debts',\App\Http\Livewire\Admin\InvoiceComponent::class)->name('debts');
+
+    Route::get('/update-debt/{order_id}',\App\Http\Livewire\Admin\UpdateDebtComponent::class)->name('debt.update');
+
+    //Bill
+    Route::get('/invoice/{order_id}',\App\Http\Livewire\Admin\BillComponent::class)->name('invoice');
+
+    //Refund
+    Route::get('/refund',\App\Http\Livewire\Admin\RefundComponent::class)->name('refund');
 });

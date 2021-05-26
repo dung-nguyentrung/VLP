@@ -5,13 +5,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h1 class="page-title-heading">Sản phẩm</h1>
+                <h1 class="page-title-heading">Đơn hàng của bạn</h1>
                 <ul class="breadcrumb">
                     <li>
                         <a href="/">Trang chủ</a>
                     </li>
                     <li><i class="fas fa-angle-right"></i></li>
-                    <li>Sản phẩm</li>
                 </ul>
             </div>
         </div>
@@ -19,11 +18,12 @@
 </section>
 <section class="shop single-shop pb-70">
     <div class="container">
+        @if ($orders->count() > 0)
         <div class="row">
             <div class="section-title-left col-12 title-order">
                 <h4 class="title-inner-page">Đơn hàng của bạn</h4>
                 @if (Session::has('message'))
-                    <div class="alert alert-danger">{{ Session::get('message') }}</div>
+                    <div class="alert alert-success">{{ Session::get('message') }}</div>
                 @endif
             </div>
             <div class="mb-20 col-12">
@@ -50,7 +50,7 @@
                                 <td scope="row">{{ $order->email }}</td>
                                 <td scope="row">{{ $order->zipcode }}</td>
                                 <th scope="row">{{ $order->status }}</th>
-                                <td scope="row">{{ $order->created_at }}</td>
+                                <td scope="row">{{ $order->created_at->format('d/m/Y') }}</td>
                             </tr>
                             <tr>
                                 <th>Chi tiết đơn hàng</th>
@@ -61,7 +61,9 @@
                                 <th>Giá/Sản phẩm</th>
                                 <th></th>
                                 <th>
-                                    <form action="" method="post">
+                                    <form action="{{ route('order.cancel') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="order_id" value="{{ $order->id }}">
                                         <button type="submit" data-toggle="tooltip" data-placement="top" title="Hủy đơn hàng" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                     </form>
                                 </th>
@@ -117,5 +119,29 @@
                 </div>
             </div>
         </div>
+        @else
+            <div class="row">
+                <div class="col-12">
+                    @if (Session::has('message'))
+                        <div class="alert alert-success">{{ Session::get('message') }}</div>
+                    @endif
+                </div>
+                <div class="col-12">
+                    <div class="text-center error-item">
+                        <h2>Bạn chưa đặt hàng sản phẩm nào !</h2>
+                        <a href="/shop" class="main-btn-two">
+                            <div class="text-btn">
+                                <span class="text-btn-one">Quay lại của hàng</span>
+                                <span class="text-btn-two">Quay lại của hàng</span>
+                            </div>
+                            <div class="arrow-btn">
+                                <span class="arrow-one"><i class="fas fa-caret-right"></i></span>
+                                <span class="arrow-two"><i class="fas fa-caret-right"></i></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 </section>

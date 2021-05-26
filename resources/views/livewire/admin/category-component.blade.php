@@ -56,13 +56,13 @@ Danh mục sản phẩm
                                         <td>{{ $category->slug }}</td>
                                         <td>{{ $category->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('category.update',['category_slug' => $category->slug]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
+                                            <a href="{{ route('category.update',['category_slug' => $category->slug]) }}"><button class="btn btn-success"><i class="fas fa-edit"></i></button></td></a>
                                         </td>
                                         <td>
                                             <form wire:submit.prevent="deleteCategory({{ $category->id }})">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Xóa danh mục này đồng nghĩa với việc các sản phẩm liên quan cũng sẽ bị xóa?');">Xóa</button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Xóa danh mục này đồng nghĩa với việc các sản phẩm liên quan cũng sẽ bị xóa?');"><i class="fas fa-trash-alt"></i></button>
                                             </form>
                                         </td>
                                         </td>

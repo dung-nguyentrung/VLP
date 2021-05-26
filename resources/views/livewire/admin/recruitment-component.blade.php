@@ -54,13 +54,13 @@
                                         <td>{!! $career->required !!}</td>
                                         <td>{{ $career->expiry_date }}</td>
                                             <td>
-                                                <a href="{{ route('recruitment.update',['recruitment_id' => $career->id]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
+                                                <a href="{{ route('recruitment.update',['recruitment_id' => $career->id]) }}"><button class="btn btn-success"><i class="fas fa-edit"></i></button></td></a>
                                             </td>
                                             <td>
                                                 <form wire:submit.prevent="deleteRecruitment({{ $career->id }})">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa tin tuyển dụng này không ?');">Xóa</button>
+                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa tin tuyển dụng này không ?');"><i class="fas fa-trash-alt"></i></button>
                                                 </form>
                                             </td>
                                         </td>

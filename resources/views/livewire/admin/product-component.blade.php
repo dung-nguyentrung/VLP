@@ -71,13 +71,13 @@ Sản phẩm
                                     <td>{!! $product->short_description !!}</td>
                                     <td>{{ number_format($product->price) }} đồng</td>
                                     <td>
-                                        <a href="{{ route('product.update',['product_slug' => $product->slug]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
+                                        <a href="{{ route('product.update',['product_slug' => $product->slug]) }}"><button class="btn btn-success"><i class="fas fa-edit"></i></button></td></a>
                                     </td>
                                     <td>
                                         <form wire:submit.prevent="deleteProduct({{ $product->id }})">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không ?');">Xóa</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không ?');"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>

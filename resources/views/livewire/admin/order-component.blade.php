@@ -14,12 +14,6 @@
                                 <li class="breadcrumb-item active">Danh sách đơn hàng</li>
                             </ol>
                         </div>
-                        <!--end col-->
-                        <div class="col-auto align-self-center">
-                            <a href="#" wire:click.prevent="" class="btn btn-sm btn-outline-primary">
-                                <i data-feather="download" class="align-self-center icon-xs"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -29,6 +23,7 @@
                 @if (session('message'))
                     <p class="text-success">{{ Session::get('message') }}</p>
                 @endif
+                    <a href="{{ route('debts') }}"><button class="btn btn-primary btn-sm float-right">Thanh toán</button></a>
             </div>
         </div>
         <div class="row">
@@ -42,19 +37,50 @@
                                     <th>Mã đơn hàng</th>
                                     <th>Tên khách hàng</th>
                                     <th>Tổng số tiền</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Địa chỉ</th>
+                                    <th>Đã trả</th>
+                                    <th>Phương thức thanh toán</th>
+                                    <th>Tình trạng</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($orders as $order)
-                                    <tr data-toggle="modal" data-id="{{ $order->id }}" data-target="#exampleModal{{ $order->id }}">
+                                    <tr>
                                         <td>{{ $order->id }}</td>
                                         <td>{{ $order->user->name }}</td>
-                                        <td>{{ $order->total }}</td>
-                                        <td>{{ $order->phone }}</td>
-                                        <td>{{ $order->address }} {{ $order->city }} {{ $order->province }}</td>
+                                        <td>{{ number_format($order->total) }} đ</td>
+                                        @isset($order->debt->paid)
+                                            <td>{{ number_format($order->debt->paid) }} đ</td>
+                                        @else
+                                            <td>Chưa thanh toán</td>
+                                        @endisset
+                                        <td>{{ $order->transaction->mode }}</td>
+                                        <td class="font-weight-bold">{{ $order->transaction->status }}</td>
                                     </tr>
+                                    <tr>
+                                        <th>Chi tiết đơn hàng</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Số lượng</th>
+                                        <th>Đơn giá</th>
+                                        <th>
+                                            <button class="btn btn-primary" wire:click.prevent="confirmOrder({{ $order->id }})" data-toggle="tooltip" data-placement="top" title="Xác nhận đơn hàng"><i class="fas fa-clipboard-check"></i></button>
+                                            @if (\App\Models\Debt::where('order_id',$order->id)->first() !== null)
+                                                <a href="{{ route('invoice',['order_id' => $order->id]) }}"><button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="In phiếu thu"><i class="fas fa-print"></i></button></a>
+                                                <a href="{{ route('debt.update',['order_id' => $order->id]) }}"><button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Điều chỉnh"><i class="fas fa-sliders-h"></i></button></a>
+                                            @endif
+                                        </th>
+                                    </tr>
+                                    @foreach(App\Models\OrderItem::where('order_id',$order->id)->get() as $item)
+                                        <tr>
+                                            <td></td>
+                                            <td>{{ $item->product->name }}</td>
+                                            <td>
+                                                <img src="{{ asset('assets/images/shop') }}/{{ $item->product->image }}" width="150" alt="{{ $item->product->name }}">
+                                            </td>
+                                            <td>{{ $item->quantity }}</td>
+                                            <td>{{ $item->price }}</td>
+                                        </tr>
+                                    @endforeach
                                 @endforeach
                                 </tbody>
                             </table>
@@ -67,33 +93,4 @@
     </div>
 </div>
 </div>
-@foreach ($orders as $order)
-    <div class="modal fade" id="exampleModal{{ $order->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Chi tiết đơn hàng</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                            <div class="col-lg-12">
-                                <b>Thông tin đơn hàng</b>
-                                <p>Tên khách hàng: {{ $order->id }}</p>
-                                <p>Số điện thoại: {{ $order->name }}</p>
-                                <p>Email: {{ $order->total }}</p>
-                                <p>Địa chỉ: {{ $order->address }}</p>
-                            </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Điều chỉnh</button>
-                    <button type="button" class="btn btn-primary">Thanh toán</button>
-                </div>
-            </div>
-        </div>
-    </div>
-@endforeach
+

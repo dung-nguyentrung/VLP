@@ -64,13 +64,13 @@
                                     <td>{{ $post->view_count }}</td>
                                     <td>{{ $post->post_category->name }}</td>
                                     <td>
-                                        <a href="{{ route('post.update',['post_slug' => $post->slug]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
+                                        <a href="{{ route('post.update',['post_slug' => $post->slug]) }}"><button class="btn btn-success"><i class="fas fa-edit"></i></button></td></a>
                                     </td>
                                     <td>
                                         <form wire:submit.prevent="deletePost({{ $post->id }})">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không ?');">Xóa</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không ?');"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>

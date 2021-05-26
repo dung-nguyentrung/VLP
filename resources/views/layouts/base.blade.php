@@ -55,6 +55,9 @@
                             <li>
                                 <a href="{{ route('customers') }}"><i class="fas fa-users"></i><span>Khách hàng</span><span class="menu-arrow"></span></a>
                             </li>
+                            <li>
+                                <a href="{{ route('refund') }}"><i class="fas fa-retweet"></i>Hoàn lại</span><span class="menu-arrow"></span></a>
+                            </li>
                         </ul>
                     </li>
                     <li>

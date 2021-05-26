@@ -50,13 +50,13 @@
                                             <img src="{{ asset('assets/images/sponsor-2') }}/{{ $partner->image }}" width="120">
                                         </td>
                                         <td>
-                                            <a href="{{ route('partner.update',['partner_id' => $partner->id]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
+                                            <a href="{{ route('partner.update',['partner_id' => $partner->id]) }}"><button class="btn btn-success"><i class="fas fa-edit"></i></button></td></a>
                                         </td>
                                         <td>
                                             <form wire:submit.prevent="deletePartner({{ $partner->id }})">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa đối tác này không?');">Xóa</button>
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa đối tác này không?');"><i class="fas fa-trash-alt"></i></button>
                                             </form>
                                         </td>
                                         </td>

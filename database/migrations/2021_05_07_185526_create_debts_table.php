@@ -20,7 +20,8 @@ class CreateDebtsTable extends Migration
             $table->decimal('total');
             $table->decimal('paid');
             $table->decimal('owe');
-            $table->enum('status',['Còn nợ','Đã thanh toán']);
+            $table->decimal('refund');
+            $table->string('staff_name');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');

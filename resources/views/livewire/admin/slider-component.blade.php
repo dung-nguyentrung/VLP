@@ -54,13 +54,13 @@
                                     </td>
                                     <td>{!! $slider->description !!}</td>
                                     <td>
-                                        <a href="{{ route('slider.update',['slider_id' => $slider->id]) }}"><button class="btn btn-success">Cập nhật</button></td></a>
+                                        <a href="{{ route('slider.update',['slider_id' => $slider->id]) }}"><button class="btn btn-success"><i class="fas fa-edit"></i></button></td></a>
                                     </td>
                                     <td>
                                         <form wire:submit.prevent="deleteSlider({{ $slider->id }})">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa slider này không ?');">Xóa</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc là muốn xóa slider này không ?');"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>

@@ -89,7 +89,6 @@ aria-hidden="true">
                                     <th scope="col">Tổng tiền</th>
                                     <th scope="col">Đã trả</th>
                                     <th scope="col">Phải thu</th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -99,7 +98,6 @@ aria-hidden="true">
                                         <td>{{ number_format($debt->total) }} đ</td>
                                         <td>{{ number_format($debt->paid) }} đ</td>
                                         <td>{{ number_format($debt->owe) }} đ</td>
-                                        <td><a href="{{ route('debt',['debt_id' => $debt->id]) }}"><button class="btn btn-primary">Điều chỉnh</button></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

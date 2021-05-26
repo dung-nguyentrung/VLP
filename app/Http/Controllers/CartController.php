@@ -16,9 +16,11 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Srmklive\PayPal\Services\ExpressCheckout;
+use Symfony\Component\VarDumper\VarDumper;
 
 class CartController extends Controller
 {
+
     public function store(Request $request){
         $product_id = $request->id;
         $product_name = $request->name;
@@ -155,5 +157,16 @@ class CartController extends Controller
 
         $this->resetCart();
         return redirect()->route('thankyou');
+    }
+
+    public function cancelOrder(Request $request){
+        $order = Order::where('id',$request->order_id)->first();
+        $order->status = 'Đã hủy';
+        $order->save();
+        $transaction = Transaction::where('order_id',$order->id)->first();
+        $transaction->status = 'Đã hủy';
+        $transaction->save();
+        session()->flash('message','Huỷ đơn hàng thành công!');
+        return redirect()->route('user.order');
     }
 }
