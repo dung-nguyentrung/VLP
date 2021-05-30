@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reciept;
 use Exception;
 use App\Models\Debt;
 use App\Models\User;
@@ -25,14 +26,14 @@ class CartController extends Controller
         $product_id = $request->id;
         $product_name = $request->name;
         $product_price = $request->price;
-        Cart::add($product_id,$product_name,1,$product_price)->associate('App\Models\Product');
+        Cart::add($product_id,$product_name,100,$product_price)->associate('App\Models\Product');
         session()->flash('message','Sản phẩm đã được thêm vào giỏ hàng !');
         return redirect()->route('product.cart');
     }
 
     public function updateCart(Request $request){
         $request->validate([
-            'qty' => 'required|integer',
+            'qty' => 'required|integer|min:100',
         ]);
         $row_id = $request->rowId;
         $qty = $request->qty;
@@ -89,15 +90,25 @@ class CartController extends Controller
         session()->forget('checkout'); //Huy session checkout
     }
 
-    public function makeDebt($order_id,$paid,$status){
+    public function makeDebt($order_id){
         $debt = new Debt();
         $debt->user_id = Auth::user()->id;
         $debt->order_id = $order_id;
         $debt->total = session()->get('checkout')['total'];
-        $debt->paid = $paid;
+        $debt->paid = 0;
         $debt->owe = session()->get('checkout')['total'];
-        $debt->status = $status;
         $debt->save();
+    }
+
+    public function makeReciept($order_id){
+        $reciept = new Reciept();
+        $reciept->user_id = Auth::user()->id;
+        $reciept->order_id = $order_id;
+        $reciept->total = session()->get('checkout')['total'];
+        $reciept->paid = 0;
+        $reciept->owe = session()->get('checkout')['total'];
+        $reciept->refund = 0;
+        $reciept->save();
     }
 
     public function updateUser(Request $request){
@@ -153,7 +164,9 @@ class CartController extends Controller
 
         $this->makeTransaction($order->id,"Đang chờ xử lý");
 
-        $this->makeDebt($order->id,0,"Còn nợ");
+        $this->makeDebt($order->id);
+
+        $this->makeReciept($order->id);
 
         $this->resetCart();
         return redirect()->route('thankyou');

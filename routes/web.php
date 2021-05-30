@@ -100,6 +100,8 @@ Route::get('product/{slug}',DetailsComponent::class)->name('product.details');
 
 Route::post('/comment',[CommentController::class,'addProductComment'])->name('comment');
 
+Route::post('/comment/delete',[CommentController::class,'deleteProductComment'])->name('comment.delete');
+
 Route::get('/careers',CareersComponent::class)->name('careers');
 
 Route::post('/career/apply',[CareerController::class,'store'])->name('recruitment');
@@ -113,6 +115,8 @@ Route::get('/news/search',SearchNewComponent::class)->name('new.search');
 Route::get('/news-category/{slug}',NewsCategoryComponent::class)->name('new.category');
 
 Route::post('/new/comment',[CommentController::class,'addPostComment'])->name('new.comment');
+
+Route::post('/new/comment/delete',[CommentController::class,'deleteNewComment'])->name('new.comment.delete');
 
 Route::get('/gallery',GalleryComponent::class);
 
@@ -215,13 +219,18 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     Route::get('/staffs',\App\Http\Livewire\Admin\StaffComponent::class)->name('staffs');
 
     //Invoice
-    Route::get('/debts',\App\Http\Livewire\Admin\InvoiceComponent::class)->name('debts');
-
     Route::get('/update-debt/{order_id}',\App\Http\Livewire\Admin\UpdateDebtComponent::class)->name('debt.update');
 
     //Bill
     Route::get('/invoice/{order_id}',\App\Http\Livewire\Admin\BillComponent::class)->name('invoice');
 
     //Refund
-    Route::get('/refund',\App\Http\Livewire\Admin\RefundComponent::class)->name('refund');
+    Route::get('/refund/{order_id}',\App\Http\Livewire\Admin\RefundComponent::class)->name('refund');
+
+    Route::get('/print-bill/{debt_id}',\App\Http\Livewire\Admin\BillRefundComponent::class)->name('bill.print');
+
+    //Calendar
+    Route::get('/calendar',\App\Http\Livewire\Admin\CalendarComponent::class)->name('calendar');
+
+    Route::get('/history',\App\Http\Livewire\Admin\HistoryComponent::class)->name('history');
 });

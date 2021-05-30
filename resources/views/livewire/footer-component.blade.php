@@ -88,6 +88,9 @@
                     @if (session('message_email'))
                         <p class="text-success">{{ Session::get('message_email') }}</p>
                     @endif
+                    @error('email')
+                        <p>{{ $message }}</p>
+                    @enderror
                     <form wire:submit.prevent="storeNewsLetter">
                         <div class="newsletter-item">
                             <input type="email" name="email" wire:model="email" placeholder="Email của bạn">

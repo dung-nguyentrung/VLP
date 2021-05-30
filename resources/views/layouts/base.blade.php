@@ -33,6 +33,9 @@
                         <a href="{{ route('dashboard') }}"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Tổng quan</span><span class="menu-arrow"></span></a>
                     </li>
                     <li>
+                        <a href="{{ route('calendar') }}"><i class="fas fa-calendar-alt"></i><span>Lịch làm việc</span><span class="menu-arrow"></span></a>
+                    </li>
+                    <li>
                         <a href="#"><i data-feather="grid" class="align-self-center menu-icon "></i><span>Quản lý bán hàng</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                         <ul class="nav-second-level" aria-expanded="false">
                             <li>
@@ -56,7 +59,7 @@
                                 <a href="{{ route('customers') }}"><i class="fas fa-users"></i><span>Khách hàng</span><span class="menu-arrow"></span></a>
                             </li>
                             <li>
-                                <a href="{{ route('refund') }}"><i class="fas fa-retweet"></i>Hoàn lại</span><span class="menu-arrow"></span></a>
+                                <a href="{{ route('history') }}"><i class="fas fa-money-check"></i><span>Lịch sử giao dịch</span><span class="menu-arrow"></span></a>
                             </li>
                         </ul>
                     </li>
@@ -120,6 +123,7 @@
         <script src="{{ asset('backend/plugins/apex-charts/apexcharts.min.js') }}"></script>
         <script src="{{ asset('backend/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
         <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js"></script>
         <script src="https://cdn.tiny.cloud/1/wl0hy3kumawhadevkqc4e81r6m900s5jbcbx30qu575s6ptk/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         @livewireScripts
 

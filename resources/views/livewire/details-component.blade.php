@@ -73,7 +73,6 @@
                                 <h5>Đánh giá ({{ $comments->count() }})</h5>
                             </li>
                         </ul>
-                        @if(Auth::check())
                         <div class="content-revision">
                             <div class="reviews">
                                 <div class="post-comment">
@@ -89,7 +88,19 @@
                                                             <div class="person">
                                                                 <h5>{{ $comment->name }}</h5>
                                                                 <div class="time">{{ $comment->created_at }}</div>
-                                                                <p>{{ $comment->comment }}</p>
+                                                                <h6 class="font-weight-bold">
+                                                                    {{ $comment->comment }}
+                                                                    @if(Auth::check())
+                                                                        @if(Auth::user()->utype != 'USR')
+                                                                            <form action="{{ route('comment.delete') }}" method="post">
+                                                                                @csrf
+                                                                                <input type="hidden" name="id" value="{{$comment->id}}">
+                                                                                <input type="hidden" name="slug" value="{{ $product->slug }}">
+                                                                                <input type="submit" class="btn btn-link" value="Xóa bình luận">
+                                                                            </form>
+                                                                        @endif
+                                                                    @endif
+                                                                </h6>
                                                             </div>
                                                         </div>
                                                         @endforeach
@@ -100,6 +111,7 @@
                                             <span>Chưa có đánh giá về sản phẩm này !</span>
                                         @endif
                                     </div>
+                                    @if(Auth::check())
                                     <div class="comment-form">
                                         <form class="form" action="{{ route('comment') }}" method="POST">
                                             @csrf
@@ -123,11 +135,12 @@
                                             <button type="submit" class="btn-one">Đánh giá</button>
                                         </form>
                                     </div>
+                                    @endif
                                 </div>
                                 </div>
                             </div>
                         </div>
-                        @endif
+
                     </div>
                 </div>
                 <div class="mb-20 col-12 pt-70">

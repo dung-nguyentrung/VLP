@@ -1,5 +1,5 @@
 @section('title')
-    In phiếu thu
+    In phiếu chi
 @endsection
 <div class="page-content">
     <div class="container-fluid">
@@ -98,48 +98,25 @@
                                         </thead>
                                         <tbody>
                                         @foreach($items as $item)
-                                        <tr>
-                                            <td>
-                                                <h5 class="mt-0 mb-1 font-14">{{ $item->product->name }}</h5>
-                                            </td>
-                                            <td>{{ $item->quantity }}</td>
-                                            <td>{{ number_format($item->price) }} đ</td>
-                                            <td>{{ number_format($item->price * $item->quantity) }} đ</td>
-                                        </tr><!--end tr-->
+                                            <tr>
+                                                <td>
+                                                    <h5 class="mt-0 mb-1 font-14">{{ $item->product->name }}</h5>
+                                                </td>
+                                                <td>{{ $item->quantity }}</td>
+                                                <td>{{ number_format($item->price) }} đ</td>
+                                                <td>{{ number_format($item->price * $item->quantity) }} đ</td>
+                                            </tr><!--end tr-->
                                         @endforeach
                                         <tr>
                                             <td colspan="2" class="border-0"></td>
-                                            <td class="border-0 font-14 text-dark"><b>Tổng tiền</b></td>
-                                            <td class="border-0 font-14 text-dark"><b>{{ number_format($order->subtotal) }} đ</b></td>
-                                        </tr><!--end tr-->
-                                        <tr>
-                                            <th colspan="2" class="border-0"></th>
-                                            <td class="border-0 font-14 text-dark"><b>Thuế</b></td>
-                                            <td class="border-0 font-14 text-dark"><b>{{ number_format($order->tax) }} đ</b></td>
+                                            <td class="border-0 font-14 text-dark"><b>Tổng tiền đơn hàng</b></td>
+                                            <td class="border-0 font-14 text-dark"><b>{{ number_format($payment->total) }} đ</b></td>
                                         </tr><!--end tr-->
                                         <tr class="bg-black text-white">
                                             <th colspan="2" class="border-0"></th>
-                                            <td class="border-0 font-14"><b>Thành tiền</b></td>
-                                            <td class="border-0 font-14"><b>{{number_format($order->total) }} đ</b></td>
+                                            <td class="border-0 font-14"><b>Chi tiền trả khách</b></td>
+                                            <td class="border-0 font-14"><b>{{number_format($payment->paid) }} đ</b></td>
                                         </tr><!--end tr-->
-                                        <tr class="bg-black text-white">
-                                            <th colspan="2" class="border-0"></th>
-                                            <td class="border-0 font-14"><b>Khách trả</b></td>
-                                            <td class="border-0 font-14"><b>{{number_format($debt->paid + $debt->refund) }} đ</b></td>
-                                        </tr><!--end tr-->
-                                        @if (($debt->paid + $debt->refund) >= $debt->total)
-                                        <tr class="bg-black text-white">
-                                            <th colspan="2" class="border-0"></th>
-                                            <td class="border-0 font-14"><b>Tiền thừa</b></td>
-                                            <td class="border-0 font-14"><b>{{number_format($debt->refund) }} đ</b></td>
-                                        </tr><!--end tr-->
-                                        @else
-                                            <tr class="bg-black text-white">
-                                                <th colspan="2" class="border-0"></th>
-                                                <td class="border-0 font-14"><b>Còn nợ</b></td>
-                                                <td class="border-0 font-14"><b>{{number_format($debt->owe) }} đ</b></td>
-                                            </tr><!--end tr-->
-                                        @endif
                                         </tbody>
                                     </table><!--end table-->
                                 </div>  <!--end /div-->
@@ -197,3 +174,4 @@
 </div>
 <!-- end page content -->
 </div>
+

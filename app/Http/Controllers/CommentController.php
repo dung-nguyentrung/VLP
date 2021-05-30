@@ -30,4 +30,22 @@ class CommentController extends Controller
         $new_slug = $request->new_slug;
         return redirect()->route('new.details',['new_slug' => $new_slug]);
     }
+
+    public function deleteProductComment(Request $request){
+        $id = $request->id;
+        $comment = Comment::find($id);
+        $comment->delete();
+
+        $slug = $request->slug;
+        return redirect()->route('product.details',['new_slug' => $slug]);
+    }
+
+    public function deleteNewComment(Request $request){
+        $id = $request->id;
+        $comment = CommentPost::find($id);
+        $comment->delete();
+
+        $new_slug = $request->new_slug;
+        return redirect()->route('new.details',['new_slug' => $new_slug]);
+    }
 }

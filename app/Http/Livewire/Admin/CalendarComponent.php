@@ -50,6 +50,6 @@ class CalendarComponent extends Component
         $events = Event::select('id','title','start')->get();
 
         $this->events = json_encode($events);
-        return view('livewire.admin.calendar-component');
+        return view('livewire.admin.calendar-component')->layout('layouts.base');
     }
 }

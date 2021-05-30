@@ -54,7 +54,7 @@ Giỏ Hàng
                                 </div>
                                 @error('qty')
                                 <span class="text-danger"><i class="fas fa-exclamation-triangle"></i> Nhập lại số
-                                    lượng</span>
+                                    lượng hoặc không được nhỏ hơn 100</span>
                                 @enderror
                             </form>
                         </div>

@@ -23,13 +23,13 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h4 class="card-title text-bold">Lịch làm việc</h4>
+                                <h4 class="card-title text-bold">Thống kê doanh thu</h4>
                             </div><!--end col-->
                         </div>  <!--end row-->
                     </div><!--end card-header-->
                     <div class="card-body">
                         <div style="width:900px;height: 500px; margin:auto;">
-                            @livewire('admin.calendar-component')
+                            @livewire('revenue-component')
                         </div>
                     </div><!--end card-body-->
                 </div><!--end card-->
@@ -100,7 +100,7 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h4 class="card-title">Đăng ký nhận tin tức</h4>
+                                <h4 class="card-title">Khách hàng đăng ký nhận tin tức</h4>
                             </div><!--end col-->
                         </div>  <!--end row-->
                     </div><!--end card-header-->

@@ -8,11 +8,7 @@
                 <div class="page-title-box">
                     <div class="row">
                         <div class="col">
-                            <h4 class="page-title">Đơn đặt hàng</h4>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Tổng quan</a></li>
-                                <li class="breadcrumb-item active">Danh sách đơn hàng</li>
-                            </ol>
+                            <h4 class="page-title">Đơn ứng tuyển</h4>
                         </div>
                         <!--end col-->
                         <div class="col-auto align-self-center">

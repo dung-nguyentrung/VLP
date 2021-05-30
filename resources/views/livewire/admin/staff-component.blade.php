@@ -37,16 +37,21 @@
                                     <th>Số điện thoại</th>
                                     <th>Email</th>
                                     <th>Địa chỉ</th>
-                                    <th></th>
+                                    @if (Auth::user()->utype == 'ADM')
+                                        <th>Phân quyền</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($staffs as $user)
-                                    <tr data-toggle="modal" data-id="{{ $user->id }}" data-target="#exampleModal{{ $user->id }}">
+                                    <tr>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->address }}</td>
+                                        @if (Auth::user()->utype == 'ADM')
+                                            <td><button class="btn btn-primary"><i class="fas fa-user-edit"></i></button></td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -60,55 +65,3 @@
     </div>
 </div>
 </div>
-@foreach ($staffs as $user)
-    <div class="modal fade" id="exampleModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Chi tiết khách hàng</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <b>Thông tin khách hàng</b>
-                            <p>Tên khách hàng: {{ $user->name }}</p>
-                            <p>Số điện thoại: {{ $user->phone }}</p>
-                            <p>Email: {{ $user->email }}</p>
-                            <p>Địa chỉ: {{ $user->address }}</p>
-                        </div>
-                        @if (App\Models\Debt::where('user_id',$user->id)->count() > 0)
-                            <div class="col-lg-12">
-                                <b>Nợ cần thu từ khách hàng</b>
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Đơn hàng</th>
-                                        <th scope="col">Tổng tiền</th>
-                                        <th scope="col">Đã trả</th>
-                                        <th scope="col">Phải thu</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach(App\Models\Debt::where('user_id',$user->id)->get() as $debt)
-                                        <tr>
-                                            <th>{{ $debt->order_id }}</th>
-                                            <td>{{ number_format($debt->total) }} đ</td>
-                                            <td>{{ number_format($debt->paid) }} đ</td>
-                                            <td>{{ number_format($debt->owe) }} đ</td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endforeach
-

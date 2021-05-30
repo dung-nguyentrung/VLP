@@ -23,7 +23,6 @@
                 @if (session('message'))
                     <p class="text-success">{{ Session::get('message') }}</p>
                 @endif
-                    <a href="{{ route('debts') }}"><button class="btn btn-primary btn-sm float-right">Thanh toán</button></a>
             </div>
         </div>
         <div class="row">
@@ -37,7 +36,7 @@
                                     <th>Mã đơn hàng</th>
                                     <th>Tên khách hàng</th>
                                     <th>Tổng số tiền</th>
-                                    <th>Đã trả</th>
+                                    <th>Thanh toán</th>
                                     <th>Phương thức thanh toán</th>
                                     <th>Tình trạng</th>
                                 </tr>
@@ -49,7 +48,11 @@
                                         <td>{{ $order->user->name }}</td>
                                         <td>{{ number_format($order->total) }} đ</td>
                                         @isset($order->debt->paid)
-                                            <td>{{ number_format($order->debt->paid) }} đ</td>
+                                            @if($order->debt->paid == $order->debt->total)
+                                                <td>{{ $order->status }}</td>
+                                            @else
+                                                <td>{{ $order->status }} {{ number_format($order->debt->owe) }} đ</td>
+                                            @endif
                                         @else
                                             <td>Chưa thanh toán</td>
                                         @endisset
@@ -68,6 +71,9 @@
                                                 <a href="{{ route('invoice',['order_id' => $order->id]) }}"><button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="In phiếu thu"><i class="fas fa-print"></i></button></a>
                                                 <a href="{{ route('debt.update',['order_id' => $order->id]) }}"><button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Điều chỉnh"><i class="fas fa-sliders-h"></i></button></a>
                                             @endif
+{{--                                            @if ($order->status == 'Đã thanh toán' && $order->transaction->status == 'Đã hủy')--}}
+                                                <a href="{{ route('refund',['order_id' => $order->id]) }}"><button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Hoàn lại"><i class="fas fa-sync"></i></button></a>
+{{--                                            @endif--}}
                                         </th>
                                     </tr>
                                     @foreach(App\Models\OrderItem::where('order_id',$order->id)->get() as $item)
@@ -78,7 +84,7 @@
                                                 <img src="{{ asset('assets/images/shop') }}/{{ $item->product->image }}" width="150" alt="{{ $item->product->name }}">
                                             </td>
                                             <td>{{ $item->quantity }}</td>
-                                            <td>{{ $item->price }}</td>
+                                            <td>{{ number_format($item->price) }} đ</td>
                                         </tr>
                                     @endforeach
                                 @endforeach

@@ -113,7 +113,7 @@
                             Đăng nhập để đánh giá sản phẩm
                         @endif
                     </h5>
-                    @if(Auth::check())
+
                     @if ($comments->count() > 0)
                     <div class="col-12">
                         <div class="comments mb-30">
@@ -127,7 +127,18 @@
                                     <div class="person">
                                         <h5>{{ $comment->name }} </h5>
                                         <div class="time">{{ $comment->created_at }}</div>
-                                        <p>{{ $comment->comment }}</p>
+                                        <h6>{{ $comment->comment }}
+                                            @if(Auth::check())
+                                                @if(Auth::user()->utype != 'USR')
+                                                    <form action="{{ route('new.comment.delete') }}" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{$comment->id}}">
+                                                        <input type="hidden" name="new_slug" value="{{ $new->slug }}">
+                                                        <input type="submit" class="btn btn-link" value="Xóa bình luận">
+                                                    </form>
+                                                @endif
+                                            @endif
+                                        </h6>
                                     </div>
                                 </div>
                             </div>
@@ -135,6 +146,7 @@
                         </div>
                     </div>
                     @endif
+                    @if(Auth::check())
                     <div class="col-12">
                         <div class="post-comment mb-30">
                             <div class="title-add">

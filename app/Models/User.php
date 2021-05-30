@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\News;
-use App\Models\Career;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
@@ -70,7 +68,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(News::class);
     }
-    public function debt(){
-        return $this->hasMany(Debt::class);
+    public function payment(){
+        return $this->hasMany(Payment::class);
+    }
+
+    public function reciept(){
+        return $this->hasMany(Reciept::class);
     }
 }

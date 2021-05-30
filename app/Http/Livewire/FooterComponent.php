@@ -10,7 +10,22 @@ class FooterComponent extends Component
 {
     public $email;
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'email' => 'required|email'
+        ],[
+            'email.required' => 'Email không được để trống !',
+            'email.email' => 'Bạn phải nhập đúng định dạng của email!'
+        ]);
+    }
+
     public function storeNewsLetter(){
+        $this->validate([
+            'email' => 'required|email'
+        ],[
+            'email.required' => 'Email không được để trống !',
+            'email.email' => 'Bạn phải nhập đúng định dạng của email!'
+        ]);
         $newsletter = new NewsLetter();
         $newsletter->email = $this->email;
         $newsletter->save();

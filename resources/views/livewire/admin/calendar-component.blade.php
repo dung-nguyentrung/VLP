@@ -1,19 +1,34 @@
-<style>
-    #calendar-container{
-        width: 100%;
-    }
-    #calendar{
-        padding: 10px;
-        margin: 10px;
-        width: 850px;
-        height: 500px;
-    }
-</style>
-
-<div>
-    <div id='calendar-container' wire:ignore>
-        <div id='calendar'></div>
+@section('title')
+    Lịch làm việc
+@endsection
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="page-title">Lịch làm việc</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <div class='container' wire:ignore style="width: 900px;height: 400px;margin: auto;">
+                                <div id='calendar'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 </div>
 
 @push('scripts')
