@@ -10,7 +10,24 @@ class AddFaqComponent extends Component
     public $question;
     public $content;
 
+    public function updated($field){
+        $this->validateOnly($field,[
+           'question' => 'required',
+           'content' => 'required'
+        ],[
+            'question.required' => 'Câu hỏi không được trống',
+            'content.required' => 'Nội dung không được trống'
+        ]);
+    }
+
     public function storeFaq(){
+        $this->validate([
+            'question' => 'required',
+            'content' => 'required'
+        ],[
+            'question.required' => 'Câu hỏi không được trống',
+            'content.required' => 'Nội dung không được trống'
+        ]);
         $faq = new Faq();
         $faq->question = $this->question;
         $faq->content = $this->content;

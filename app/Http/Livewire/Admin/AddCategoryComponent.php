@@ -14,8 +14,24 @@ class AddCategoryComponent extends Component
     public function generateslug(){
         $this->slug = Str::slug($this->name);
     }
+    public function updated($field){
+        $this->validateOnly($field,[
+            'name' => 'required',
+            'slug' => 'required'
+        ],[
+            'name.required' => 'Tên danh mục không được trống',
+            'slug.required' => 'Đường dẫn không được trống'
+        ]);
+    }
 
     public function storeCategory(){
+        $this->validate([
+            'name' => 'required',
+            'slug' => 'required'
+        ],[
+            'name.required' => 'Tên danh mục không được trống',
+            'slug.required' => 'Đường dẫn không được trống'
+        ]);
         $category = new Category();
         $category->name = $this->name;
         $category->slug = $this->slug;

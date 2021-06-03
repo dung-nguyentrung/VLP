@@ -22,7 +22,24 @@ class UpdateGalleyComponent extends Component
         $this->image = $gallery->image;
     }
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'title' => 'required',
+            'new_image' => 'image'
+        ],[
+            'title.required' => 'Tiêu đề hình ảnh không được trống',
+            'new_image.image' => 'Nhập đúng định dạng hình ảnh'
+        ]);
+    }
+
     public function updateGallery(){
+        $this->validate([
+            'title' => 'required',
+            'image' => 'image'
+        ],[
+            'title.required' => 'Tiêu đề hình ảnh không được trống',
+            'image.image' => 'Nhập đúng định dạng hình ảnh'
+        ]);
         $gallery = Gallery::find($this->gallery_id);
         $gallery->title = $this->title;
         if($this->new_image){

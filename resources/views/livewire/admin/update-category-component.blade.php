@@ -32,6 +32,9 @@
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Tên danh mục</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" wire:model="name" wire:keyup="generateslug" placeholder="Nhập tên danh mục sản phẩm">
+                                        @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -39,6 +42,9 @@
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Đường dẫn</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" wire:model="slug"  placeholder="Đường dẫn tự sinh ra nhưng bạn có thể chỉnh sửa tùy ý !">
+                                        @error('slug')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">

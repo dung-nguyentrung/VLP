@@ -32,12 +32,18 @@
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Tên công ty</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" wire:model="name" />
+                                        @error('name')
+                                        <div class="alert alert-dangerư">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Hình ảnh</label>
                                     <div class="col-sm-8">
                                         <input type="file" class="form-control" wire:model="new_image"/>
+                                        @error('new_image')
+                                        <div class="alert alert-dangerư">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 @if ($new_image)

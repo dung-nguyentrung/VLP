@@ -39,12 +39,18 @@
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Câu hỏi</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" wire:model="question" placeholder="Nhập câu hỏi">
+                                        @error('question')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row" wire:ignore>
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Trả lời</label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control" id="content" wire:model="content"  placeholder="Nội dung"></textarea>
+                                        @error('content')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">

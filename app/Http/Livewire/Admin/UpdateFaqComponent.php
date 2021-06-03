@@ -18,7 +18,24 @@ class UpdateFaqComponent extends Component
         $this->content = $faq->content;
     }
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'question' => 'required',
+            'content' => 'required'
+        ],[
+            'question.required' => 'Câu hỏi không được trống',
+            'content.required' => 'Nội dung không được trống'
+        ]);
+    }
+
     public function updateFaq(){
+        $this->validate([
+            'question' => 'required',
+            'content' => 'required'
+        ],[
+            'question.required' => 'Câu hỏi không được trống',
+            'content.required' => 'Nội dung không được trống'
+        ]);
         $faq = Faq::find($this->faq_id);
         $faq->question = $this->question;
         $faq->content = $this->content;

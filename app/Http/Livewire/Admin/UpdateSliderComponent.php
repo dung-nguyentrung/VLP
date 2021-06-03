@@ -15,6 +15,18 @@ class UpdateSliderComponent extends Component
     public $image;
     public $new_image;
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'title' => 'required',
+            'new_image' => 'image',
+            'description' => 'required'
+        ],[
+            'title.required' => 'Tiêu đề không được trống',
+            'new_image.image' => 'Nhập đúng định dạng của hình ảnh',
+            'description.required' => 'Mô tả không được trống'
+        ]);
+    }
+
     public function mount($slider_id){
         $this->slider_id = $slider_id;
         $slider = Slider::where('id',$this->slider_id)->first();
@@ -25,6 +37,15 @@ class UpdateSliderComponent extends Component
 
     use WithFileUploads;
     public function updateSlider(){
+        $this->validate([
+            'title' => 'required',
+            'new_image' => 'image',
+            'description' => 'required'
+        ],[
+            'title.required' => 'Tiêu đề không được trống',
+            'new_image.image' => 'Nhập đúng định dạng của hình ảnh',
+            'description.required' => 'Mô tả không được trống'
+        ]);
         $slider = Slider::find($this->slider_id);
         $slider->title = $this->title;
         $slider->description = $this->description;

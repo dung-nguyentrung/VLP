@@ -13,7 +13,26 @@ class AddGalleryComponent extends Component
     public $title;
     public $image;
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'title' => 'required',
+            'image' => 'required|image'
+        ],[
+            'title.required' => 'Tiêu đề hình ảnh không được trống',
+            'image.required' => 'Hình ảnh không được trống',
+            'image.image' => 'Nhập đúng định dạng hình ảnh'
+        ]);
+    }
+
     public function storeGallery(){
+        $this->validate([
+            'title' => 'required',
+            'image' => 'required|image'
+        ],[
+            'title.required' => 'Tiêu đề hình ảnh không được trống',
+            'image.required' => 'Hình ảnh không được trống',
+            'image.image' => 'Nhập đúng định dạng hình ảnh'
+        ]);
         $gallery = new Gallery();
         $gallery->title = $this->title;
         $imageName = Carbon::now()->timestamp. '.' .$this->image->extension();

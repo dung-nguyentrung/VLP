@@ -27,6 +27,14 @@ class UpdateDebtComponent extends Component
         $this->owe = $reciept->owe;
     }
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'pay' => 'required'
+        ],[
+            'pay.required' => 'Số tiền không được rỗng'
+        ]);
+    }
+
     public function changeStatusOrder($order_id){
         $order = Order::where('id',$order_id)->first();
         $order->status = 'Đã thanh toán';

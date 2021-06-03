@@ -13,7 +13,26 @@ class AddPartnerComponent extends Component
     public $name;
     public $image;
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'name' => 'required',
+            'new_image' => 'required|image'
+        ],[
+            'name.required' => 'Tên không được trống',
+            'image.required' => 'Hình ảnh không được trống',
+            'image.image' => 'Nhập đúng định dạng hình ảnh'
+        ]);
+    }
+
     public function storePartner(){
+        $this->validate([
+            'name' => 'required',
+            'image' => 'required|image'
+        ],[
+            'name.required' => 'Tên không được trống',
+            'image.required' => 'Hình ảnh không được trống',
+            'image.image' => 'Nhập đúng định dạng hình ảnh'
+        ]);
         $partner = new Partner();
         $partner->name = $this->name;
         $imageName = Carbon::now()->timestamp. '.' .$this->image->extension();

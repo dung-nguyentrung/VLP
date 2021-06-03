@@ -25,7 +25,24 @@ class UpdateCategoryComponent extends Component
         $this->slug = Str::slug($this->name);
     }
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'name' => 'required',
+            'slug' => 'required'
+        ],[
+            'name.required' => 'Tên danh mục không được trống',
+            'slug.required' => 'Đường dẫn không được trống'
+        ]);
+    }
+
     public function updateCategory(){
+        $this->validate([
+           'name' => 'required',
+           'slug' => 'required'
+        ],[
+            'name.required' => 'Tên danh mục không được trống',
+            'slug.required' => 'Đường dẫn không được trống'
+        ]);
         $category = Category::find($this->category_id);
         $category->name = $this->name;
         $category->slug = $this->slug;

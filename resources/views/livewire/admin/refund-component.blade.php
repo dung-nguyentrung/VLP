@@ -71,13 +71,19 @@
                                 <div class="form-group row">
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Số tiền chi</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" wire:model="pay"/>
+                                        <input type="number" class="form-control" wire:model="pay"/>
+                                        @error('pay')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Lý do(nếu có)</label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control" wire:model="reason" rows="5"></textarea>
+                                        @error('reason')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">

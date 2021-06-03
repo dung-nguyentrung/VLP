@@ -21,8 +21,25 @@ class UpdatePartnerComponent extends Component
         $this->image = $partner->image;
     }
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'name' => 'required',
+            'new_image' => 'image'
+        ],[
+            'name.required' => 'Tên không được trống',
+            'new_image.image' => 'Nhập đúng định dạng hình ảnh'
+        ]);
+    }
+
     use WithFileUploads;
     public function updatePartner(){
+        $this->validate([
+            'name' => 'required',
+            'image' => 'image'
+        ],[
+            'name.required' => 'Tên ảnh không được trống',
+            'new_image.image' => 'Nhập đúng định dạng hình ảnh'
+        ]);
         $partner = Partner::find($this->partner_id);
         $partner->name = $this->name;
         if($this->new_image){

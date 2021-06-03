@@ -32,24 +32,36 @@
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Tiêu đề</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" wire:model="title" wire:keyup="generateslug">
+                                        @error('title')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Đường dẫn</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" wire:model="slug">
+                                        @error('slug')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row" wire:ignore>
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Nội dung</label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control" rows="20" id="content" wire:model="content"></textarea>
+                                        @error('content')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Hình ảnh</label>
                                     <div class="col-sm-8">
                                         <input type="file" class="form-control" wire:model="new_image">
+                                        @error('new_image')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         @if ($new_image)
                                             <p>Hình ảnh mới:</p>
                                             <img src="{{ $new_image->temporaryUrl() }}" width="240">

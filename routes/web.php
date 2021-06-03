@@ -130,67 +130,76 @@ Route::get('/page-not-found', function () {
     return view('errors.404');
 })->name('errors');
 
+Route::get('/admin/page-not-found', function () {
+    return view('errors.admin.404');
+})->name('admin.errors');
+
 //ADMIM
 Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
     //Dashboard
     Route::get('/dashboard',DashboardComponent::class)->name('dashboard');
+    //STF
+    Route::middleware(['auth:sanctum', 'verified','authstaff'])->group(function() {
+        //Category
+        Route::get('/categories', CategoryComponent::class)->name('categories');
 
-    //Category
-    Route::get('/categories',CategoryComponent::class)->name('categories');
 
-    Route::get('/add-category',AddCategoryComponent::class)->name('category.add');
+        Route::get('/add-category', AddCategoryComponent::class)->name('category.add');
 
-    Route::get('/update-category/{category_slug}',UpdateCategoryComponent::class)->name('category.update');
+        Route::get('/update-category/{category_slug}', UpdateCategoryComponent::class)->name('category.update');
 
-    //Product
-    Route::get('/products',ProductComponent::class)->name('products');
+        //Product
+        Route::get('/products', ProductComponent::class)->name('products');
 
-    Route::get('/add-product',AddProductComponent::class)->name('product.add');
+        Route::get('/add-product', AddProductComponent::class)->name('product.add');
 
-    Route::get('/update-product/{product_slug}',UpdateProductComponent::class)->name('product.update');
+        Route::get('/update-product/{product_slug}', UpdateProductComponent::class)->name('product.update');
+    });
+    Route::middleware(['auth:sanctum', 'verified','authmarketing'])->group(function() {
+        //FAQ
+        Route::get('/faqs', FaqComponent::class)->name('faqs');
 
-    //FAQ
-    Route::get('/faqs',FaqComponent::class)->name('faqs');
+        Route::get('/add-faq', AddFaqComponent::class)->name('faq.add');
 
-    Route::get('/add-faq',AddFaqComponent::class)->name('faq.add');
+        Route::get('/update-faq/{faq_id}', UpdateFaqComponent::class)->name('faq.update');
 
-    Route::get('/update-faq/{faq_id}',UpdateFaqComponent::class)->name('faq.update');
+        //Recruitment
+        Route::get('/recruitments', RecruitmentComponent::class)->name('recruitments');
 
-    //Recruitment
-    Route::get('/recruitments',RecruitmentComponent::class)->name('recruitments');
+        Route::get('/add-recruitment', AddRecruitmentComponent::class)->name('recruitment.add');
 
-    Route::get('/add-recruitment',AddRecruitmentComponent::class)->name('recruitment.add');
+        Route::get('/update-recruitment/{recruitment_id}', EditRecruitmentComponent::class)->name('recruitment.update');
 
-    Route::get('/update-recruitment/{recruitment_id}',EditRecruitmentComponent::class)->name('recruitment.update');
+        //Post
+        Route::get('/posts',PostComponent::class)->name('posts');
 
+        Route::get('/add-post',AddPostComponent::class)->name('post.add');
+
+        Route::get('/update-post/{post_slug}',UpdatePostComponent::class)->name('post.update');
+
+        //Gallery
+        Route::get('/admin/galleries',AdminGalleryComponent::class)->name('admin.galleries');
+
+        Route::get('/add-gallery',AddGalleryComponent::class)->name('gallery.add');
+
+        Route::get('/update-gallery/{gallery_id}',UpdateGalleyComponent::class)->name('gallery.update');
+
+        //Post Category
+        Route::get('/post/cateogries',PostCategoryComponent::class)->name('post.categories');
+
+        Route::get('/post/cateogry/add',AddPostCategoryComponent::class)->name('post.category.add');
+
+        Route::get('/post/cateogry/update/{post_category_slug}',UpdatePostCategoryComponent::class)->name('post.category.update');
+
+    });
     //Setting site
     Route::get('/setting-site',SettingComponent::class)->name('setting.site');
-
-    //Post
-    Route::get('/posts',PostComponent::class)->name('posts');
-
-    Route::get('/add-post',AddPostComponent::class)->name('post.add');
-
-    Route::get('/update-post/{post_slug}',UpdatePostComponent::class)->name('post.update');
 
     //Profile
     Route::get('/user/profile',UserProfileComponent::class)->name('profile');
 
     Route::get('/user/change-password',ChangePasswordComponent::class)->name('changePassword');
 
-    //Gallery
-    Route::get('/admin/galleries',AdminGalleryComponent::class)->name('admin.galleries');
-
-    Route::get('/add-gallery',AddGalleryComponent::class)->name('gallery.add');
-
-    Route::get('/update-gallery/{gallery_id}',UpdateGalleyComponent::class)->name('gallery.update');
-
-    //Post Category
-    Route::get('/post/cateogries',PostCategoryComponent::class)->name('post.categories');
-
-    Route::get('/post/cateogry/add',AddPostCategoryComponent::class)->name('post.category.add');
-
-    Route::get('/post/cateogry/update/{post_category_slug}',UpdatePostCategoryComponent::class)->name('post.category.update');
 
     //SLider
     Route::get('/sliders',SliderComponent::class)->name('sliders');
@@ -208,29 +217,32 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->group(function(){
 
     //Customer
     Route::get('/customer',CustomerComponent::class)->name('customers');
+    Route::middleware(['auth:sanctum', 'verified','authaccount'])->group(function() {
+        //Order
+        Route::get('/orders', \App\Http\Livewire\Admin\OrderComponent::class)->name('orders');
 
-    //Order
-    Route::get('/orders',\App\Http\Livewire\Admin\OrderComponent::class)->name('orders');
+        //Application
+        Route::get('/apply', \App\Http\Livewire\Admin\ApplyComponent::class)->name('apply');
 
-    //Application
-    Route::get('/apply',\App\Http\Livewire\Admin\ApplyComponent::class)->name('apply');
+        //Staff
+        Route::get('/staffs', \App\Http\Livewire\Admin\StaffComponent::class)->name('staffs');
 
-    //Staff
-    Route::get('/staffs',\App\Http\Livewire\Admin\StaffComponent::class)->name('staffs');
+        //Invoice
+        Route::get('/update-debt/{order_id}', \App\Http\Livewire\Admin\UpdateDebtComponent::class)->name('debt.update');
 
-    //Invoice
-    Route::get('/update-debt/{order_id}',\App\Http\Livewire\Admin\UpdateDebtComponent::class)->name('debt.update');
+        //Bill
+        Route::get('/invoice/{order_id}', \App\Http\Livewire\Admin\BillComponent::class)->name('invoice');
 
-    //Bill
-    Route::get('/invoice/{order_id}',\App\Http\Livewire\Admin\BillComponent::class)->name('invoice');
+        //Refund
+        Route::get('/refund/{order_id}', \App\Http\Livewire\Admin\RefundComponent::class)->name('refund');
 
-    //Refund
-    Route::get('/refund/{order_id}',\App\Http\Livewire\Admin\RefundComponent::class)->name('refund');
-
-    Route::get('/print-bill/{debt_id}',\App\Http\Livewire\Admin\BillRefundComponent::class)->name('bill.print');
-
+        Route::get('/print-bill/{debt_id}', \App\Http\Livewire\Admin\BillRefundComponent::class)->name('bill.print');
+    });
     //Calendar
     Route::get('/calendar',\App\Http\Livewire\Admin\CalendarComponent::class)->name('calendar');
 
     Route::get('/history',\App\Http\Livewire\Admin\HistoryComponent::class)->name('history');
+    Route::middleware(['auth:sanctum', 'verified','authcheck'])->group(function() {
+        Route::get('/user/update/{user_id}', \App\Http\Livewire\Admin\UpdateStaffComponent::class)->name('user.update');
+    });
 });

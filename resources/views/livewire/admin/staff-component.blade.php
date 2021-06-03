@@ -37,6 +37,7 @@
                                     <th>Số điện thoại</th>
                                     <th>Email</th>
                                     <th>Địa chỉ</th>
+                                    <th>Chức vụ</th>
                                     @if (Auth::user()->utype == 'ADM')
                                         <th>Phân quyền</th>
                                     @endif
@@ -49,8 +50,17 @@
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->address }}</td>
+                                        <td>
+                                            @if($user->utype == 'STF')
+                                                Nhân viên bán hàng
+                                            @elseif($user->utype == 'MKT')
+                                                Nhân viên Marketing
+                                            @elseif($user->utype == 'ACT')
+                                                Kế toán
+                                            @endif
+                                        </td>
                                         @if (Auth::user()->utype == 'ADM')
-                                            <td><button class="btn btn-primary"><i class="fas fa-user-edit"></i></button></td>
+                                            <td><a href="{{ route('user.update',['user_id' => $user->id]) }}"><button class="btn btn-primary"><i class="fas fa-user-edit"></i></button></a></td>
                                         @endif
                                     </tr>
                                 @endforeach

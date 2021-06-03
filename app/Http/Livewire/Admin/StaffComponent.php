@@ -11,7 +11,7 @@ class StaffComponent extends Component
     use WithPagination;
     public function render()
     {
-        $staffs = User::whereNotIn('utype',['USR','ADM'])->paginate(10);
+        $staffs = User::whereNotIn('utype',['USR','ADM'])->paginate(15);
         return view('livewire.admin.staff-component',['staffs' => $staffs])->layout('layouts.base');
     }
 }

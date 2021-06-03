@@ -84,6 +84,9 @@
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Khách trả</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" wire:model="pay"/>
+                                        @error('pay')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">

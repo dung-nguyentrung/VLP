@@ -27,7 +27,38 @@ class EditRecruitmentComponent extends Component
         $this->user_id = Auth::user()->id;
     }
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'position' => 'required',
+            'quantity' => 'required',
+            'content' => 'required',
+            'required' => 'required',
+            'expiry_date' => 'required|date'
+        ],[
+            'position.required' => 'Vị trí không được trống',
+            'quantity.required' => 'Số lượng không được trống',
+            'content.required' => 'Nội dung không được trống',
+            'required.required' => 'Yêu cầu không được trống',
+            'expiry_date.required' => 'Ngày hết hạn không được trống',
+            'expiry_date.date' => 'Nhập đúng dịnh dạng của ngày hết hạn'
+        ]);
+    }
+
     public function updateRecruitment(){
+        $this->validate([
+            'position' => 'required',
+            'quantity' => 'required',
+            'content' => 'required',
+            'required' => 'required',
+            'expiry_date' => 'required|date'
+        ],[
+            'position.required' => 'Vị trí không được trống',
+            'quantity.required' => 'Số lượng không được trống',
+            'content.required' => 'Nội dung không được trống',
+            'required.required' => 'Yêu cầu không được trống',
+            'expiry_date.required' => 'Ngày hết hạn không được trống',
+            'expiry_date.date' => 'Nhập đúng dịnh dạng của ngày hết hạn'
+        ]);
         $recruitment = Career::find($this->recruitment_id);
         $recruitment->position = $this->position;
         $recruitment->quantity = $this->quantity;

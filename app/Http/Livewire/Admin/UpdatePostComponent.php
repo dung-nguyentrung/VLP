@@ -27,7 +27,32 @@ class UpdatePostComponent extends Component
         $this->slug = Str::slug($this->title);
     }
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'title' => 'required',
+            'slug' => 'required',
+            'content' => 'required',
+            'new_image' => 'image',
+        ],[
+            'title.required' => 'Tiêu dề không được trống',
+            'slug.required' => 'Đường dẫn không được trống',
+            'content.required' => 'Nội dung không được trống',
+            'new_image.image' => 'Nhập đúng định dạng của hình ảnh'
+        ]);
+    }
+
     public function mount($post_slug){
+        $this->validate([
+            'title' => 'required',
+            'slug' => 'required',
+            'content' => 'required',
+            'new_image' => 'image',
+        ],[
+            'title.required' => 'Tiêu dề không được trống',
+            'slug.required' => 'Đường dẫn không được trống',
+            'content.required' => 'Nội dung không được trống',
+            'new_image.image' => 'Nhập đúng định dạng của hình ảnh'
+        ]);
         $this->post_slug = $post_slug;
         $new = News::where('slug',$this->post_slug)->first();
         $this->post_id = $new->id;

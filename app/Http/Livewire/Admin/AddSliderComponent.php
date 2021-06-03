@@ -13,8 +13,31 @@ class AddSliderComponent extends Component
     public $image;
     public $description;
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'title' => 'required',
+            'image' => 'required|image',
+            'description' => 'required'
+        ],[
+            'title.required' => 'Tiêu đề không được trống',
+            'image.required' => 'Hình ảnh không được trống',
+            'image.image' => 'Nhập đúng định dạng của hình ảnh',
+            'description.required' => 'Mô tả không được trống'
+        ]);
+    }
+
     use WithFileUploads;
     public function storeSlider(){
+        $this->validate([
+            'title' => 'required',
+            'image' => 'required|image',
+            'description' => 'required'
+        ],[
+            'title.required' => 'Tiêu đề không được trống',
+            'image.required' => 'Hình ảnh không được trống',
+            'image.image' => 'Nhập đúng định dạng của hình ảnh',
+            'description.required' => 'Mô tả không được trống'
+        ]);
         $slider = new Slider();
         $slider->title = $this->title;
         $slider->description = $this->description;

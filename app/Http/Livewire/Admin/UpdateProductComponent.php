@@ -39,7 +39,38 @@ class UpdateProductComponent extends Component
         $this->category_id = $product->category_id;
     }
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'name' => 'required',
+            'slug' => 'required',
+            'short_description' => 'required',
+            'price' => 'required',
+            'SKU' => 'required',
+            'new_image' => 'image',
+        ],[
+            'name.required' => 'Tên sản phẩm không được trống',
+            'slug.required' => 'Đường dẫn không được trống',
+            'short_description.required' => 'Mô tả không được trống',
+            'SKU.required' => 'SKU không được trống',
+            'image.image' => 'Nhập đúng định dạng hình ảnh',
+        ]);
+    }
+
     public function updateProduct(){
+        $this->validate([
+            'name' => 'required',
+            'slug' => 'required',
+            'short_description' => 'required',
+            'price' => 'required',
+            'SKU' => 'required',
+            'new_image' => 'image',
+        ],[
+            'name.required' => 'Tên sản phẩm không được trống',
+            'slug.required' => 'Đường dẫn không được trống',
+            'short_description.required' => 'Mô tả không được trống',
+            'SKU.required' => 'SKU không được trống',
+            'image.image' => 'Nhập đúng định dạng hình ảnh',
+        ]);
         $product = Product::find($this->product_id);
         $product->name = $this->name;
         $product->slug = $this->slug;

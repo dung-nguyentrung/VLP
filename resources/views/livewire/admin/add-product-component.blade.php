@@ -32,42 +32,63 @@
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Tên sản phẩm</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" wire:model="name" wire:keyup="generateSlug">
+                                        @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Đường dẫn</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" wire:model="slug">
+                                        @error('slug')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row" wire:ignore>
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Mô tả sản phẩm</label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control" rows="20" id="short_description" wire:model="short_description"></textarea>
+                                        @error('short_description')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Giá sản phẩm</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" wire:model="price">
+                                        <input type="number" class="form-control" wire:model="price">
+                                        @error('price')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Số lượng</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" wire:model="quantity">
+                                        <input type="number" class="form-control" wire:model="quantity">
+                                        @error('quantity')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">SKU</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" wire:model="SKU">
+                                        @error('SKU')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Hình ảnh</label>
                                     <div class="col-sm-8">
                                         <input type="file" class="form-control" wire:model="image">
+                                        @error('image')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         @if ($image)
                                             <p>Hình ảnh sản phẩm:</p>
                                             <img src="{{ $image->temporaryUrl() }}" width="240">

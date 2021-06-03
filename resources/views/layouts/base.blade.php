@@ -35,6 +35,7 @@
                     <li>
                         <a href="{{ route('calendar') }}"><i class="fas fa-calendar-alt"></i><span>Lịch làm việc</span><span class="menu-arrow"></span></a>
                     </li>
+                    @if(\Illuminate\Support\Facades\Auth::user()->utype == 'STF' || \Illuminate\Support\Facades\Auth::user()->utype == 'ADM')
                     <li>
                         <a href="#"><i data-feather="grid" class="align-self-center menu-icon "></i><span>Quản lý bán hàng</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                         <ul class="nav-second-level" aria-expanded="false">
@@ -52,9 +53,11 @@
                                     <li><a href="{{ route('product.add') }}">Thêm sản phẩm</a></li>
                                 </ul>
                             </li>
+                            @if(\Illuminate\Support\Facades\Auth::user()->utype == 'ACT' || \Illuminate\Support\Facades\Auth::user()->utype == 'ADM')
                             <li>
                                 <a href="{{ route('orders') }}"><i class="far fa-file-alt"></i>Đơn hàng</a>
                             </li>
+                            @endif
                             <li>
                                 <a href="{{ route('customers') }}"><i class="fas fa-users"></i><span>Khách hàng</span><span class="menu-arrow"></span></a>
                             </li>
@@ -63,6 +66,8 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
+                    @if(\Illuminate\Support\Facades\Auth::user()->utype == 'MKT' || \Illuminate\Support\Facades\Auth::user()->utype == 'ADM')
                     <li>
                         <a href="#"><i data-feather="grid" class="align-self-center menu-icon "></i><span>Quản lý tin tức</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                         <ul class="nav-second-level" aria-expanded="false">
@@ -85,15 +90,20 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
+                    @if( \Illuminate\Support\Facades\Auth::user()->utype == 'ADM')
                     <li>
                         <a href="{{ route('staffs') }}"><i class="fas fa-clipboard-list"></i><span>Nhân viên</span><span class="menu-arrow"></span></a>
                     </li>
+                    @endif
+                    @if(\Illuminate\Support\Facades\Auth::user()->utype == 'MKT' || \Illuminate\Support\Facades\Auth::user()->utype == 'ADM')
                     <li>
                         <a href="{{ route('apply') }}"><i class="fas fa-user-friends"></i><span>Đơn ứng tuyển</span><span class="menu-arrow"></span></a>
                     </li>
                     <li>
                         <a href="{{ route('admin.galleries') }}"><i class="far fa-images"></i><span>Hình ảnh</span><span class="menu-arrow"></span></a>
                     </li>
+                    @endif
                     <li>
                         <a href="{{ route('partners') }}"><i class="fas fa-hands-helping"></i><span>Đối tác</span><span class="menu-arrow"></span></a>
                     </li>

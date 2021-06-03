@@ -15,7 +15,24 @@ class AddPostCategoryComponent extends Component
         $this->slug = Str::slug($this->name);
     }
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'name' => 'required',
+            'slug' => 'required'
+        ],[
+            'name.required' => 'Tên danh mục không được trống',
+            'slug.required' => 'Đường dẫn không được trống'
+        ]);
+    }
+
     public function storePostCategory(){
+        $this->validate([
+            'name' => 'required',
+            'slug' => 'required'
+        ],[
+            'name.required' => 'Tên danh mục không được trống',
+            'slug.required' => 'Đường dẫn không được trống'
+        ]);
         $category = new PostCategory();
         $category->name = $this->name;
         $category->slug = $this->slug;

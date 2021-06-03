@@ -29,7 +29,34 @@ class AddPostComponent extends Component
         $this->slug = Str::slug($this->title);
     }
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'title' => 'required',
+            'slug' => 'required',
+            'content' => 'required',
+            'image' => 'required|image',
+        ],[
+            'title.required' => 'Tiêu dề không được trống',
+            'slug.required' => 'Đường dẫn không được trống',
+            'content.required' => 'Nội dung không được trống',
+            'image.required' => 'Hình ảnh không được trống',
+            'image.image' => 'Nhập đúng định dạng của hình ảnh'
+        ]);
+    }
+
     public function storeNew(){
+        $this->validate([
+            'title' => 'required',
+            'slug' => 'required',
+            'content' => 'required',
+            'image' => 'image',
+        ],[
+            'title.required' => 'Tiêu dề không được trống',
+            'slug.required' => 'Đường dẫn không được trống',
+            'content.required' => 'Nội dung không được trống',
+            'image.required' => 'Hình ảnh không được trống',
+            'image.image' => 'Nhập đúng định dạng của hình ảnh'
+        ]);
         $new = new News();
         $new->title = $this->title;
         $new->slug = $this->slug;

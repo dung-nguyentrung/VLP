@@ -39,30 +39,45 @@
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Vị trí công việc</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" wire:model="position">
+                                        @error('position')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Số lượng</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" wire:model="quantity">
+                                        @error('quantity')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row" wire:ignore>
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Mô tả công việc</label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control" rows="20" id="content" wire:model="content"></textarea>
+                                        @error('content')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row" wire:ignore>
                                     <label for="horizontalInput2" class="col-sm-2 col-form-label">Yêu cầu</label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control" rows="20" id="required" wire:model="required"></textarea>
+                                        @error('required')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="horizontalInput1" class="col-sm-2 col-form-label">Ngày hết hạn</label>
                                     <div class="col-sm-8">
                                         <input type="date" class="form-control" wire:model="expiry_date">
+                                        @error('expiry_date')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">

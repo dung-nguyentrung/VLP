@@ -27,6 +27,16 @@ class RefundComponent extends Component
         $this->pay = $debt->paid;
     }
 
+    public function updated($field){
+        $this->validateOnly($field,[
+            'reason' => 'required',
+            'pay' => 'required'
+        ],[
+            'reason.required' => 'Lý do không được trống',
+            'pay.required' => 'Số tiền chi không được trống'
+        ]);
+    }
+
     public function storeBill()
     {
         $isPayment = Payment::where('order_id', $this->order_id)->first();
